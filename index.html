@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prem Kumar | Quality Analyst</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #334155;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        nav a {
+            color: #f8fafc;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #94a3b8;
+            font-size: 18px;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 5px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .btn:hover {
+            background: #7dd3fc;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 45px;
+        }
+
+        .section-title span {
+            color: #38bdf8;
+        }
+
+        .about {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            color: #cbd5e1;
+            font-size: 18px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: #38bdf8;
+        }
+
+        .card h3 {
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #cbd5e1;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .timeline-item {
+            background: #1e293b;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #38bdf8;
+            border-radius: 8px;
+        }
+
+        .timeline-item h3 {
+            color: #38bdf8;
+        }
+
+        .timeline-item p {
+            color: #cbd5e1;
+        }
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            margin: 12px;
+            color: #cbd5e1;
+        }
+
+        .contact a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #020617;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero h2 {
+                font-size: 22px;
+            }
+
+            section {
+                padding: 90px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Prem Kumar</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div>
+        <h1>Hi, I'm <span>Prem Kumar</span></h1>
+
+        <h2>Quality Analyst</h2>
+
+        <p>
+            A motivated professional with almost 2 years of experience,
+            currently pursuing a BBA and always looking for opportunities
+            to learn new skills and improve.
+        </p>
+
+        <div class="buttons">
+            <a href="#contact" class="btn">Contact Me</a>
+            <a href="#about" class="btn btn-outline">Explore My Portfolio</a>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <h2 class="section-title">About <span>Me</span></h2>
+
+    <div class="about">
+        <p>
+            I am Prem Kumar, a Quality Analyst with almost 2 years of
+            professional experience. I am currently pursuing my BBA
+            while developing my professional and technical skills.
+            I enjoy learning new things, solving problems and improving
+            the quality of work through attention to detail and
+            continuous improvement.
+        </p>
+    </div>
+</section>
+
+<section id="skills">
+    <h2 class="section-title">My <span>Skills</span></h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Quality Analysis</h3>
+            <p>Monitoring quality, identifying gaps and maintaining work standards.</p>
+        </div>
+
+        <div class="card">
+            <h3>Attention to Detail</h3>
+            <p>Carefully reviewing work and identifying errors or areas for improvement.</p>
+        </div>
+
+        <div class="card">
+            <h3>Communication</h3>
+            <p>Clear and professional communication with customers and team members.</p>
+        </div>
+
+        <div class="card">
+            <h3>Problem Solving</h3>
+            <p>Finding practical solutions and handling challenges effectively.</p>
+        </div>
+
+        <div class="card">
+            <h3>Teamwork</h3>
+            <p>Working effectively with team members to achieve common goals.</p>
+        </div>
+
+        <div class="card">
+            <h3>Microsoft Office</h3>
+            <p>Basic working knowledge of common Microsoft Office tools.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="experience">
+    <h2 class="section-title">Work <span>Experience</span></h2>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <h3>Quality Analyst</h3>
+            <p><strong>Experience:</strong> Almost 2 Years</p>
+            <p>
+                Responsible for monitoring quality, identifying areas
+                for improvement and supporting consistent work standards.
+                Developed strong attention to detail, communication and
+                problem-solving skills.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="education">
+    <h2 class="section-title">My <span>Education</span></h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Currently Pursuing BBA</h3>
+            <p>Bachelor of Business Administration</p>
+        </div>
+
+        <div class="card">
+            <h3>HSC</h3>
+            <p>Higher Secondary Certificate</p>
+        </div>
+
+        <div class="card">
+            <h3>SSC</h3>
+            <p>Secondary School Certificate</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact">
+    <h2 class="section-title">Contact <span>Me</span></h2>
+
+    <div class="contact">
+
+        <p>
+            📧 Email:
+            <a href="mailto:prem012006k@gmail.com">
+                prem012006k@gmail.com
+            </a>
+        </p>
+
+        <p>
+            📱 Phone:
+            <a href="tel:8928996632">
+                8928996632
+            </a>
+        </p>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Prem Kumar. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
