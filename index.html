@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Prem Kumar | Quality Analyst</title>
+
+    <meta name="description"
+        content="Portfolio of Prem Kumar, Quality Analyst at I Planet BPO Pvt. Ltd.">
 
     <style>
         * {
@@ -13,212 +17,553 @@
             scroll-behavior: smooth;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: #f8fafc;
-            line-height: 1.6;
+        :root {
+            --bg: #050816;
+            --bg2: #0b1124;
+            --card: rgba(255,255,255,0.06);
+            --border: rgba(255,255,255,0.12);
+            --primary: #38bdf8;
+            --secondary: #8b5cf6;
+            --text: #f8fafc;
+            --muted: #a7b1c2;
         }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(56,189,248,0.12), transparent 25%),
+                radial-gradient(circle at 90% 20%, rgba(139,92,246,0.13), transparent 25%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
 
         header {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            padding: 18px 8%;
+            padding: 18px 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(5,8,22,0.78);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
             z-index: 1000;
-            border-bottom: 1px solid #334155;
         }
 
         .logo {
             font-size: 24px;
-            font-weight: bold;
-            color: #38bdf8;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
         }
 
         nav a {
-            color: #f8fafc;
+            color: #dbeafe;
             text-decoration: none;
-            margin-left: 25px;
-            font-size: 15px;
+            font-size: 14px;
+            transition: 0.3s;
         }
 
         nav a:hover {
-            color: #38bdf8;
+            color: var(--primary);
         }
 
-        section {
-            padding: 100px 8%;
-        }
+        /* HERO */
 
         .hero {
             min-height: 100vh;
+            padding: 140px 8% 80px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, #0f172a, #1e293b);
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1150px;
+            width: 100%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid rgba(56,189,248,0.35);
+            background: rgba(56,189,248,0.08);
+            color: var(--primary);
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 22px;
         }
 
         .hero h1 {
-            font-size: 60px;
-            margin-bottom: 10px;
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: 1.05;
+            margin-bottom: 18px;
         }
 
         .hero h1 span {
-            color: #38bdf8;
+            background: linear-gradient(90deg, #38bdf8, #8b5cf6);
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
         .hero h2 {
-            font-size: 28px;
-            color: #cbd5e1;
-            margin-bottom: 20px;
+            font-size: 26px;
+            color: #dbeafe;
+            margin-bottom: 18px;
         }
 
         .hero p {
-            max-width: 650px;
-            margin: auto;
-            color: #94a3b8;
+            max-width: 680px;
+            color: var(--muted);
             font-size: 18px;
         }
 
         .buttons {
             margin-top: 30px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 25px;
-            margin: 5px;
-            border-radius: 8px;
+            padding: 13px 23px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
-            background: #38bdf8;
-            color: #0f172a;
+            color: #03111c;
+            background: linear-gradient(90deg, #38bdf8, #60a5fa);
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(56,189,248,0.15);
         }
 
         .btn:hover {
-            background: #7dd3fc;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(56,189,248,0.3);
         }
 
         .btn-outline {
             background: transparent;
-            border: 1px solid #38bdf8;
-            color: #38bdf8;
+            color: var(--text);
+            border: 1px solid var(--border);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* HERO CARD */
+
+        .profile-card {
+            padding: 35px;
+            border-radius: 25px;
+            background: linear-gradient(
+                145deg,
+                rgba(56,189,248,0.12),
+                rgba(139,92,246,0.12)
+            );
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+            text-align: center;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .profile-circle {
+            width: 150px;
+            height: 150px;
+            margin: auto auto 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+            font-size: 55px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 0 50px rgba(56,189,248,0.25);
+        }
+
+        .profile-card h3 {
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+
+        .profile-card p {
+            color: var(--muted);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* GENERAL */
+
+        section {
+            padding: 110px 8%;
+        }
+
+        .section-container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .section-label {
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 36px;
+            font-size: 42px;
             margin-bottom: 45px;
         }
 
         .section-title span {
-            color: #38bdf8;
+            color: var(--primary);
         }
 
-        .about {
-            max-width: 850px;
-            margin: auto;
-            text-align: center;
-            color: #cbd5e1;
+        /* ABOUT */
+
+        .about-box {
+            padding: 35px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            color: var(--muted);
             font-size: 18px;
         }
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+        .about-box strong {
+            color: white;
         }
 
-        .card {
-            background: #1e293b;
+        /* STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .stat {
             padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #334155;
+            text-align: center;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .stat h3 {
+            font-size: 30px;
+            color: var(--primary);
+        }
+
+        .stat p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* SKILLS */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .skill {
+            padding: 23px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 17px;
             transition: 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-7px);
-            border-color: #38bdf8;
+        .skill:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            background: rgba(56,189,248,0.08);
         }
 
-        .card h3 {
-            color: #38bdf8;
-            margin-bottom: 10px;
+        .skill-icon {
+            font-size: 27px;
+            margin-bottom: 12px;
         }
 
-        .card p {
-            color: #cbd5e1;
+        .skill h3 {
+            margin-bottom: 7px;
         }
 
-        .timeline {
-            max-width: 800px;
-            margin: auto;
+        .skill p {
+            color: var(--muted);
+            font-size: 14px;
         }
 
-        .timeline-item {
-            background: #1e293b;
-            padding: 25px;
+        /* EXPERIENCE */
+
+        .experience-card {
+            padding: 35px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(#38bdf8, #8b5cf6);
+        }
+
+        .experience-card h3 {
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .date {
+            color: #94a3b8;
+            font-size: 14px;
+            margin: 7px 0 20px;
+        }
+
+        .experience-card p {
+            color: var(--muted);
+        }
+
+        .experience-list {
+            margin-top: 20px;
+            padding-left: 20px;
+            color: var(--muted);
+        }
+
+        .experience-list li {
+            margin: 8px 0;
+        }
+
+        /* EDUCATION */
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .education-card {
+            padding: 28px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .education-card h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .education-card p {
+            color: var(--muted);
+        }
+
+        /* LEARNING */
+
+        .learning {
+            padding: 35px;
+            border-radius: 22px;
+            background: linear-gradient(
+                135deg,
+                rgba(56,189,248,0.1),
+                rgba(139,92,246,0.12)
+            );
+            border: 1px solid var(--border);
+        }
+
+        .learning p {
+            color: var(--muted);
+            font-size: 17px;
             margin-bottom: 20px;
-            border-left: 4px solid #38bdf8;
-            border-radius: 8px;
         }
 
-        .timeline-item h3 {
-            color: #38bdf8;
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .timeline-item p {
-            color: #cbd5e1;
+        .tag {
+            padding: 9px 14px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid var(--border);
+            color: #dbeafe;
+            font-size: 13px;
         }
 
-        .contact {
+        /* CONTACT */
+
+        .contact-box {
             text-align: center;
+            padding: 55px 25px;
+            border-radius: 25px;
+            background: linear-gradient(
+                135deg,
+                rgba(56,189,248,0.1),
+                rgba(139,92,246,0.1)
+            );
+            border: 1px solid var(--border);
         }
 
-        .contact p {
-            margin: 12px;
-            color: #cbd5e1;
+        .contact-box h2 {
+            font-size: 40px;
+            margin-bottom: 12px;
         }
 
-        .contact a {
-            color: #38bdf8;
+        .contact-box p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .contact-details a {
+            color: var(--primary);
             text-decoration: none;
         }
 
+        /* FOOTER */
+
         footer {
             text-align: center;
-            padding: 25px;
-            background: #020617;
-            color: #94a3b8;
+            padding: 30px;
+            border-top: 1px solid var(--border);
+            color: #64748b;
+            font-size: 14px;
         }
 
-        @media (max-width: 700px) {
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
             header {
-                flex-direction: column;
+                padding: 15px 5%;
+            }
+
+            nav {
                 gap: 10px;
             }
 
             nav a {
-                margin: 0 7px;
-                font-size: 13px;
+                font-size: 12px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero p {
+                margin: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .profile-card {
+                max-width: 400px;
+                margin: auto;
+            }
+
+            .skills-grid,
+            .education-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                position: absolute;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding-top: 160px;
+            }
+
+            section {
+                padding: 80px 6%;
+            }
+
+            .section-title {
+                font-size: 34px;
+            }
+
+            .stats,
+            .skills-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
             }
 
             .hero h1 {
-                font-size: 42px;
+                font-size: 48px;
             }
 
             .hero h2 {
                 font-size: 22px;
-            }
-
-            section {
-                padding: 90px 6%;
             }
         }
     </style>
@@ -226,8 +571,13 @@
 
 <body>
 
+<!-- NAVIGATION -->
+
 <header>
-    <div class="logo">Prem Kumar</div>
+
+    <div class="logo">
+        Prem<span>.</span>
+    </div>
 
     <nav>
         <a href="#home">Home</a>
@@ -237,146 +587,437 @@
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
     </nav>
+
 </header>
 
+
+<!-- HERO -->
+
 <section class="hero" id="home">
-    <div>
-        <h1>Hi, I'm <span>Prem Kumar</span></h1>
 
-        <h2>Quality Analyst</h2>
+    <div class="hero-container">
 
-        <p>
-            A motivated professional with almost 2 years of experience,
-            currently pursuing a BBA and always looking for opportunities
-            to learn new skills and improve.
-        </p>
+        <div>
 
-        <div class="buttons">
-            <a href="#contact" class="btn">Contact Me</a>
-            <a href="#about" class="btn btn-outline">Explore My Portfolio</a>
+            <div class="badge">
+                ● Open to Learning & Growth
+            </div>
+
+            <h1>
+                Hi, I'm <span>Prem Kumar</span>
+            </h1>
+
+            <h2>
+                Quality Analyst
+            </h2>
+
+            <p>
+                A dedicated professional with almost 2 years of experience
+                in quality analysis. I enjoy learning new things, solving
+                problems, adapting to new environments and continuously
+                improving my professional skills.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#contact" class="btn">
+                    Let's Connect
+                </a>
+
+                <a href="#experience" class="btn btn-outline">
+                    View Experience
+                </a>
+
+            </div>
+
         </div>
+
+
+        <div class="profile-card">
+
+            <div class="profile-circle">
+                PK
+            </div>
+
+            <h3>Prem Kumar</h3>
+
+            <p>Quality Analyst</p>
+
+            <p>
+                I Planet BPO Pvt. Ltd.
+            </p>
+
+        </div>
+
     </div>
+
 </section>
+
+
+<!-- ABOUT -->
 
 <section id="about">
-    <h2 class="section-title">About <span>Me</span></h2>
 
-    <div class="about">
-        <p>
-            I am Prem Kumar, a Quality Analyst with almost 2 years of
-            professional experience. I am currently pursuing my BBA
-            while developing my professional and technical skills.
-            I enjoy learning new things, solving problems and improving
-            the quality of work through attention to detail and
-            continuous improvement.
-        </p>
+    <div class="section-container">
+
+        <div class="section-label">
+            About Me
+        </div>
+
+        <h2 class="section-title">
+            A little <span>about me</span>
+        </h2>
+
+        <div class="about-box">
+
+            <p>
+                I am <strong>Prem Kumar</strong>, a Quality Analyst with
+                almost two years of professional experience. I am currently
+                working at <strong>I Planet BPO Pvt. Ltd.</strong> and
+                pursuing my <strong>Bachelor of Business Administration
+                (BBA)</strong>.
+            </p>
+
+            <br>
+
+            <p>
+                I am someone who believes in continuous learning.
+                I enjoy developing new skills, adapting to new situations,
+                working with people and finding ways to improve the quality
+                of my work.
+            </p>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat">
+                <h3>2+</h3>
+                <p>Years of Professional Experience</p>
+            </div>
+
+            <div class="stat">
+                <h3>BBA</h3>
+                <p>Currently Pursuing</p>
+            </div>
+
+            <div class="stat">
+                <h3>100%</h3>
+                <p>Commitment to Learning</p>
+            </div>
+
+        </div>
+
     </div>
+
 </section>
+
+
+<!-- SKILLS -->
 
 <section id="skills">
-    <h2 class="section-title">My <span>Skills</span></h2>
 
-    <div class="cards">
+    <div class="section-container">
 
-        <div class="card">
-            <h3>Quality Analysis</h3>
-            <p>Monitoring quality, identifying gaps and maintaining work standards.</p>
+        <div class="section-label">
+            What I Bring
         </div>
 
-        <div class="card">
-            <h3>Attention to Detail</h3>
-            <p>Carefully reviewing work and identifying errors or areas for improvement.</p>
-        </div>
+        <h2 class="section-title">
+            My <span>Skills</span>
+        </h2>
 
-        <div class="card">
-            <h3>Communication</h3>
-            <p>Clear and professional communication with customers and team members.</p>
-        </div>
+        <div class="skills-grid">
 
-        <div class="card">
-            <h3>Problem Solving</h3>
-            <p>Finding practical solutions and handling challenges effectively.</p>
-        </div>
+            <div class="skill">
+                <div class="skill-icon">🎯</div>
+                <h3>Quality Analysis</h3>
+                <p>
+                    Monitoring quality and identifying opportunities
+                    for improvement.
+                </p>
+            </div>
 
-        <div class="card">
-            <h3>Teamwork</h3>
-            <p>Working effectively with team members to achieve common goals.</p>
-        </div>
+            <div class="skill">
+                <div class="skill-icon">🔍</div>
+                <h3>Attention to Detail</h3>
+                <p>
+                    Carefully reviewing work and identifying errors
+                    and gaps.
+                </p>
+            </div>
 
-        <div class="card">
-            <h3>Microsoft Office</h3>
-            <p>Basic working knowledge of common Microsoft Office tools.</p>
+            <div class="skill">
+                <div class="skill-icon">🧩</div>
+                <h3>Problem Solving</h3>
+                <p>
+                    Approaching challenges logically and finding
+                    practical solutions.
+                </p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">💬</div>
+                <h3>Communication</h3>
+                <p>
+                    Clear and professional communication with
+                    customers and colleagues.
+                </p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">🤝</div>
+                <h3>Teamwork</h3>
+                <p>
+                    Collaborating effectively with team members
+                    to achieve common goals.
+                </p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">🔄</div>
+                <h3>Adaptability</h3>
+                <p>
+                    Comfortable adjusting to new situations,
+                    processes and working environments.
+                </p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">⏱️</div>
+                <h3>Time Management</h3>
+                <p>
+                    Prioritizing tasks and managing responsibilities
+                    efficiently.
+                </p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">📈</div>
+                <h3>Continuous Improvement</h3>
+                <p>
+                    Always looking for better ways to improve
+                    performance and quality.
+                </p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">💻</div>
+                <h3>Microsoft Office</h3>
+                <p>
+                    Working knowledge of commonly used Microsoft
+                    Office tools.
+                </p>
+            </div>
+
         </div>
 
     </div>
+
 </section>
+
+
+<!-- EXPERIENCE -->
 
 <section id="experience">
-    <h2 class="section-title">Work <span>Experience</span></h2>
 
-    <div class="timeline">
+    <div class="section-container">
 
-        <div class="timeline-item">
+        <div class="section-label">
+            Career
+        </div>
+
+        <h2 class="section-title">
+            Work <span>Experience</span>
+        </h2>
+
+        <div class="experience-card">
+
             <h3>Quality Analyst</h3>
-            <p><strong>Experience:</strong> Almost 2 Years</p>
+
+            <div class="company">
+                I Planet BPO Pvt. Ltd.
+            </div>
+
+            <div class="date">
+                August 2024 — Present
+            </div>
+
             <p>
-                Responsible for monitoring quality, identifying areas
-                for improvement and supporting consistent work standards.
-                Developed strong attention to detail, communication and
-                problem-solving skills.
+                Working as a Quality Analyst with responsibility for
+                maintaining quality standards and supporting continuous
+                improvement.
             </p>
+
+            <ul class="experience-list">
+                <li>Monitoring and evaluating quality standards.</li>
+                <li>Identifying gaps and areas for improvement.</li>
+                <li>Providing constructive feedback when required.</li>
+                <li>Maintaining attention to detail while reviewing work.</li>
+                <li>Supporting consistent quality and performance.</li>
+                <li>Adapting to process changes and new requirements.</li>
+            </ul>
+
         </div>
 
     </div>
+
 </section>
+
+
+<!-- EDUCATION -->
 
 <section id="education">
-    <h2 class="section-title">My <span>Education</span></h2>
 
-    <div class="cards">
+    <div class="section-container">
 
-        <div class="card">
-            <h3>Currently Pursuing BBA</h3>
-            <p>Bachelor of Business Administration</p>
+        <div class="section-label">
+            Academic Journey
         </div>
 
-        <div class="card">
-            <h3>HSC</h3>
-            <p>Higher Secondary Certificate</p>
-        </div>
+        <h2 class="section-title">
+            My <span>Education</span>
+        </h2>
 
-        <div class="card">
-            <h3>SSC</h3>
-            <p>Secondary School Certificate</p>
+        <div class="education-grid">
+
+            <div class="education-card">
+                <h3>🎓 BBA</h3>
+                <p>
+                    Bachelor of Business Administration
+                    <br>
+                    Currently Pursuing
+                </p>
+            </div>
+
+            <div class="education-card">
+                <h3>📚 HSC</h3>
+                <p>
+                    Higher Secondary Certificate
+                    <br>
+                    Completed
+                </p>
+            </div>
+
+            <div class="education-card">
+                <h3>📖 SSC</h3>
+                <p>
+                    Secondary School Certificate
+                    <br>
+                    Completed
+                </p>
+            </div>
+
         </div>
 
     </div>
+
 </section>
+
+
+<!-- CURRENTLY LEARNING -->
+
+<section>
+
+    <div class="section-container">
+
+        <div class="section-label">
+            Growth
+        </div>
+
+        <h2 class="section-title">
+            Currently <span>Learning</span>
+        </h2>
+
+        <div class="learning">
+
+            <p>
+                I believe that learning should never stop. I am currently
+                focusing on improving my business knowledge, professional
+                skills and understanding of modern technology.
+            </p>
+
+            <div class="tags">
+
+                <div class="tag">BBA & Business Management</div>
+                <div class="tag">Communication</div>
+                <div class="tag">Leadership</div>
+                <div class="tag">Technology</div>
+                <div class="tag">Digital Skills</div>
+                <div class="tag">Professional Development</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
 
 <section id="contact">
-    <h2 class="section-title">Contact <span>Me</span></h2>
 
-    <div class="contact">
+    <div class="section-container">
 
-        <p>
-            📧 Email:
-            <a href="mailto:prem012006k@gmail.com">
-                prem012006k@gmail.com
+        <div class="contact-box">
+
+            <div class="section-label">
+                Contact
+            </div>
+
+            <h2>
+                Let's <span>Connect</span>
+            </h2>
+
+            <p>
+                Interested in connecting with me?
+                Feel free to reach out.
+            </p>
+
+            <div class="contact-details">
+
+                <div>
+                    📧
+                    <a href="mailto:prem012006k@gmail.com">
+                        prem012006k@gmail.com
+                    </a>
+                </div>
+
+                <div>
+                    📱
+                    <a href="tel:8928996632">
+                        8928996632
+                    </a>
+                </div>
+
+            </div>
+
+            <a href="mailto:prem012006k@gmail.com" class="btn">
+                Send Me an Email
             </a>
-        </p>
 
-        <p>
-            📱 Phone:
-            <a href="tel:8928996632">
-                8928996632
-            </a>
-        </p>
+        </div>
 
     </div>
+
 </section>
 
+
+<!-- FOOTER -->
+
 <footer>
-    <p>© 2026 Prem Kumar. All Rights Reserved.</p>
+
+    <p>
+        © 2026 Prem Kumar • Quality Analyst
+    </p>
+
+    <p>
+        Built with passion, curiosity & continuous learning.
+    </p>
+
 </footer>
 
 </body>
