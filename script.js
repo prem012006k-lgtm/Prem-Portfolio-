@@ -7,15 +7,6 @@
 /* DOMAIN INTRO */
 /* ================================= */
 
-const intro = document.getElementById("domainIntro");
-const enterButton = document.getElementById("enterVoid");
-
-enterButton.addEventListener("click", () => {
-
-    intro.classList.add("hidden");
-
-});
-
 
 /* ================================= */
 /* INFINITY PARTICLE CANVAS */
