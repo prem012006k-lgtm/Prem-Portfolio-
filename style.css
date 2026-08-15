@@ -1934,3 +1934,39 @@ footer p {
         font-size: 22px;
     }
 }
+/* =====================================================
+   FIX TYPEWRITER MOVEMENT
+   Keeps the hero tagline completely stable
+   ===================================================== */
+
+#typingText {
+    display: inline-block;
+    width: 330px;
+    min-width: 330px;
+    height: 1.25em;
+    white-space: nowrap;
+    vertical-align: baseline;
+    overflow: hidden;
+}
+
+/* Prevent the entire tagline from changing position */
+.hero-subtitle,
+.hero-tagline,
+.tagline {
+    position: relative;
+    min-height: 1.5em;
+}
+
+/* Keep the typing cursor stable */
+#typingText::after {
+    content: "";
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    #typingText {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+}
