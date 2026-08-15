@@ -2452,29 +2452,34 @@ body:not(.page-loaded) .hero-visual {
 
 }
 
+/* PREMIUM VIDEO BACKGROUND */
 .hero-video {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    z-index: -5;
-    opacity: 0.35;
-    filter: brightness(0.65) saturate(1.1);
+    z-index: 0;
+    opacity: 0.28;
+    filter: brightness(0.55) saturate(1.15);
     pointer-events: none;
 }
 
-body {
-    position: relative;
-    background: #050713;
-}
-
-body::before {
+/* Dark premium overlay */
+body::after {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(5, 7, 19, 0.55);
-    z-index: -4;
+    background: rgba(5, 7, 19, 0.62);
+    z-index: 1;
     pointer-events: none;
+}
+
+/* Keep the actual website above the video */
+.nav,
+main,
+footer {
+    position: relative;
+    z-index: 2;
 }
