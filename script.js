@@ -1,19 +1,20 @@
 /* =====================================================
-   PREM KUMAR PORTFOLIO
-   INTERACTIONS & ANIMATIONS
+   PREM KUMAR — PORTFOLIO INTERACTIONS
 ===================================================== */
 
 
-/* ================= TYPING EFFECT ================= */
+/* =====================================================
+   1. TYPING ANIMATION
+===================================================== */
 
-const typingElement =
-    document.getElementById("typing");
+const typingElement = document.getElementById("typing");
 
 const words = [
-    "continuous learning.",
-    "better processes.",
+    "quality.",
+    "continuous improvement.",
     "problem solving.",
-    "professional growth."
+    "professional growth.",
+    "new possibilities."
 ];
 
 let wordIndex = 0;
@@ -23,8 +24,10 @@ let deleting = false;
 
 function typeEffect() {
 
-    const currentWord =
-        words[wordIndex];
+    if (!typingElement) return;
+
+    const currentWord = words[wordIndex];
+
 
     if (!deleting) {
 
@@ -36,6 +39,7 @@ function typeEffect() {
 
         characterIndex++;
 
+
         if (
             characterIndex ===
             currentWord.length
@@ -45,11 +49,10 @@ function typeEffect() {
 
             setTimeout(
                 typeEffect,
-                1600
+                1700
             );
 
             return;
-
         }
 
     } else {
@@ -62,24 +65,27 @@ function typeEffect() {
 
         characterIndex--;
 
+
         if (characterIndex === 0) {
 
             deleting = false;
 
             wordIndex =
-                (wordIndex + 1)
-                % words.length;
+                (wordIndex + 1) %
+                words.length;
 
         }
 
     }
 
 
+    const speed =
+        deleting ? 45 : 85;
+
     setTimeout(
         typeEffect,
-        deleting ? 45 : 80
+        speed
     );
-
 }
 
 
@@ -87,7 +93,59 @@ typeEffect();
 
 
 
-/* ================= SCROLL REVEAL ================= */
+/* =====================================================
+   2. MOBILE NAVIGATION
+===================================================== */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const navigation =
+    document.getElementById("navigation");
+
+
+if (menuButton && navigation) {
+
+    menuButton.addEventListener(
+        "click",
+        () => {
+
+            navigation.classList.toggle(
+                "mobile-open"
+            );
+
+        }
+    );
+
+
+    const navigationLinks =
+        navigation.querySelectorAll("a");
+
+
+    navigationLinks.forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    navigation.classList.remove(
+                        "mobile-open"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   3. SCROLL REVEAL
+===================================================== */
 
 const revealElements =
     document.querySelectorAll(".reveal");
@@ -95,213 +153,60 @@ const revealElements =
 
 const revealObserver =
     new IntersectionObserver(
-
         entries => {
 
-            entries.forEach(entry => {
+            entries.forEach(
+                entry => {
 
-                if (entry.isIntersecting) {
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+                        entry.target.classList.add(
+                            "visible"
+                        );
 
-                    revealObserver.unobserve(
-                        entry.target
-                    );
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
 
                 }
-
-            });
+            );
 
         },
-
         {
             threshold: 0.12
         }
-
     );
 
 
-revealElements.forEach(element => {
+revealElements.forEach(
+    element => {
 
-    revealObserver.observe(element);
-
-});
-
-
-
-/* ================= MOBILE MENU ================= */
-
-const menuButton =
-    document.getElementById(
-        "menuButton"
-    );
-
-const navigation =
-    document.querySelector("nav");
-
-
-menuButton.addEventListener(
-    "click",
-    () => {
-
-        navigation.classList.toggle(
-            "mobile-open"
+        revealObserver.observe(
+            element
         );
 
     }
 );
 
 
-navigation
-    .querySelectorAll("a")
-    .forEach(link => {
 
-        link.addEventListener(
-            "click",
-            () => {
+/* =====================================================
+   4. ACTIVE NAVIGATION
+===================================================== */
 
-                navigation.classList.remove(
-                    "mobile-open"
-                );
-
-            }
-        );
-
-    });
-
-
-
-/* ================= MOUSE GLOW ================= */
-
-const glow =
-    document.createElement("div");
-
-glow.classList.add(
-    "mouse-glow"
-);
-
-document.body.appendChild(glow);
-
-
-const glowStyle =
-    document.createElement("style");
-
-glowStyle.textContent = `
-
-    .mouse-glow {
-
-        position: fixed;
-
-        width: 280px;
-
-        height: 280px;
-
-        border-radius: 50%;
-
-        pointer-events: none;
-
-        z-index: -1;
-
-        background:
-            radial-gradient(
-                circle,
-                rgba(93,120,255,0.09),
-                transparent 65%
-            );
-
-        transform:
-            translate(-50%,-50%);
-
-        transition:
-            left .12s ease,
-            top .12s ease;
-
-    }
-
-`;
-
-document.head.appendChild(
-    glowStyle
-);
-
-
-document.addEventListener(
-    "mousemove",
-    event => {
-
-        glow.style.left =
-            event.clientX + "px";
-
-        glow.style.top =
-            event.clientY + "px";
-
-    }
-);
-
-
-
-/* ================= CARD TILT ================= */
-
-const cards =
+const sections =
     document.querySelectorAll(
-        ".skill-card"
+        "section[id]"
     );
 
 
-cards.forEach(card => {
-
-    card.addEventListener(
-        "mousemove",
-        event => {
-
-            const rect =
-                card.getBoundingClientRect();
-
-            const x =
-                event.clientX - rect.left;
-
-            const y =
-                event.clientY - rect.top;
-
-            const rotateX =
-                ((y - rect.height / 2)
-                / rect.height) * -5;
-
-            const rotateY =
-                ((x - rect.width / 2)
-                / rect.width) * 5;
-
-            card.style.transform =
-                `perspective(700px)
-                 rotateX(${rotateX}deg)
-                 rotateY(${rotateY}deg)
-                 translateY(-7px)`;
-
-        }
-    );
-
-
-    card.addEventListener(
-        "mouseleave",
-        () => {
-
-            card.style.transform =
-                "";
-
-        }
-    );
-
-});
-
-
-
-/* ================= NAVBAR SCROLL ================= */
-
-const navbar =
-    document.querySelector(
-        ".navbar"
+const navLinks =
+    document.querySelectorAll(
+        "nav a"
     );
 
 
@@ -309,17 +214,498 @@ window.addEventListener(
     "scroll",
     () => {
 
-        if (window.scrollY > 50) {
+        let currentSection = "";
 
-            navbar.style.background =
-                "rgba(3,5,12,0.82)";
 
-        } else {
+        sections.forEach(
+            section => {
 
-            navbar.style.background =
-                "rgba(3,5,12,0.55)";
+                const sectionTop =
+                    section.offsetTop - 180;
+
+
+                if (
+                    window.scrollY >=
+                    sectionTop
+                ) {
+
+                    currentSection =
+                        section.getAttribute(
+                            "id"
+                        );
+
+                }
+
+            }
+        );
+
+
+        navLinks.forEach(
+            link => {
+
+                link.style.color =
+                    "#929ab2";
+
+
+                if (
+                    link.getAttribute("href") ===
+                    `#${currentSection}`
+                ) {
+
+                    link.style.color =
+                        "#ffffff";
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   5. MOUSE LIGHT EFFECT
+===================================================== */
+
+const background =
+    document.querySelector(
+        ".background"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+    event => {
+
+        const x =
+            event.clientX /
+            window.innerWidth *
+            100;
+
+
+        const y =
+            event.clientY /
+            window.innerHeight *
+            100;
+
+
+        if (background) {
+
+            background.style.background = `
+                radial-gradient(
+                    circle at ${x}% ${y}%,
+                    rgba(70, 94, 190, 0.16),
+                    transparent 34%
+                ),
+                #02040b
+            `;
 
         }
+
+    }
+);
+
+
+
+/* =====================================================
+   6. PREMIUM CARD TILT
+===================================================== */
+
+const tiltCards =
+    document.querySelectorAll(
+        ".skill-card, .identity-card"
+    );
+
+
+tiltCards.forEach(
+    card => {
+
+        card.addEventListener(
+            "mousemove",
+            event => {
+
+                if (
+                    window.innerWidth < 700
+                ) return;
+
+
+                const rect =
+                    card.getBoundingClientRect();
+
+
+                const x =
+                    event.clientX -
+                    rect.left;
+
+
+                const y =
+                    event.clientY -
+                    rect.top;
+
+
+                const centerX =
+                    rect.width / 2;
+
+
+                const centerY =
+                    rect.height / 2;
+
+
+                const rotateX =
+                    ((y - centerY) /
+                    centerY) *
+                    -4;
+
+
+                const rotateY =
+                    ((x - centerX) /
+                    centerX) *
+                    4;
+
+
+                card.style.transform = `
+                    perspective(800px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    translateY(-5px)
+                `;
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            () => {
+
+                card.style.transform = "";
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   7. SMOOTH BUTTON FEEDBACK
+===================================================== */
+
+const buttons =
+    document.querySelectorAll(
+        ".button"
+    );
+
+
+buttons.forEach(
+    button => {
+
+        button.addEventListener(
+            "mouseenter",
+            () => {
+
+                button.style.transition =
+                    "all 0.3s ease";
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   8. CURSOR GLOW
+===================================================== */
+
+const cursorGlow =
+    document.createElement(
+        "div"
+    );
+
+
+cursorGlow.style.position =
+    "fixed";
+
+cursorGlow.style.width =
+    "180px";
+
+cursorGlow.style.height =
+    "180px";
+
+cursorGlow.style.borderRadius =
+    "50%";
+
+cursorGlow.style.pointerEvents =
+    "none";
+
+cursorGlow.style.zIndex =
+    "-1";
+
+cursorGlow.style.background =
+    "radial-gradient(circle, rgba(91,118,255,0.08), transparent 70%)";
+
+cursorGlow.style.transform =
+    "translate(-50%, -50%)";
+
+cursorGlow.style.transition =
+    "left 0.12s ease, top 0.12s ease";
+
+
+document.body.appendChild(
+    cursorGlow
+);
+
+
+document.addEventListener(
+    "mousemove",
+    event => {
+
+        cursorGlow.style.left =
+            `${event.clientX}px`;
+
+        cursorGlow.style.top =
+            `${event.clientY}px`;
+
+    }
+);
+
+
+
+/* =====================================================
+   9. PARALLAX VOID EFFECT
+===================================================== */
+
+const voidCircles =
+    document.querySelectorAll(
+        ".void-circle"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const scroll =
+            window.scrollY;
+
+
+        voidCircles.forEach(
+            (circle, index) => {
+
+                const movement =
+                    scroll *
+                    (0.02 + index * 0.01);
+
+
+                circle.style.marginTop =
+                    `${movement}px`;
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   10. DYNAMIC PARTICLES
+===================================================== */
+
+const particleContainer =
+    document.querySelector(
+        ".particles"
+    );
+
+
+function createParticle() {
+
+    if (!particleContainer) return;
+
+
+    const particle =
+        document.createElement(
+            "span"
+        );
+
+
+    particle.style.position =
+        "absolute";
+
+
+    particle.style.width =
+        `${Math.random() * 2 + 1}px`;
+
+
+    particle.style.height =
+        particle.style.width;
+
+
+    particle.style.borderRadius =
+        "50%";
+
+
+    particle.style.background =
+        "rgba(140,160,255,0.55)";
+
+
+    particle.style.left =
+        `${Math.random() * 100}%`;
+
+
+    particle.style.top =
+        `${Math.random() * 100}%`;
+
+
+    particle.style.boxShadow =
+        "0 0 8px rgba(120,150,255,0.6)";
+
+
+    particle.style.opacity =
+        `${Math.random() * 0.5 + 0.2}`;
+
+
+    const duration =
+        Math.random() * 8 + 8;
+
+
+    particle.style.animation =
+        `particleFloat ${duration}s linear infinite`;
+
+
+    particleContainer.appendChild(
+        particle
+    );
+
+
+    setTimeout(
+        () => {
+
+            particle.remove();
+
+        },
+        duration * 1000
+    );
+
+}
+
+
+for (
+    let i = 0;
+    i < 35;
+    i++
+) {
+
+    createParticle();
+
+}
+
+
+
+/* =====================================================
+   11. PARTICLE ANIMATION
+===================================================== */
+
+const particleStyle =
+    document.createElement(
+        "style"
+    );
+
+
+particleStyle.textContent = `
+
+    @keyframes particleFloat {
+
+        0% {
+
+            transform:
+                translateY(0)
+                translateX(0);
+
+            opacity: 0;
+
+        }
+
+        15% {
+
+            opacity: 0.6;
+
+        }
+
+        50% {
+
+            transform:
+                translateY(-80px)
+                translateX(25px);
+
+        }
+
+        85% {
+
+            opacity: 0.25;
+
+        }
+
+        100% {
+
+            transform:
+                translateY(-160px)
+                translateX(-20px);
+
+            opacity: 0;
+
+        }
+
+    }
+
+`;
+
+
+document.head.appendChild(
+    particleStyle
+);
+
+
+
+/* =====================================================
+   12. YEAR AUTO UPDATE
+===================================================== */
+
+const footer =
+    document.querySelector(
+        "footer > p"
+    );
+
+
+if (footer) {
+
+    const year =
+        new Date().getFullYear();
+
+
+    footer.innerHTML =
+        `© ${year} Prem Kumar • Built with curiosity & purpose.`;
+
+}
+
+
+
+/* =====================================================
+   13. PAGE READY
+===================================================== */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        document.body.classList.add(
+            "page-loaded"
+        );
 
     }
 );
