@@ -1,388 +1,278 @@
-/* =========================================================
-   PREM KUMAR — PORTFOLIO JAVASCRIPT
-   ========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
+/* =====================================================
+   PREM KUMAR PORTFOLIO
+===================================================== */
 
 
-    /* =====================================================
-       PREMIUM TYPING EFFECT
-       ===================================================== */
+/* =====================================================
+   TYPEWRITER
+===================================================== */
 
-    const typingText =
-        document.getElementById("typing-text");
+const typingText = document.getElementById("typingText");
 
+const phrases = [
+    "continuous improvement.",
+    "professional growth.",
+    "better processes.",
+    "meaningful results."
+];
 
-    const phrases = [
-        "professional growth.",
-        "continuous improvement.",
-        "better results.",
-        "quality and consistency.",
-        "learning every day."
-    ];
+let phraseIndex = 0;
+let characterIndex = 0;
 
+let deleting = false;
 
-    let phraseIndex = 0;
-    let characterIndex = 0;
-    let deleting = false;
+function typeWriter() {
 
+    const currentPhrase = phrases[phraseIndex];
 
-    function typeEffect() {
+    if (!deleting) {
 
-        if (!typingText) return;
+        typingText.textContent =
+            currentPhrase.substring(0, characterIndex + 1);
 
+        characterIndex++;
 
-        const currentPhrase =
-            phrases[phraseIndex];
+        if (characterIndex === currentPhrase.length) {
 
+            deleting = true;
 
-        if (!deleting) {
+            setTimeout(typeWriter, 1800);
 
-            characterIndex++;
+            return;
+        }
 
-            typingText.textContent =
-                currentPhrase.substring(
-                    0,
-                    characterIndex
-                );
+    } else {
 
+        typingText.textContent =
+            currentPhrase.substring(0, characterIndex - 1);
 
-            if (
-                characterIndex >=
-                currentPhrase.length
-            ) {
+        characterIndex--;
 
-                deleting = true;
+        if (characterIndex === 0) {
 
-                setTimeout(
-                    typeEffect,
-                    1800
-                );
+            deleting = false;
 
-                return;
+            phraseIndex++;
+
+            if (phraseIndex >= phrases.length) {
+                phraseIndex = 0;
             }
 
+            setTimeout(typeWriter, 400);
 
-            setTimeout(
-                typeEffect,
-                70
-            );
-
-        } else {
-
-            characterIndex--;
-
-            typingText.textContent =
-                currentPhrase.substring(
-                    0,
-                    characterIndex
-                );
-
-
-            if (characterIndex <= 0) {
-
-                deleting = false;
-
-                phraseIndex++;
-
-                if (
-                    phraseIndex >=
-                    phrases.length
-                ) {
-                    phraseIndex = 0;
-                }
-
-
-                setTimeout(
-                    typeEffect,
-                    450
-                );
-
-                return;
-            }
-
-
-            setTimeout(
-                typeEffect,
-                40
-            );
+            return;
         }
     }
 
+    const speed = deleting ? 45 : 80;
 
-    typeEffect();
-
-
-    /* =====================================================
-       NAVIGATION ACTIVE SECTION
-       ===================================================== */
-
-    const sections =
-        document.querySelectorAll("section[id]");
-
-    const navLinks =
-        document.querySelectorAll("nav a");
+    setTimeout(typeWriter, speed);
+}
 
 
-    function updateActiveNavigation() {
+/* Start typing */
 
-        let currentSection = "home";
-
-
-        sections.forEach(section => {
-
-            const sectionTop =
-                section.offsetTop - 180;
-
-            if (
-                window.scrollY >=
-                sectionTop
-            ) {
-
-                currentSection =
-                    section.getAttribute("id");
-            }
-
-        });
+if (typingText) {
+    typeWriter();
+}
 
 
-        navLinks.forEach(link => {
+/* =====================================================
+   MOBILE MENU
+===================================================== */
 
-            link.classList.remove("active");
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
 
+if (menuBtn) {
 
-            const href =
-                link.getAttribute("href");
+    menuBtn.addEventListener("click", () => {
 
+        mobileMenu.classList.toggle("open");
 
-            if (
-                href ===
-                "#" + currentSection
-            ) {
+    });
 
-                link.classList.add("active");
-            }
-
-        });
-
-    }
+}
 
 
-    window.addEventListener(
-        "scroll",
-        updateActiveNavigation
+/* Close mobile menu after clicking */
+
+const mobileLinks =
+    document.querySelectorAll(".mobile-menu a");
+
+mobileLinks.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        mobileMenu.classList.remove("open");
+
+    });
+
+});
+
+
+/* =====================================================
+   ACTIVE NAVIGATION
+===================================================== */
+
+const sections =
+    document.querySelectorAll("section[id]");
+
+const navLinks =
+    document.querySelectorAll(".nav-links a");
+
+function updateActiveNav() {
+
+    let currentSection = "";
+
+    sections.forEach(section => {
+
+        const sectionTop =
+            section.offsetTop - 150;
+
+        const sectionHeight =
+            section.offsetHeight;
+
+        if (
+            window.scrollY >= sectionTop &&
+            window.scrollY < sectionTop + sectionHeight
+        ) {
+
+            currentSection =
+                section.getAttribute("id");
+
+        }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (
+            link.getAttribute("href") ===
+            "#" + currentSection
+        ) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+}
+
+window.addEventListener(
+    "scroll",
+    updateActiveNav
+);
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const revealElements =
+    document.querySelectorAll(
+        ".glass-card, .section-heading, .timeline-item"
+    );
+
+revealElements.forEach(element => {
+
+    element.classList.add("reveal");
+
+});
+
+
+const observer =
+    new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
     );
 
 
-    updateActiveNavigation();
+revealElements.forEach(element => {
+
+    observer.observe(element);
+
+});
 
 
-    /* =====================================================
-       REVEAL ANIMATION
-       ===================================================== */
+/* =====================================================
+   CURRENT YEAR
+===================================================== */
 
-    const revealElements =
-        document.querySelectorAll(
-            ".section-heading, .about-main, .about-highlight, .experience-card, .skill-card, .education-card, .contact-box"
-        );
+const yearElement =
+    document.getElementById("year");
 
+if (yearElement) {
 
-    revealElements.forEach(element => {
+    yearElement.textContent =
+        new Date().getFullYear();
 
-        element.style.opacity = "0";
-
-        element.style.transform =
-            "translateY(25px)";
-
-        element.style.transition =
-            "opacity 0.7s ease, transform 0.7s ease";
-
-    });
+}
 
 
-    const revealObserver =
-        new IntersectionObserver(
-            entries => {
+/* =====================================================
+   SMOOTH BUTTON CLICK
+===================================================== */
 
-                entries.forEach(entry => {
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
 
-                    if (entry.isIntersecting) {
+        link.addEventListener("click", function (event) {
 
-                        entry.target.style.opacity =
-                            "1";
+            const targetId =
+                this.getAttribute("href");
 
-                        entry.target.style.transform =
-                            "translateY(0)";
+            if (targetId === "#") {
+                return;
+            }
 
-                        revealObserver.unobserve(
-                            entry.target
-                        );
+            const target =
+                document.querySelector(targetId);
 
-                    }
+            if (target) {
 
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
                 });
 
-            },
-            {
-                threshold: 0.12
             }
-        );
-
-
-    revealElements.forEach(element => {
-
-        revealObserver.observe(element);
-
-    });
-
-
-    /* =====================================================
-       SMOOTH NAVIGATION
-       ===================================================== */
-
-    document
-        .querySelectorAll('a[href^="#"]')
-        .forEach(link => {
-
-            link.addEventListener(
-                "click",
-                event => {
-
-                    const targetId =
-                        link.getAttribute("href");
-
-
-                    if (
-                        targetId === "#"
-                    ) {
-                        return;
-                    }
-
-
-                    const target =
-                        document.querySelector(
-                            targetId
-                        );
-
-
-                    if (!target) return;
-
-
-                    event.preventDefault();
-
-
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-
-                }
-            );
 
         });
 
-
-    /* =====================================================
-       PROFILE CARD MOUSE EFFECT
-       ===================================================== */
-
-    const profileCard =
-        document.querySelector(
-            ".profile-card"
-        );
+    });
 
 
-    const profileArea =
-        document.querySelector(
-            ".profile-area"
-        );
+/* =====================================================
+   PREVENT HERO LAYOUT JUMP
+===================================================== */
 
+window.addEventListener("load", () => {
 
-    if (
-        profileCard &&
-        profileArea &&
-        window.innerWidth > 900
-    ) {
-
-        profileArea.addEventListener(
-            "mousemove",
-            event => {
-
-                const rect =
-                    profileArea.getBoundingClientRect();
-
-
-                const x =
-                    event.clientX -
-                    rect.left;
-
-
-                const y =
-                    event.clientY -
-                    rect.top;
-
-
-                const centerX =
-                    rect.width / 2;
-
-
-                const centerY =
-                    rect.height / 2;
-
-
-                const rotateX =
-                    (y - centerY) /
-                    35;
-
-
-                const rotateY =
-                    (centerX - x) /
-                    35;
-
-
-                profileCard.style.transform =
-                    `perspective(1000px)
-                     rotateX(${rotateX}deg)
-                     rotateY(${rotateY}deg)
-                     translateY(-4px)`;
-
-            }
-        );
-
-
-        profileArea.addEventListener(
-            "mouseleave",
-            () => {
-
-                profileCard.style.transform =
-                    "";
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       CURRENT YEAR
-       ===================================================== */
-
-    const year =
-        new Date().getFullYear();
-
-
-    const footer =
-        document.querySelector("footer");
-
-
-    if (footer) {
-
-        footer.innerHTML =
-            footer.innerHTML.replace(
-                "2026",
-                year
-            );
-
-    }
+    document.body.classList.add("loaded");
 
 });
