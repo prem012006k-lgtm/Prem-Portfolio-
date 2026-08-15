@@ -2053,22 +2053,24 @@ footer > p {
    SCROLL REVEAL
 ========================================================= */
 
+.scroll-hidden {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-hidden.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .reveal {
-    opacity: 0;
-
-    transform:
-        translateY(35px);
-
-    transition:
-        opacity 0.9s var(--ease),
-        transform 0.9s var(--ease);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .reveal.visible {
     opacity: 1;
-
-    transform:
-        translateY(0);
+    transform: translateY(0);
 }
 
 
