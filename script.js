@@ -1,75 +1,58 @@
 /* =========================================================
-   PREM KUMAR — PREMIUM PORTFOLIO JAVASCRIPT
+   PREM KUMAR PORTFOLIO
    ========================================================= */
 
 
 /* =========================================================
-   PAGE LOADER
-   ========================================================= */
-
-window.addEventListener("load", () => {
-
-    const loader =
-        document.getElementById("pageLoader");
-
-    document.body.classList.add("loaded");
-
-    setTimeout(() => {
-
-        if (loader) {
-            loader.classList.add("hidden");
-        }
-
-    }, 700);
-
-});
-
-
-
-/* =========================================================
-   PREMIUM TYPEWRITER
+   TYPEWRITER
    ========================================================= */
 
 /*
-    IMPORTANT:
+   IMPORTANT:
 
-    The changing phrase is inside a dedicated line
-    with reserved height.
+   The typewriter only changes the words inside #typingText.
+   The surrounding hero layout never changes size.
 
-    This means the hero DOES NOT move when the
-    phrase changes.
+   "meaningful results" has been removed.
 */
 
 const typingText =
     document.getElementById("typingText");
 
-
 const phrases = [
-
     "continuous improvement.",
-
     "professional growth.",
-
     "better processes."
-
 ];
 
-
 let phraseIndex = 0;
-
 let characterIndex = 0;
 
 let deleting = false;
 
 
+/*
+   Speed settings
+*/
+
+const typingSpeed = 75;
+const deletingSpeed = 45;
+const pauseAfterTyping = 1700;
+const pauseAfterDeleting = 350;
+
+
 function typeWriter() {
 
-    if (!typingText) return;
+    if (!typingText) {
+        return;
+    }
 
 
     const currentPhrase =
         phrases[phraseIndex];
 
+
+    /* TYPING */
 
     if (!deleting) {
 
@@ -82,6 +65,10 @@ function typeWriter() {
         characterIndex++;
 
 
+        /*
+           Finished typing
+        */
+
         if (
             characterIndex >=
             currentPhrase.length
@@ -91,7 +78,7 @@ function typeWriter() {
 
             setTimeout(
                 typeWriter,
-                1800
+                pauseAfterTyping
             );
 
             return;
@@ -100,64 +87,73 @@ function typeWriter() {
 
         setTimeout(
             typeWriter,
-            75
+            typingSpeed
         );
 
+        return;
     }
 
 
-    else {
+    /* DELETING */
 
-        typingText.textContent =
-            currentPhrase.substring(
-                0,
-                characterIndex - 1
-            );
+    typingText.textContent =
+        currentPhrase.substring(
+            0,
+            characterIndex - 1
+        );
 
-        characterIndex--;
-
-
-        if (characterIndex <= 0) {
-
-            characterIndex = 0;
-
-            deleting = false;
-
-            phraseIndex++;
-
-            if (
-                phraseIndex >=
-                phrases.length
-            ) {
-
-                phraseIndex = 0;
-
-            }
+    characterIndex--;
 
 
-            setTimeout(
-                typeWriter,
-                350
-            );
+    /*
+       Finished deleting
+    */
 
-            return;
+    if (characterIndex <= 0) {
+
+        characterIndex = 0;
+
+        deleting = false;
+
+        phraseIndex++;
+
+        if (
+            phraseIndex >=
+            phrases.length
+        ) {
+
+            phraseIndex = 0;
         }
-
 
         setTimeout(
             typeWriter,
-            45
+            pauseAfterDeleting
         );
 
+        return;
     }
 
+
+    setTimeout(
+        typeWriter,
+        deletingSpeed
+    );
 }
 
 
+/*
+   Start typewriter
+*/
+
 if (typingText) {
 
-    typeWriter();
+    typingText.textContent =
+        "";
 
+    setTimeout(
+        typeWriter,
+        500
+    );
 }
 
 
@@ -169,12 +165,14 @@ if (typingText) {
 const menuBtn =
     document.getElementById("menuBtn");
 
-
 const mobileMenu =
     document.getElementById("mobileMenu");
 
 
-if (menuBtn && mobileMenu) {
+if (
+    menuBtn &&
+    mobileMenu
+) {
 
     menuBtn.addEventListener(
         "click",
@@ -186,79 +184,34 @@ if (menuBtn && mobileMenu) {
 
         }
     );
-
 }
 
 
-document
-    .querySelectorAll(".mobile-menu a")
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            () => {
-
-                mobileMenu.classList.remove(
-                    "open"
-                );
-
-            }
-        );
-
-    });
-
-
-
-/* =========================================================
-   SMOOTH SCROLL
-   ========================================================= */
+/*
+   Close mobile menu after
+   clicking a link
+*/
 
 document
     .querySelectorAll(
-        'a[href^="#"]'
+        ".mobile-menu a"
     )
-    .forEach(link => {
+    .forEach(
+        link => {
 
-        link.addEventListener(
-            "click",
-            function (event) {
+            link.addEventListener(
+                "click",
+                () => {
 
-                const targetId =
-                    this.getAttribute(
-                        "href"
+                    mobileMenu.classList.remove(
+                        "open"
                     );
 
-
-                if (
-                    !targetId ||
-                    targetId === "#"
-                ) {
-                    return;
                 }
+            );
 
-
-                const target =
-                    document.querySelector(
-                        targetId
-                    );
-
-
-                if (target) {
-
-                    event.preventDefault();
-
-
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-
-                }
-
-            }
-        );
-
-    });
+        }
+    );
 
 
 
@@ -271,7 +224,6 @@ const sections =
         "section[id]"
     );
 
-
 const navLinks =
     document.querySelectorAll(
         ".nav-links a"
@@ -280,62 +232,66 @@ const navLinks =
 
 function updateActiveNav() {
 
-    let currentSection = "";
+    let current =
+        "home";
 
 
-    sections.forEach(section => {
+    sections.forEach(
+        section => {
 
-        const sectionTop =
-            section.offsetTop - 180;
+            const sectionTop =
+                section.offsetTop - 180;
+
+            const sectionBottom =
+                sectionTop +
+                section.offsetHeight;
 
 
-        const sectionBottom =
-            sectionTop +
-            section.offsetHeight;
+            if (
+                window.scrollY >=
+                    sectionTop &&
+                window.scrollY <
+                    sectionBottom
+            ) {
 
+                current =
+                    section.id;
 
-        if (
-            window.scrollY >= sectionTop &&
-            window.scrollY < sectionBottom
-        ) {
-
-            currentSection =
-                section.getAttribute(
-                    "id"
-                );
+            }
 
         }
-
-    });
-
-
-    navLinks.forEach(link => {
-
-        link.classList.remove(
-            "active"
-        );
+    );
 
 
-        if (
-            link.getAttribute("href") ===
-            "#" + currentSection
-        ) {
+    navLinks.forEach(
+        link => {
 
-            link.classList.add(
+            link.classList.remove(
                 "active"
             );
 
+
+            if (
+                link.getAttribute(
+                    "href"
+                ) ===
+                "#" + current
+            ) {
+
+                link.classList.add(
+                    "active"
+                );
+
+            }
+
         }
-
-    });
-
+    );
 }
 
 
 window.addEventListener(
     "scroll",
-    updateActiveNav,
-    { passive: true }
+    updateActiveNav
 );
 
 
@@ -349,7 +305,7 @@ updateActiveNav();
 
 const revealElements =
     document.querySelectorAll(
-        ".reveal"
+        ".glass-card, .section-heading"
     );
 
 
@@ -357,24 +313,27 @@ const revealObserver =
     new IntersectionObserver(
         entries => {
 
-            entries.forEach(entry => {
+            entries.forEach(
+                entry => {
 
-                if (
-                    entry.isIntersecting
-                ) {
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+                        entry.target.style.opacity =
+                            "1";
 
+                        entry.target.style.transform =
+                            "translateY(0)";
 
-                    revealObserver.unobserve(
-                        entry.target
-                    );
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
 
                 }
-
-            });
+            );
 
         },
         {
@@ -383,13 +342,81 @@ const revealObserver =
     );
 
 
-revealElements.forEach(element => {
+revealElements.forEach(
+    element => {
 
-    revealObserver.observe(
-        element
+        element.style.opacity =
+            "0";
+
+        element.style.transform =
+            "translateY(25px)";
+
+        element.style.transition =
+            "opacity 0.7s ease, transform 0.7s ease";
+
+        revealObserver.observe(
+            element
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   SMOOTH SCROLL
+   ========================================================= */
+
+document
+    .querySelectorAll(
+        'a[href^="#"]'
+    )
+    .forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                function(event) {
+
+                    const targetId =
+                        this.getAttribute(
+                            "href"
+                        );
+
+
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
+
+                        return;
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+
+                    if (target) {
+
+                        event.preventDefault();
+
+                        target.scrollIntoView({
+                            behavior:
+                                "smooth",
+                            block:
+                                "start"
+                        });
+
+                    }
+
+                }
+            );
+
+        }
     );
-
-});
 
 
 
@@ -397,15 +424,15 @@ revealElements.forEach(element => {
    CURRENT YEAR
    ========================================================= */
 
-const year =
+const yearElement =
     document.getElementById(
         "year"
     );
 
 
-if (year) {
+if (yearElement) {
 
-    year.textContent =
+    yearElement.textContent =
         new Date().getFullYear();
 
 }
@@ -413,234 +440,96 @@ if (year) {
 
 
 /* =========================================================
-   PREMIUM PARTICLES
+   EMAIL
    ========================================================= */
 
-const canvas =
+/*
+   IMPORTANT:
+
+   I don't have your actual email address from our
+   previous conversation, so I will NOT invent one.
+
+   Put your real email between the quotes below.
+
+   Example:
+
+   const myEmail = "yourname@gmail.com";
+*/
+
+const myEmail = "";
+
+
+const emailButton =
     document.getElementById(
-        "particles"
+        "emailButton"
+    );
+
+const emailStatus =
+    document.getElementById(
+        "emailStatus"
     );
 
 
-if (canvas) {
+if (emailButton) {
 
-    const ctx =
-        canvas.getContext("2d");
+    emailButton.addEventListener(
+        "click",
+        async () => {
 
+            if (!myEmail) {
 
-    let particles = [];
+                emailStatus.textContent =
+                    "Add your email address in script.js to activate this button.";
 
-
-    function resizeCanvas() {
-
-        canvas.width =
-            window.innerWidth;
-
-        canvas.height =
-            window.innerHeight;
-
-    }
-
-
-    resizeCanvas();
-
-
-    window.addEventListener(
-        "resize",
-        resizeCanvas
-    );
-
-
-    function createParticles() {
-
-        particles = [];
-
-
-        const count =
-            Math.min(
-                80,
-                Math.floor(
-                    window.innerWidth / 18
-                )
-            );
-
-
-        for (
-            let i = 0;
-            i < count;
-            i++
-        ) {
-
-            particles.push({
-
-                x:
-                    Math.random() *
-                    canvas.width,
-
-                y:
-                    Math.random() *
-                    canvas.height,
-
-                size:
-                    Math.random() *
-                    1.6 +
-                    0.4,
-
-                speed:
-                    Math.random() *
-                    0.18 +
-                    0.03,
-
-                opacity:
-                    Math.random() *
-                    0.45 +
-                    0.1
-
-            });
-
-        }
-
-    }
-
-
-    createParticles();
-
-
-    function animateParticles() {
-
-        ctx.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
-
-
-        particles.forEach(particle => {
-
-            particle.y -=
-                particle.speed;
-
-
-            if (
-                particle.y < -10
-            ) {
-
-                particle.y =
-                    canvas.height +
-                    10;
-
+                return;
             }
 
 
-            ctx.beginPath();
+            try {
 
+                await navigator.clipboard.writeText(
+                    myEmail
+                );
 
-            ctx.arc(
-                particle.x,
-                particle.y,
-                particle.size,
-                0,
-                Math.PI * 2
-            );
+                emailStatus.textContent =
+                    "Email address copied successfully.";
 
+                setTimeout(
+                    () => {
 
-            ctx.fillStyle =
-                `rgba(151, 140, 255, ${particle.opacity})`;
+                        emailStatus.textContent =
+                            "You can now paste the email address anywhere.";
 
+                    },
+                    2500
+                );
 
-            ctx.fill();
+            }
 
-        });
+            catch (error) {
 
+                emailStatus.textContent =
+                    myEmail;
 
-        requestAnimationFrame(
-            animateParticles
-        );
+            }
 
-    }
-
-
-    animateParticles();
-
+        }
+    );
 }
 
 
 
 /* =========================================================
-   CARD POINTER GLOW
+   PAGE LOAD
    ========================================================= */
 
-const cards =
-    document.querySelectorAll(
-        ".skill-card, .mini-card, .education-card, .experience-card"
-    );
+window.addEventListener(
+    "load",
+    () => {
 
-
-cards.forEach(card => {
-
-    card.addEventListener(
-        "mousemove",
-        event => {
-
-            const rect =
-                card.getBoundingClientRect();
-
-
-            const x =
-                event.clientX -
-                rect.left;
-
-
-            const y =
-                event.clientY -
-                rect.top;
-
-
-            card.style.background = `
-                radial-gradient(
-                    circle at ${x}px ${y}px,
-                    rgba(135, 120, 255, 0.09),
-                    rgba(22, 27, 55, 0.78) 38%,
-                    rgba(9, 12, 28, 0.78)
-                )
-            `;
-
-        }
-    );
-
-
-    card.addEventListener(
-        "mouseleave",
-        () => {
-
-            card.style.background = "";
-
-        }
-    );
-
-});
-
-
-
-/* =========================================================
-   CLOSE MOBILE MENU WHEN ESC IS PRESSED
-   ========================================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key === "Escape" &&
-            mobileMenu
-        ) {
-
-            mobileMenu.classList.remove(
-                "open"
-            );
-
-        }
+        document.body.classList.add(
+            "loaded"
+        );
 
     }
 );
