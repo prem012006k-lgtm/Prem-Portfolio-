@@ -1,499 +1,388 @@
 /* =========================================================
-   PREM KUMAR — PREMIUM PORTFOLIO JAVASCRIPT
+   PREM KUMAR — PORTFOLIO JAVASCRIPT
    ========================================================= */
 
-
-/* =========================================================
-   PARTICLES
-   ========================================================= */
-
-const particleContainer =
-    document.getElementById("particles");
-
-if (particleContainer) {
-
-    const particleCount =
-        window.innerWidth < 700 ? 35 : 65;
-
-    for (let i = 0; i < particleCount; i++) {
-
-        const particle =
-            document.createElement("span");
-
-        particle.className = "particle";
-
-        particle.style.left =
-            Math.random() * 100 + "%";
-
-        particle.style.animationDuration =
-            (Math.random() * 18 + 12) + "s";
-
-        particle.style.animationDelay =
-            (Math.random() * 15) + "s";
-
-        const size =
-            Math.random() * 2 + 1;
-
-        particle.style.width =
-            size + "px";
-
-        particle.style.height =
-            size + "px";
-
-        particleContainer.appendChild(particle);
-    }
-}
+document.addEventListener("DOMContentLoaded", () => {
 
 
-/* =========================================================
-   TYPEWRITER
-   ========================================================= */
+    /* =====================================================
+       PREMIUM TYPING EFFECT
+       ===================================================== */
 
-const typingText =
-    document.getElementById("typingText");
+    const typingText =
+        document.getElementById("typing-text");
 
-const phrases = [
 
-    "continuous improvement.",
-    "better quality.",
-    "smart problem solving.",
-    "professional growth.",
-    "learning new things.",
-    "consistent results."
+    const phrases = [
+        "professional growth.",
+        "continuous improvement.",
+        "better results.",
+        "quality and consistency.",
+        "learning every day."
+    ];
 
-];
 
-let phraseIndex = 0;
-let characterIndex = 0;
-let deleting = false;
+    let phraseIndex = 0;
+    let characterIndex = 0;
+    let deleting = false;
 
-function typeWriter() {
 
-    if (!typingText) return;
+    function typeEffect() {
 
-    const currentPhrase =
-        phrases[phraseIndex];
+        if (!typingText) return;
 
-    if (!deleting) {
 
-        typingText.textContent =
-            currentPhrase.substring(
-                0,
-                characterIndex + 1
-            );
+        const currentPhrase =
+            phrases[phraseIndex];
 
-        characterIndex++;
 
-        if (
-            characterIndex ===
-            currentPhrase.length
-        ) {
+        if (!deleting) {
 
-            deleting = true;
+            characterIndex++;
+
+            typingText.textContent =
+                currentPhrase.substring(
+                    0,
+                    characterIndex
+                );
+
+
+            if (
+                characterIndex >=
+                currentPhrase.length
+            ) {
+
+                deleting = true;
+
+                setTimeout(
+                    typeEffect,
+                    1800
+                );
+
+                return;
+            }
+
 
             setTimeout(
-                typeWriter,
-                1700
+                typeEffect,
+                70
             );
 
-            return;
-        }
+        } else {
 
-        setTimeout(
-            typeWriter,
-            70
-        );
+            characterIndex--;
 
-    } else {
+            typingText.textContent =
+                currentPhrase.substring(
+                    0,
+                    characterIndex
+                );
 
-        typingText.textContent =
-            currentPhrase.substring(
-                0,
-                characterIndex - 1
-            );
 
-        characterIndex--;
+            if (characterIndex <= 0) {
 
-        if (characterIndex === 0) {
+                deleting = false;
 
-            deleting = false;
+                phraseIndex++;
 
-            phraseIndex =
-                (phraseIndex + 1) %
-                phrases.length;
+                if (
+                    phraseIndex >=
+                    phrases.length
+                ) {
+                    phraseIndex = 0;
+                }
+
+
+                setTimeout(
+                    typeEffect,
+                    450
+                );
+
+                return;
+            }
+
 
             setTimeout(
-                typeWriter,
-                400
+                typeEffect,
+                40
             );
-
-            return;
         }
-
-        setTimeout(
-            typeWriter,
-            35
-        );
     }
-}
-
-typeWriter();
 
 
-/* =========================================================
-   PROFILE CARD MOUSE EFFECT
-   ========================================================= */
+    typeEffect();
 
-const profileCard =
-    document.getElementById("profileCard");
 
-if (
-    profileCard &&
-    window.matchMedia("(pointer: fine)").matches
-) {
+    /* =====================================================
+       NAVIGATION ACTIVE SECTION
+       ===================================================== */
 
-    profileCard.addEventListener(
-        "mousemove",
-        (event) => {
+    const sections =
+        document.querySelectorAll("section[id]");
 
-            const rect =
-                profileCard.getBoundingClientRect();
+    const navLinks =
+        document.querySelectorAll("nav a");
 
-            const x =
-                event.clientX - rect.left;
 
-            const y =
-                event.clientY - rect.top;
+    function updateActiveNavigation() {
 
-            const centerX =
-                rect.width / 2;
+        let currentSection = "home";
 
-            const centerY =
-                rect.height / 2;
 
-            const rotateX =
-                ((y - centerY) / centerY) * -3;
+        sections.forEach(section => {
 
-            const rotateY =
-                ((x - centerX) / centerX) * 3;
+            const sectionTop =
+                section.offsetTop - 180;
 
-            profileCard.style.transform =
-                `perspective(1000px)
-                 rotateX(${rotateX}deg)
-                 rotateY(${rotateY}deg)
-                 translateY(-5px)`;
-        }
+            if (
+                window.scrollY >=
+                sectionTop
+            ) {
+
+                currentSection =
+                    section.getAttribute("id");
+            }
+
+        });
+
+
+        navLinks.forEach(link => {
+
+            link.classList.remove("active");
+
+
+            const href =
+                link.getAttribute("href");
+
+
+            if (
+                href ===
+                "#" + currentSection
+            ) {
+
+                link.classList.add("active");
+            }
+
+        });
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateActiveNavigation
     );
 
 
-    profileCard.addEventListener(
-        "mouseleave",
-        () => {
-
-            profileCard.style.transform =
-                "perspective(1000px) rotateX(0deg) rotateY(0deg)";
-        }
-    );
-}
+    updateActiveNavigation();
 
 
-/* =========================================================
-   MOBILE MENU
-   ========================================================= */
+    /* =====================================================
+       REVEAL ANIMATION
+       ===================================================== */
 
-const menuButton =
-    document.getElementById("menuButton");
+    const revealElements =
+        document.querySelectorAll(
+            ".section-heading, .about-main, .about-highlight, .experience-card, .skill-card, .education-card, .contact-box"
+        );
 
-const navLinks =
-    document.querySelector(".nav-links");
 
-if (menuButton && navLinks) {
+    revealElements.forEach(element => {
 
-    menuButton.addEventListener(
-        "click",
-        () => {
+        element.style.opacity = "0";
 
-            navLinks.classList.toggle("open");
+        element.style.transform =
+            "translateY(25px)";
 
-        }
-    );
+        element.style.transition =
+            "opacity 0.7s ease, transform 0.7s ease";
 
+    });
+
+
+    const revealObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.style.opacity =
+                            "1";
+
+                        entry.target.style.transform =
+                            "translateY(0)";
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+    /* =====================================================
+       SMOOTH NAVIGATION
+       ===================================================== */
 
     document
-        .querySelectorAll(".nav-links a")
-        .forEach((link) => {
+        .querySelectorAll('a[href^="#"]')
+        .forEach(link => {
 
             link.addEventListener(
                 "click",
-                () => {
+                event => {
 
-                    navLinks.classList.remove(
-                        "open"
-                    );
+                    const targetId =
+                        link.getAttribute("href");
+
+
+                    if (
+                        targetId === "#"
+                    ) {
+                        return;
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+
+                    if (!target) return;
+
+
+                    event.preventDefault();
+
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
 
                 }
             );
 
         });
-}
 
 
-/* =========================================================
-   ACTIVE NAVIGATION
-   ========================================================= */
+    /* =====================================================
+       PROFILE CARD MOUSE EFFECT
+       ===================================================== */
 
-const sections =
-    document.querySelectorAll(
-        "section[id]"
-    );
-
-const navigationLinks =
-    document.querySelectorAll(
-        ".nav-links a"
-    );
-
-const observer =
-    new IntersectionObserver(
-        (entries) => {
-
-            entries.forEach(
-                (entry) => {
-
-                    if (entry.isIntersecting) {
-
-                        navigationLinks
-                            .forEach(
-                                (link) => {
-
-                                    link.classList.remove(
-                                        "active"
-                                    );
-
-                                    if (
-                                        link.getAttribute(
-                                            "href"
-                                        ) ===
-                                        "#" +
-                                        entry.target.id
-                                    ) {
-
-                                        link.classList.add(
-                                            "active"
-                                        );
-                                    }
-
-                                }
-                            );
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold: 0.25
-        }
-    );
-
-sections.forEach(
-    (section) => observer.observe(section)
-);
-
-
-/* =========================================================
-   SCROLL PROGRESS
-   ========================================================= */
-
-const scrollProgress =
-    document.getElementById(
-        "scrollProgress"
-    );
-
-function updateScrollProgress() {
-
-    if (!scrollProgress) return;
-
-    const scrollTop =
-        window.scrollY;
-
-    const documentHeight =
-        document.documentElement
-            .scrollHeight -
-        window.innerHeight;
-
-    const percentage =
-        documentHeight > 0
-            ? (scrollTop / documentHeight) * 100
-            : 0;
-
-    scrollProgress.style.width =
-        percentage + "%";
-}
-
-window.addEventListener(
-    "scroll",
-    updateScrollProgress
-);
-
-updateScrollProgress();
-
-
-/* =========================================================
-   REVEAL SECTIONS
-   ========================================================= */
-
-const revealElements =
-    document.querySelectorAll(
-        ".section, .experience-card, .skill-card, .education-card"
-    );
-
-revealElements.forEach(
-    (element) => {
-
-        element.classList.add("reveal");
-
-    }
-);
-
-
-const revealObserver =
-    new IntersectionObserver(
-        (entries) => {
-
-            entries.forEach(
-                (entry) => {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold: 0.12
-        }
-    );
-
-
-revealElements.forEach(
-    (element) => {
-
-        revealObserver.observe(
-            element
+    const profileCard =
+        document.querySelector(
+            ".profile-card"
         );
 
-    }
-);
+
+    const profileArea =
+        document.querySelector(
+            ".profile-area"
+        );
 
 
-/* =========================================================
-   STAT COUNTER
-   ========================================================= */
+    if (
+        profileCard &&
+        profileArea &&
+        window.innerWidth > 900
+    ) {
 
-const counter =
-    document.querySelector(
-        "[data-count]"
-    );
+        profileArea.addEventListener(
+            "mousemove",
+            event => {
 
-let counterStarted = false;
+                const rect =
+                    profileArea.getBoundingClientRect();
 
-if (counter) {
 
-    const counterObserver =
-        new IntersectionObserver(
-            (entries) => {
+                const x =
+                    event.clientX -
+                    rect.left;
 
-                if (
-                    entries[0].isIntersecting &&
-                    !counterStarted
-                ) {
 
-                    counterStarted = true;
+                const y =
+                    event.clientY -
+                    rect.top;
 
-                    const target =
-                        Number(
-                            counter.dataset.count
-                        );
 
-                    let current = 0;
+                const centerX =
+                    rect.width / 2;
 
-                    const interval =
-                        setInterval(
-                            () => {
 
-                                current++;
+                const centerY =
+                    rect.height / 2;
 
-                                counter.textContent =
-                                    current + "+";
 
-                                if (
-                                    current >= target
-                                ) {
+                const rotateX =
+                    (y - centerY) /
+                    35;
 
-                                    clearInterval(
-                                        interval
-                                    );
-                                }
 
-                            },
-                            450
-                        );
-                }
+                const rotateY =
+                    (centerX - x) /
+                    35;
 
-            },
-            {
-                threshold: 0.5
+
+                profileCard.style.transform =
+                    `perspective(1000px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-4px)`;
+
             }
         );
 
-    counterObserver.observe(
-        counter
-    );
-}
 
+        profileArea.addEventListener(
+            "mouseleave",
+            () => {
 
-/* =========================================================
-   SUBTLE MOUSE GLOW
-   ========================================================= */
+                profileCard.style.transform =
+                    "";
 
-document.addEventListener(
-    "mousemove",
-    (event) => {
+            }
+        );
 
-        const x =
-            (event.clientX /
-                window.innerWidth) *
-            100;
-
-        const y =
-            (event.clientY /
-                window.innerHeight) *
-            100;
-
-        document.body.style.background =
-            `
-            radial-gradient(
-                circle at ${x}% ${y}%,
-                rgba(92,82,255,0.075),
-                transparent 28%
-            ),
-            radial-gradient(
-                circle at 85% 45%,
-                rgba(132,74,255,0.07),
-                transparent 32%
-            ),
-            #050713
-            `;
     }
-);
+
+
+    /* =====================================================
+       CURRENT YEAR
+       ===================================================== */
+
+    const year =
+        new Date().getFullYear();
+
+
+    const footer =
+        document.querySelector("footer");
+
+
+    if (footer) {
+
+        footer.innerHTML =
+            footer.innerHTML.replace(
+                "2026",
+                year
+            );
+
+    }
+
+});
