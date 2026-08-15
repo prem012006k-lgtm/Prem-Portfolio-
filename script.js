@@ -1,62 +1,294 @@
 /* =====================================================
-   PREM KUMAR — PORTFOLIO ENGINE
+   PREM KUMAR PORTFOLIO
+   INTERACTIONS & ANIMATIONS
 ===================================================== */
 
 
-/* =====================================================
-   YEAR
-===================================================== */
+/* ================= TYPING EFFECT ================= */
 
-const yearElement =
-    document.getElementById("year");
+const typingElement =
+    document.getElementById("typing");
 
-if (yearElement) {
+const words = [
+    "continuous learning.",
+    "better processes.",
+    "problem solving.",
+    "professional growth."
+];
 
-    yearElement.textContent =
-        new Date().getFullYear();
-
-}
-
-
-
-/* =====================================================
-   MOBILE NAVIGATION
-===================================================== */
-
-const mobileMenu =
-    document.getElementById("mobileMenu");
-
-const navigation =
-    document.querySelector(".navigation");
+let wordIndex = 0;
+let characterIndex = 0;
+let deleting = false;
 
 
-if (mobileMenu) {
+function typeEffect() {
 
-    mobileMenu.addEventListener(
-        "click",
-        () => {
+    const currentWord =
+        words[wordIndex];
 
-            navigation.classList.toggle(
-                "open"
+    if (!deleting) {
+
+        typingElement.textContent =
+            currentWord.substring(
+                0,
+                characterIndex + 1
             );
 
+        characterIndex++;
+
+        if (
+            characterIndex ===
+            currentWord.length
+        ) {
+
+            deleting = true;
+
+            setTimeout(
+                typeEffect,
+                1600
+            );
+
+            return;
+
         }
+
+    } else {
+
+        typingElement.textContent =
+            currentWord.substring(
+                0,
+                characterIndex - 1
+            );
+
+        characterIndex--;
+
+        if (characterIndex === 0) {
+
+            deleting = false;
+
+            wordIndex =
+                (wordIndex + 1)
+                % words.length;
+
+        }
+
+    }
+
+
+    setTimeout(
+        typeEffect,
+        deleting ? 45 : 80
     );
 
 }
 
 
-document.querySelectorAll(
-    ".nav-link"
-).forEach(link => {
+typeEffect();
 
-    link.addEventListener(
-        "click",
+
+
+/* ================= SCROLL REVEAL ================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+
+/* ================= MOBILE MENU ================= */
+
+const menuButton =
+    document.getElementById(
+        "menuButton"
+    );
+
+const navigation =
+    document.querySelector("nav");
+
+
+menuButton.addEventListener(
+    "click",
+    () => {
+
+        navigation.classList.toggle(
+            "mobile-open"
+        );
+
+    }
+);
+
+
+navigation
+    .querySelectorAll("a")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                navigation.classList.remove(
+                    "mobile-open"
+                );
+
+            }
+        );
+
+    });
+
+
+
+/* ================= MOUSE GLOW ================= */
+
+const glow =
+    document.createElement("div");
+
+glow.classList.add(
+    "mouse-glow"
+);
+
+document.body.appendChild(glow);
+
+
+const glowStyle =
+    document.createElement("style");
+
+glowStyle.textContent = `
+
+    .mouse-glow {
+
+        position: fixed;
+
+        width: 280px;
+
+        height: 280px;
+
+        border-radius: 50%;
+
+        pointer-events: none;
+
+        z-index: -1;
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(93,120,255,0.09),
+                transparent 65%
+            );
+
+        transform:
+            translate(-50%,-50%);
+
+        transition:
+            left .12s ease,
+            top .12s ease;
+
+    }
+
+`;
+
+document.head.appendChild(
+    glowStyle
+);
+
+
+document.addEventListener(
+    "mousemove",
+    event => {
+
+        glow.style.left =
+            event.clientX + "px";
+
+        glow.style.top =
+            event.clientY + "px";
+
+    }
+);
+
+
+
+/* ================= CARD TILT ================= */
+
+const cards =
+    document.querySelectorAll(
+        ".skill-card"
+    );
+
+
+cards.forEach(card => {
+
+    card.addEventListener(
+        "mousemove",
+        event => {
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const rotateX =
+                ((y - rect.height / 2)
+                / rect.height) * -5;
+
+            const rotateY =
+                ((x - rect.width / 2)
+                / rect.width) * 5;
+
+            card.style.transform =
+                `perspective(700px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-7px)`;
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
         () => {
 
-            navigation.classList.remove(
-                "open"
-            );
+            card.style.transform =
+                "";
 
         }
     );
@@ -65,661 +297,29 @@ document.querySelectorAll(
 
 
 
-/* =====================================================
-   CURSOR LIGHT
-===================================================== */
+/* ================= NAVBAR SCROLL ================= */
 
-const cursorLight =
+const navbar =
     document.querySelector(
-        ".cursor-light"
+        ".navbar"
     );
-
-
-window.addEventListener(
-    "mousemove",
-    event => {
-
-        if (!cursorLight)
-            return;
-
-
-        cursorLight.style.left =
-            event.clientX + "px";
-
-        cursorLight.style.top =
-            event.clientY + "px";
-
-    }
-);
-
-
-
-/* =====================================================
-   PARTICLE SYSTEM
-===================================================== */
-
-const canvas =
-    document.getElementById(
-        "particles"
-    );
-
-const ctx =
-    canvas.getContext("2d");
-
-
-let canvasWidth;
-let canvasHeight;
-
-let particles = [];
-
-
-const mouse = {
-
-    x: null,
-
-    y: null,
-
-    radius: 150
-
-};
-
-
-
-function resizeCanvas() {
-
-    canvasWidth =
-        canvas.width =
-        window.innerWidth;
-
-    canvasHeight =
-        canvas.height =
-        window.innerHeight;
-
-}
-
-
-resizeCanvas();
-
-
-window.addEventListener(
-    "resize",
-    resizeCanvas
-);
-
-
-
-/* =====================================================
-   PARTICLE
-===================================================== */
-
-class Particle {
-
-    constructor() {
-
-        this.x =
-            Math.random() *
-            canvasWidth;
-
-        this.y =
-            Math.random() *
-            canvasHeight;
-
-        this.size =
-            Math.random() * 1.5 + 0.25;
-
-        this.speedX =
-            (Math.random() - 0.5)
-            * 0.25;
-
-        this.speedY =
-            (Math.random() - 0.5)
-            * 0.25;
-
-        this.opacity =
-            Math.random() * 0.5 + 0.1;
-
-    }
-
-
-    update() {
-
-        this.x +=
-            this.speedX;
-
-        this.y +=
-            this.speedY;
-
-
-        if (
-            this.x < 0 ||
-            this.x > canvasWidth
-        ) {
-
-            this.speedX *= -1;
-
-        }
-
-
-        if (
-            this.y < 0 ||
-            this.y > canvasHeight
-        ) {
-
-            this.speedY *= -1;
-
-        }
-
-
-        if (
-            mouse.x !== null &&
-            mouse.y !== null
-        ) {
-
-            const dx =
-                this.x - mouse.x;
-
-            const dy =
-                this.y - mouse.y;
-
-            const distance =
-                Math.sqrt(
-                    dx * dx +
-                    dy * dy
-                );
-
-
-            if (
-                distance <
-                mouse.radius
-            ) {
-
-                const force =
-                    (
-                        mouse.radius -
-                        distance
-                    ) /
-                    mouse.radius;
-
-
-                this.x +=
-                    (dx / distance)
-                    * force
-                    * 0.4;
-
-
-                this.y +=
-                    (dy / distance)
-                    * force
-                    * 0.4;
-
-            }
-
-        }
-
-    }
-
-
-    draw() {
-
-        ctx.beginPath();
-
-        ctx.arc(
-            this.x,
-            this.y,
-            this.size,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.fillStyle =
-            `rgba(167,139,250,${this.opacity})`;
-
-        ctx.fill();
-
-    }
-
-}
-
-
-
-/* =====================================================
-   CREATE PARTICLES
-===================================================== */
-
-function createParticles() {
-
-    particles = [];
-
-
-    const amount =
-        window.innerWidth < 600
-            ? 65
-            : 120;
-
-
-    for (
-        let i = 0;
-        i < amount;
-        i++
-    ) {
-
-        particles.push(
-            new Particle()
-        );
-
-    }
-
-}
-
-
-createParticles();
-
-
-window.addEventListener(
-    "resize",
-    createParticles
-);
-
-
-
-/* =====================================================
-   CONNECT PARTICLES
-===================================================== */
-
-function connectParticles() {
-
-    for (
-        let i = 0;
-        i < particles.length;
-        i++
-    ) {
-
-        for (
-            let j = i + 1;
-            j < particles.length;
-            j++
-        ) {
-
-            const dx =
-                particles[i].x -
-                particles[j].x;
-
-            const dy =
-                particles[i].y -
-                particles[j].y;
-
-            const distance =
-                Math.sqrt(
-                    dx * dx +
-                    dy * dy
-                );
-
-
-            if (distance < 105) {
-
-                const opacity =
-                    0.10 *
-                    (
-                        1 -
-                        distance / 105
-                    );
-
-
-                ctx.beginPath();
-
-                ctx.moveTo(
-                    particles[i].x,
-                    particles[i].y
-                );
-
-                ctx.lineTo(
-                    particles[j].x,
-                    particles[j].y
-                );
-
-                ctx.strokeStyle =
-                    `rgba(139,92,246,${opacity})`;
-
-                ctx.lineWidth =
-                    0.5;
-
-                ctx.stroke();
-
-            }
-
-        }
-
-    }
-
-}
-
-
-
-/* =====================================================
-   PARTICLE ANIMATION
-===================================================== */
-
-function animateParticles() {
-
-    ctx.clearRect(
-        0,
-        0,
-        canvasWidth,
-        canvasHeight
-    );
-
-
-    particles.forEach(
-        particle => {
-
-            particle.update();
-
-            particle.draw();
-
-        }
-    );
-
-
-    connectParticles();
-
-
-    requestAnimationFrame(
-        animateParticles
-    );
-
-}
-
-
-animateParticles();
-
-
-
-/* =====================================================
-   MOUSE POSITION
-===================================================== */
-
-window.addEventListener(
-    "mousemove",
-    event => {
-
-        mouse.x =
-            event.clientX;
-
-        mouse.y =
-            event.clientY;
-
-    }
-);
-
-
-window.addEventListener(
-    "mouseleave",
-    () => {
-
-        mouse.x = null;
-
-        mouse.y = null;
-
-    }
-);
-
-
-
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
-
-const revealElements =
-    document.querySelectorAll(
-        ".section, .skill-card, .education-card, .experience-card, .philosophy-box"
-    );
-
-
-revealElements.forEach(
-    element => {
-
-        element.classList.add(
-            "reveal"
-        );
-
-    }
-);
-
-
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(
-                entry => {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold: 0.12
-        }
-    );
-
-
-revealElements.forEach(
-    element => {
-
-        revealObserver.observe(
-            element
-        );
-
-    }
-);
-
-
-
-/* =====================================================
-   ACTIVE NAVIGATION
-===================================================== */
-
-const sections =
-    document.querySelectorAll(
-        "section[id]"
-    );
-
-const navLinks =
-    document.querySelectorAll(
-        ".nav-link"
-    );
-
-
-function updateActiveNavigation() {
-
-    let currentSection = "home";
-
-
-    sections.forEach(
-        section => {
-
-            const sectionTop =
-                section.offsetTop - 200;
-
-
-            if (
-                window.scrollY >=
-                sectionTop
-            ) {
-
-                currentSection =
-                    section.id;
-
-            }
-
-        }
-    );
-
-
-    navLinks.forEach(
-        link => {
-
-            link.classList.remove(
-                "active"
-            );
-
-
-            if (
-                link.getAttribute(
-                    "href"
-                ) ===
-                "#" + currentSection
-            ) {
-
-                link.classList.add(
-                    "active"
-                );
-
-            }
-
-        }
-    );
-
-}
 
 
 window.addEventListener(
     "scroll",
-    updateActiveNavigation
-);
+    () => {
 
+        if (window.scrollY > 50) {
 
-updateActiveNavigation();
+            navbar.style.background =
+                "rgba(3,5,12,0.82)";
 
+        } else {
 
+            navbar.style.background =
+                "rgba(3,5,12,0.55)";
 
-/* =====================================================
-   SUBTLE CARD TILT
-===================================================== */
-
-const tiltCards =
-    document.querySelectorAll(
-        ".skill-card, .education-card"
-    );
-
-
-tiltCards.forEach(
-    card => {
-
-
-        card.addEventListener(
-            "mousemove",
-            event => {
-
-                if (
-                    window.innerWidth <
-                    800
-                )
-                    return;
-
-
-                const rect =
-                    card.getBoundingClientRect();
-
-
-                const x =
-                    event.clientX -
-                    rect.left;
-
-
-                const y =
-                    event.clientY -
-                    rect.top;
-
-
-                const centerX =
-                    rect.width / 2;
-
-
-                const centerY =
-                    rect.height / 2;
-
-
-                const rotateX =
-                    (y - centerY)
-                    / 35;
-
-
-                const rotateY =
-                    (centerX - x)
-                    / 35;
-
-
-                card.style.transform =
-                    `
-                    perspective(800px)
-                    rotateX(${rotateX}deg)
-                    rotateY(${rotateY}deg)
-                    translateY(-8px)
-                    `;
-
-            }
-        );
-
-
-        card.addEventListener(
-            "mouseleave",
-            () => {
-
-                card.style.transform =
-                    "";
-
-            }
-        );
-
-    }
-);
-
-
-
-/* =====================================================
-   SMOOTH BUTTON FEEDBACK
-===================================================== */
-
-document.querySelectorAll(
-    ".primary-button, .secondary-button, .nav-contact"
-).forEach(
-    button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                button.style.transform =
-                    "scale(0.97)";
-
-
-                setTimeout(
-                    () => {
-
-                        button.style.transform =
-                            "";
-
-                    },
-                    120
-                );
-
-            }
-        );
+        }
 
     }
 );
