@@ -4,7 +4,7 @@
 
 
 /* =====================================================
-   TYPEWRITER
+   TYPEWRITER — STABLE VERSION
 ===================================================== */
 
 const typingText = document.getElementById("typingText");
@@ -18,10 +18,11 @@ const phrases = [
 
 let phraseIndex = 0;
 let characterIndex = 0;
-
 let deleting = false;
 
 function typeWriter() {
+
+    if (!typingText) return;
 
     const currentPhrase = phrases[phraseIndex];
 
@@ -32,12 +33,11 @@ function typeWriter() {
 
         characterIndex++;
 
-        if (characterIndex === currentPhrase.length) {
+        if (characterIndex >= currentPhrase.length) {
 
             deleting = true;
 
             setTimeout(typeWriter, 1800);
-
             return;
         }
 
@@ -48,7 +48,7 @@ function typeWriter() {
 
         characterIndex--;
 
-        if (characterIndex === 0) {
+        if (characterIndex <= 0) {
 
             deleting = false;
 
@@ -59,18 +59,15 @@ function typeWriter() {
             }
 
             setTimeout(typeWriter, 400);
-
             return;
         }
     }
 
-    const speed = deleting ? 45 : 80;
-
-    setTimeout(typeWriter, speed);
+    setTimeout(
+        typeWriter,
+        deleting ? 45 : 75
+    );
 }
-
-
-/* Start typing */
 
 if (typingText) {
     typeWriter();
