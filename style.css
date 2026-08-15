@@ -1,1772 +1,716 @@
-/* =========================================================
-   PREM KUMAR — PREMIUM PORTFOLIO
-   ========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "Inter", sans-serif;
-    background: #050713;
-    color: #eef0ff;
-    overflow-x: hidden;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-
-/* =========================================================
-   BACKGROUND
-   ========================================================= */
-
-.background {
-    position: fixed;
-    inset: 0;
-    z-index: -10;
-    overflow: hidden;
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(76, 70, 190, 0.25),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 70%,
-            rgba(126, 75, 255, 0.18),
-            transparent 32%
-        ),
-        #050713;
-}
-
-
-/* Grid */
-
-.grid {
-    position: absolute;
-    inset: 0;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px
-        );
-
-    background-size: 65px 65px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 85%
-        );
-}
-
-
-/* Glowing areas */
-
-.glow {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.25;
-}
-
-.glow-one {
-    background: #5147ff;
-    top: -300px;
-    left: -200px;
-}
-
-.glow-two {
-    background: #7c3cff;
-    right: -250px;
-    top: 300px;
-}
-
-.glow-three {
-    background: #3949ab;
-    left: 35%;
-    bottom: -400px;
-}
-
-
-/* =========================================================
-   ORBITAL BACKGROUND
-   ========================================================= */
-
-.orb {
-    position: absolute;
-    border: 1px solid rgba(130, 120, 255, 0.15);
-    border-radius: 50%;
-}
-
-.orb-one {
-    width: 700px;
-    height: 700px;
-    right: 8%;
-    top: 15%;
-}
-
-.orb-two {
-    width: 450px;
-    height: 450px;
-    right: 18%;
-    top: 28%;
-}
-
-
-/* =========================================================
-   PARTICLES
-   ========================================================= */
-
-.particles span {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #9186ff;
-    border-radius: 50%;
-    box-shadow: 0 0 14px #8175ff;
-    opacity: 0.5;
-    animation: particleFloat 7s infinite ease-in-out;
-}
-
-.particles span:nth-child(1) {
-    top: 15%;
-    left: 8%;
-}
-
-.particles span:nth-child(2) {
-    top: 30%;
-    left: 75%;
-    animation-delay: 1s;
-}
-
-.particles span:nth-child(3) {
-    top: 60%;
-    left: 5%;
-    animation-delay: 2s;
-}
-
-.particles span:nth-child(4) {
-    top: 75%;
-    left: 85%;
-    animation-delay: 3s;
-}
-
-.particles span:nth-child(5) {
-    top: 45%;
-    left: 55%;
-    animation-delay: 1.5s;
-}
-
-.particles span:nth-child(6) {
-    top: 85%;
-    left: 35%;
-    animation-delay: 2.5s;
-}
-
-.particles span:nth-child(7) {
-    top: 12%;
-    left: 90%;
-    animation-delay: 4s;
-}
-
-.particles span:nth-child(8) {
-    top: 65%;
-    left: 65%;
-    animation-delay: 3.5s;
-}
-
-@keyframes particleFloat {
-
-    0%, 100% {
-        transform: translateY(0);
-        opacity: 0.3;
-    }
-
-    50% {
-        transform: translateY(-18px);
-        opacity: 0.9;
-    }
-}
-
-
-/* =========================================================
-   NAVBAR
-   ========================================================= */
-
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: 88px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 5%;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    background: rgba(5, 7, 19, 0.72);
-
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    <meta name="description"
+          content="Prem Kumar - Quality Analyst portfolio. Professional experience, skills, education and career journey.">
 
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    <title>Prem Kumar | Quality Analyst</title>
 
-    z-index: 100;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
 
-/* Brand */
+    <link rel="stylesheet" href="style.css">
+</head>
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
+<body>
 
-.brand-logo {
-    width: 48px;
-    height: 48px;
+<!-- =========================
+     BACKGROUND
+========================= -->
 
-    display: grid;
-    place-items: center;
+<div class="background">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <div class="grid"></div>
 
-    border-radius: 15px;
+    <span class="particle p1"></span>
+    <span class="particle p2"></span>
+    <span class="particle p3"></span>
+    <span class="particle p4"></span>
+    <span class="particle p5"></span>
+</div>
 
-    font-weight: 900;
-    font-size: 16px;
 
-    color: white;
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-    background:
-        linear-gradient(
-            145deg,
-            #8f86ff,
-            #6457ff
-        );
+<header class="navbar">
 
-    box-shadow:
-        0 0 30px rgba(113, 97, 255, 0.35),
-        inset 0 1px rgba(255,255,255,0.45);
-}
+    <a href="#home" class="brand">
 
-.brand-text {
-    display: flex;
-    flex-direction: column;
-}
+        <div class="brand-logo">
+            <span>PK</span>
+        </div>
 
-.brand-text strong {
-    font-size: 16px;
-    letter-spacing: 0.1em;
-}
+        <div class="brand-text">
+            <strong>PREM KUMAR</strong>
+            <small>QUALITY ANALYST</small>
+        </div>
 
-.brand-text small {
-    margin-top: 3px;
-    font-size: 8px;
-    letter-spacing: 0.3em;
-    color: #8b91b2;
-}
+    </a>
 
+    <nav class="nav-links">
 
-/* Navigation */
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
 
-nav {
-    display: flex;
-    gap: 34px;
-}
+    </nav>
 
-nav a {
-    position: relative;
+    <button class="menu-btn" id="menuBtn">
+        ☰
+    </button>
 
-    color: #8f95b2;
+</header>
 
-    font-size: 13px;
-    font-weight: 600;
 
-    transition: 0.3s ease;
-}
+<!-- =========================
+     MOBILE MENU
+========================= -->
 
-nav a:hover,
-nav a.active {
-    color: #ffffff;
-}
+<div class="mobile-menu" id="mobileMenu">
 
-nav a.active::after {
-    content: "";
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
 
-    position: absolute;
+</div>
 
-    left: 0;
-    right: 0;
-    bottom: -15px;
 
-    height: 2px;
+<main>
 
-    background: #887dff;
+<!-- =========================
+     HERO
+========================= -->
 
-    box-shadow: 0 0 12px #887dff;
-}
+<section class="hero section" id="home">
 
+    <div class="hero-content">
 
-/* =========================================================
-   HERO
-   ========================================================= */
+        <div class="status-pill">
+            <span class="status-dot"></span>
+            Currently working as a Quality Analyst
+        </div>
 
-.hero {
-    min-height: 100vh;
+        <div class="hero-label">
+            QUALITY ANALYST
+            <span>•</span>
+            LEARNER
+            <span>•</span>
+            PROBLEM SOLVER
+        </div>
 
-    padding:
-        150px 11% 80px;
+        <h1 class="hero-name">
+            <span>Prem</span>
+            <span class="gradient-name">Kumar.</span>
+        </h1>
 
-    display: grid;
+        <!-- FIXED HEIGHT TYPEWRITER -->
+        <div class="hero-tagline">
+            Building better results through
+            <span id="typingText"></span>
+            <span class="cursor">|</span>
+        </div>
 
-    grid-template-columns:
-        minmax(0, 1.1fr)
-        minmax(420px, 0.9fr);
+        <p class="hero-description">
+            I'm a Quality Analyst with 2+ years of professional experience,
+            focused on maintaining quality, identifying opportunities for
+            improvement, and delivering consistent results. I'm an adaptable
+            and curious learner who enjoys taking on new challenges,
+            developing new skills, and continuously growing both professionally
+            and personally.
+        </p>
 
-    align-items: center;
+        <div class="hero-buttons">
 
-    gap: 50px;
-}
+            <a href="#experience" class="btn btn-primary">
+                Explore My Journey
+                <span>↗</span>
+            </a>
 
+            <a href="#contact" class="btn btn-secondary">
+                Let's Connect
+            </a>
 
-/* Hero content */
+        </div>
 
-.hero-content {
-    max-width: 760px;
-}
+        <div class="quick-stats">
 
+            <div class="stat">
+                <strong>2+</strong>
+                <span>YEARS EXPERIENCE</span>
+            </div>
 
-/* Status */
+            <div class="stat">
+                <strong>BBA</strong>
+                <span>CURRENTLY STUDYING</span>
+            </div>
 
-.status-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+            <div class="stat">
+                <strong>2024</strong>
+                <span>CAREER JOURNEY</span>
+            </div>
 
-    padding: 10px 17px;
+        </div>
 
-    border-radius: 100px;
+    </div>
 
-    color: #aeb4d3;
 
-    font-size: 12px;
+    <!-- =========================
+         PROFILE CARD
+    ========================= -->
 
-    background:
-        rgba(102, 91, 255, 0.08);
+    <div class="hero-visual">
 
-    border:
-        1px solid rgba(123, 112, 255, 0.3);
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="orbit orbit-three"></div>
 
-    box-shadow:
-        0 0 25px rgba(100, 85, 255, 0.08);
-}
+        <span class="orbit-dot dot-one"></span>
+        <span class="orbit-dot dot-two"></span>
+        <span class="orbit-dot dot-three"></span>
 
-.status-dot {
-    width: 7px;
-    height: 7px;
+        <div class="profile-card">
 
-    border-radius: 50%;
+            <div class="card-top">
 
-    background: #8e82ff;
+                <div class="card-logo">
+                    PK
+                </div>
 
-    box-shadow:
-        0 0 12px #8e82ff;
+                <div>
+                    <small>PROFESSIONAL PROFILE</small>
+                    <h3>PREM KUMAR</h3>
+                </div>
 
-    animation: pulse 2s infinite;
-}
+            </div>
 
-@keyframes pulse {
+            <div class="card-line"></div>
 
-    0%, 100% {
-        opacity: 0.5;
-        transform: scale(0.9);
-    }
+            <div class="card-role">
 
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
-}
+                <span>CURRENT ROLE</span>
 
+                <h2>Quality Analyst</h2>
 
-/* Eyebrow */
+            </div>
 
-.eyebrow {
-    margin-top: 30px;
-    margin-bottom: 20px;
+            <div class="company-box">
 
-    color: #7e8dcc;
+                <strong>I PLANET BPO PVT LTD</strong>
 
-    font-size: 10px;
-    font-weight: 700;
+                <span>SINCE AUGUST 2024</span>
 
-    letter-spacing: 0.42em;
-}
+            </div>
 
-.eyebrow span {
-    margin: 0 8px;
-    color: #6157db;
-}
+            <div class="card-tags">
 
+                <span>QUALITY</span>
+                <span>GROWTH</span>
+                <span>ADAPTABILITY</span>
+                <span>LEARNING</span>
 
-/* Main heading */
+            </div>
 
-.hero h1 {
-    font-size: clamp(80px, 10vw, 145px);
+            <div class="card-bottom">
 
-    line-height: 0.83;
+                <span class="mini-dot"></span>
 
-    letter-spacing: -0.075em;
+                Always learning
+                <span>•</span>
+                Always improving
 
-    font-weight: 900;
+            </div>
 
-    color: #f5f6ff;
+        </div>
 
-    margin-bottom: 35px;
-}
+    </div>
 
-.hero h1 span {
-    background:
-        linear-gradient(
-            110deg,
-            #ffffff 10%,
-            #c8c5ff 45%,
-            #796dff 90%
-        );
+</section>
 
-    -webkit-background-clip: text;
-    background-clip: text;
 
-    color: transparent;
-}
+<!-- =========================
+     ABOUT
+========================= -->
 
-.hero h1 b {
-    color: #8d82ff;
+<section class="section content-section" id="about">
 
-    text-shadow:
-        0 0 35px rgba(126, 112, 255, 0.7);
-}
+    <div class="section-heading">
 
+        <span class="section-number">01</span>
 
-/* =========================================================
-   IMPORTANT: STABLE TYPING AREA
-   ========================================================= */
+        <div>
+            <p>GET TO KNOW ME</p>
+            <h2>About <span>Me</span></h2>
+        </div>
 
-.hero-tagline {
+    </div>
 
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
 
-    gap: 10px;
+    <div class="about-grid">
 
-    margin-bottom: 28px;
+        <div class="about-main glass-card">
 
-    font-size: clamp(27px, 3vw, 44px);
+            <span class="eyebrow">MY APPROACH</span>
 
-    line-height: 1.15;
+            <h3>
+                Focused on quality.
+                <span>Driven by growth.</span>
+            </h3>
 
-    letter-spacing: -0.04em;
+            <p>
+                I believe professional growth comes from staying curious,
+                accepting challenges, and continuously improving.
+            </p>
 
-    font-weight: 500;
+            <p>
+                As a Quality Analyst, I focus on maintaining standards,
+                identifying areas for improvement, and contributing to
+                consistent performance. I enjoy learning new things and
+                adapting to changing environments.
+            </p>
 
-    color: #d7d9eb;
+        </div>
 
-    /* prevents jumping */
-    min-height: 1.15em;
-}
 
+        <div class="about-side">
 
-/* The changing text has a fixed area */
+            <div class="small-card glass-card">
 
-.typing-wrapper {
+                <span class="card-icon">01</span>
 
-    display: inline-block;
+                <h4>Quality Mindset</h4>
 
-    width: 390px;
+                <p>
+                    Attention to detail and commitment to maintaining
+                    consistent standards.
+                </p>
 
-    height: 1.15em;
+            </div>
 
-    overflow: hidden;
+            <div class="small-card glass-card">
 
-    vertical-align: bottom;
+                <span class="card-icon">02</span>
 
-    flex-shrink: 0;
-}
+                <h4>Continuous Learning</h4>
 
+                <p>
+                    Always looking for opportunities to develop new
+                    knowledge and skills.
+                </p>
 
-/* Vibrant changing words */
+            </div>
 
-#typing-text {
+        </div>
 
-    display: inline-block;
+    </div>
 
-    white-space: nowrap;
+</section>
 
-    font-weight: 700;
 
-    background:
-        linear-gradient(
-            100deg,
-            #a69dff,
-            #8c7cff,
-            #c59cff,
-            #7f73ff
-        );
+<!-- =========================
+     EXPERIENCE
+========================= -->
 
-    background-size: 250% 100%;
+<section class="section content-section" id="experience">
 
-    -webkit-background-clip: text;
-    background-clip: text;
+    <div class="section-heading">
 
-    color: transparent;
+        <span class="section-number">02</span>
 
-    animation:
-        vibrantText 4s ease infinite;
-}
+        <div>
+            <p>PROFESSIONAL JOURNEY</p>
+            <h2>Work <span>Experience</span></h2>
+        </div>
 
-@keyframes vibrantText {
+    </div>
 
-    0% {
-        background-position: 0% 50%;
-    }
 
-    50% {
-        background-position: 100% 50%;
-    }
+    <div class="timeline">
 
-    100% {
-        background-position: 0% 50%;
-    }
-}
+        <div class="timeline-line"></div>
 
+        <div class="timeline-item">
 
-/* Description */
+            <div class="timeline-dot"></div>
 
-.hero-description {
-    max-width: 720px;
+            <div class="timeline-date">
+                AUGUST 2024 — PRESENT
+            </div>
 
-    color: #858ca9;
+            <div class="experience-card glass-card">
 
-    font-size: 16px;
+                <div class="experience-header">
 
-    line-height: 1.9;
+                    <div>
 
-    margin-bottom: 35px;
-}
+                        <span class="experience-label">
+                            CURRENT POSITION
+                        </span>
 
+                        <h3>Quality Analyst</h3>
 
-/* =========================================================
-   BUTTONS
-   ========================================================= */
+                        <h4>I Planet BPO PVT LTD</h4>
 
-.hero-buttons {
-    display: flex;
-    gap: 13px;
-}
+                    </div>
 
-.btn {
-    display: inline-flex;
+                    <span class="experience-badge">
+                        CURRENT
+                    </span>
 
-    align-items: center;
-    justify-content: center;
+                </div>
 
-    gap: 12px;
+                <p>
+                    Working in a quality-focused role involving performance
+                    monitoring, quality evaluation, identifying improvement
+                    opportunities, and supporting consistent service standards.
+                </p>
 
-    padding: 16px 22px;
+                <div class="skill-row">
 
-    border-radius: 12px;
+                    <span>Quality Assurance</span>
+                    <span>Monitoring</span>
+                    <span>Analysis</span>
+                    <span>Process Improvement</span>
 
-    font-size: 13px;
-    font-weight: 700;
+                </div>
 
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border 0.3s ease;
-}
+            </div>
 
-.primary-btn {
+        </div>
 
-    color: white;
+    </div>
 
-    background:
-        linear-gradient(
-            135deg,
-            #8176ff,
-            #6657f5
-        );
+</section>
 
-    box-shadow:
-        0 12px 35px rgba(103, 88, 255, 0.3);
-}
 
-.primary-btn:hover {
-    transform: translateY(-3px);
+<!-- =========================
+     SKILLS
+========================= -->
 
-    box-shadow:
-        0 18px 45px rgba(103, 88, 255, 0.45);
-}
+<section class="section content-section" id="skills">
 
-.secondary-btn {
+    <div class="section-heading">
 
-    border:
-        1px solid rgba(255,255,255,0.1);
+        <span class="section-number">03</span>
 
-    background:
-        rgba(255,255,255,0.025);
+        <div>
+            <p>WHAT I BRING</p>
+            <h2>My <span>Skills</span></h2>
+        </div>
 
-    color: #c4c8df;
-}
+    </div>
 
-.secondary-btn:hover {
 
-    transform: translateY(-3px);
+    <div class="skills-grid">
 
-    border-color:
-        rgba(137, 126, 255, 0.4);
+        <div class="skill-card glass-card">
 
-    background:
-        rgba(117, 102, 255, 0.08);
-}
+            <div class="skill-number">01</div>
 
+            <h3>Quality Assurance</h3>
 
-/* =========================================================
-   STATS
-   ========================================================= */
+            <p>
+                Maintaining quality standards and identifying areas
+                that require improvement.
+            </p>
 
-.hero-stats {
+            <div class="skill-bar">
+                <span style="width: 90%"></span>
+            </div>
 
-    display: flex;
+        </div>
 
-    gap: 70px;
 
-    margin-top: 55px;
-}
+        <div class="skill-card glass-card">
 
-.hero-stats div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
+            <div class="skill-number">02</div>
 
-.hero-stats strong {
-    font-size: 25px;
-    font-weight: 800;
-}
+            <h3>Attention to Detail</h3>
 
-.hero-stats span {
-    font-size: 9px;
-    color: #666d8c;
-    letter-spacing: 0.18em;
-}
+            <p>
+                Carefully reviewing information and identifying
+                inconsistencies or opportunities for improvement.
+            </p>
 
+            <div class="skill-bar">
+                <span style="width: 88%"></span>
+            </div>
 
-/* =========================================================
-   PROFILE CARD
-   ========================================================= */
+        </div>
 
-.profile-area {
 
-    position: relative;
+        <div class="skill-card glass-card">
 
-    height: 620px;
+            <div class="skill-number">03</div>
 
-    display: grid;
+            <h3>Adaptability</h3>
 
-    place-items: center;
-}
+            <p>
+                Comfortable adapting to new environments, processes,
+                responsibilities, and challenges.
+            </p>
 
+            <div class="skill-bar">
+                <span style="width: 92%"></span>
+            </div>
 
-.profile-card {
+        </div>
 
-    position: relative;
 
-    width: min(430px, 90%);
+        <div class="skill-card glass-card">
 
-    padding: 36px;
+            <div class="skill-number">04</div>
 
-    border-radius: 28px;
+            <h3>Communication</h3>
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(31, 38, 76, 0.96),
-            rgba(11, 15, 34, 0.96)
-        );
+            <p>
+                Communicating observations, feedback, and information
+                clearly and professionally.
+            </p>
 
-    border:
-        1px solid rgba(150, 142, 255, 0.22);
+            <div class="skill-bar">
+                <span style="width: 85%"></span>
+            </div>
 
-    box-shadow:
-        0 40px 100px rgba(0,0,0,0.45),
-        0 0 60px rgba(96, 81, 255, 0.12),
-        inset 0 1px rgba(255,255,255,0.08);
+        </div>
 
-    z-index: 5;
 
-    animation:
-        cardFloat 6s ease-in-out infinite;
-}
+        <div class="skill-card glass-card">
 
-@keyframes cardFloat {
+            <div class="skill-number">05</div>
 
-    0%, 100% {
-        transform: translateY(0);
-    }
+            <h3>Problem Solving</h3>
 
-    50% {
-        transform: translateY(-8px);
-    }
-}
+            <p>
+                Approaching challenges logically and looking for
+                practical solutions.
+            </p>
 
+            <div class="skill-bar">
+                <span style="width: 86%"></span>
+            </div>
 
-/* Profile top */
+        </div>
 
-.profile-top {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
 
-.profile-logo {
+        <div class="skill-card glass-card">
 
-    width: 65px;
-    height: 65px;
+            <div class="skill-number">06</div>
 
-    display: grid;
-    place-items: center;
+            <h3>Continuous Learning</h3>
 
-    border-radius: 18px;
+            <p>
+                Curious about new ideas and committed to developing
+                new professional skills.
+            </p>
 
-    font-size: 20px;
-    font-weight: 900;
+            <div class="skill-bar">
+                <span style="width: 94%"></span>
+            </div>
 
-    color: white;
+        </div>
 
-    background:
-        linear-gradient(
-            145deg,
-            #8d83ff,
-            #6656f5
-        );
+    </div>
 
-    box-shadow:
-        0 12px 30px rgba(109, 93, 255, 0.35),
-        inset 0 1px rgba(255,255,255,0.45);
-}
+</section>
 
-.profile-top small {
-    color: #707897;
 
-    font-size: 8px;
+<!-- =========================
+     EDUCATION
+========================= -->
 
-    letter-spacing: 0.3em;
-}
+<section class="section content-section" id="education">
 
-.profile-top h3 {
+    <div class="section-heading">
 
-    margin-top: 8px;
+        <span class="section-number">04</span>
 
-    font-size: 17px;
+        <div>
+            <p>ACADEMIC BACKGROUND</p>
+            <h2>My <span>Education</span></h2>
+        </div>
 
-    letter-spacing: 0.03em;
-}
+    </div>
 
 
-/* Line */
+    <div class="education-grid">
 
-.profile-line {
+        <div class="education-card glass-card">
 
-    height: 1px;
+            <div class="education-icon">
+                BBA
+            </div>
 
-    margin: 30px 0;
+            <div>
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.12),
-            transparent
-        );
-}
+                <span class="education-status">
+                    CURRENTLY STUDYING
+                </span>
 
+                <h3>Bachelor of Business Administration</h3>
 
-/* Role */
+                <p>
+                    Currently pursuing BBA and developing knowledge
+                    across business, management, and professional areas.
+                </p>
 
-.profile-role small {
+            </div>
 
-    color: #727b9d;
+        </div>
 
-    font-size: 9px;
 
-    letter-spacing: 0.22em;
-}
+        <div class="education-card glass-card">
 
-.profile-role h2 {
+            <div class="education-icon">
+                HSC
+            </div>
 
-    margin-top: 14px;
+            <div>
 
-    font-size: 27px;
+                <span class="education-status">
+                    COMPLETED
+                </span>
 
-    letter-spacing: -0.04em;
-}
+                <h3>Higher Secondary Certificate</h3>
 
+                <p>
+                    Successfully completed HSC education.
+                </p>
 
-/* Company */
+            </div>
 
-.company-card {
+        </div>
 
-    margin-top: 28px;
 
-    padding: 20px;
+        <div class="education-card glass-card">
 
-    border-radius: 17px;
+            <div class="education-icon">
+                SSC
+            </div>
 
-    background:
-        rgba(92, 81, 208, 0.08);
+            <div>
 
-    border:
-        1px solid rgba(125, 115, 255, 0.15);
+                <span class="education-status">
+                    COMPLETED
+                </span>
 
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-}
+                <h3>Secondary School Certificate</h3>
 
-.company-card strong {
+                <p>
+                    Successfully completed SSC education.
+                </p>
 
-    font-size: 12px;
+            </div>
 
-    letter-spacing: 0.05em;
-}
+        </div>
 
-.company-card small {
+    </div>
 
-    color: #626b8d;
+</section>
 
-    font-size: 9px;
 
-    letter-spacing: 0.15em;
-}
+<!-- =========================
+     CONTACT
+========================= -->
 
+<section class="section content-section contact-section" id="contact">
 
-/* Tags */
+    <div class="contact-box glass-card">
 
-.tags {
+        <div>
 
-    display: flex;
+            <span class="eyebrow">
+                LET'S CONNECT
+            </span>
 
-    flex-wrap: wrap;
+            <h2>
+                Have an opportunity
+                <span>worth discussing?</span>
+            </h2>
 
-    gap: 9px;
+            <p>
+                I'm always open to learning, professional opportunities,
+                collaborations, and meaningful conversations.
+            </p>
 
-    margin-top: 25px;
-}
+        </div>
 
-.tags span {
 
-    padding: 8px 12px;
+        <div class="contact-details">
 
-    border-radius: 50px;
+            <a href="mailto:prem012006k@gmail.com" class="contact-item">
 
-    border:
-        1px solid rgba(255,255,255,0.08);
+                <span class="contact-symbol">@</span>
 
-    color: #7e86a7;
+                <div>
+                    <small>EMAIL</small>
+                    <strong>prem012006k@gmail.com</strong>
+                </div>
 
-    font-size: 8px;
+            </a>
 
-    font-weight: 700;
 
-    letter-spacing: 0.1em;
+            <a href="tel:+918928996632" class="contact-item">
 
-    background:
-        rgba(255,255,255,0.025);
-}
+                <span class="contact-symbol">☎</span>
 
+                <div>
+                    <small>PHONE</small>
+                    <strong>+91 89289 96632</strong>
+                </div>
 
-/* Bottom */
+            </a>
 
-.profile-bottom {
+        </div>
 
-    display: flex;
+    </div>
 
-    align-items: center;
+</section>
 
-    gap: 10px;
+</main>
 
-    margin-top: 28px;
 
-    color: #69718f;
+<!-- =========================
+     FOOTER
+========================= -->
 
-    font-size: 10px;
-}
+<footer>
 
-.tiny-dot {
+    <div class="footer-brand">
 
-    width: 7px;
-    height: 7px;
+        <div class="brand-logo small">
+            <span>PK</span>
+        </div>
 
-    border-radius: 50%;
+        <div>
+            <strong>PREM KUMAR</strong>
+            <small>QUALITY ANALYST</small>
+        </div>
 
-    background: #8b7fff;
+    </div>
 
-    box-shadow:
-        0 0 12px #8b7fff;
-}
+    <p>
+        © <span id="year"></span> Prem Kumar. Built with curiosity and continuous improvement.
+    </p>
 
+</footer>
 
-/* =========================================================
-   ORBITS
-   ========================================================= */
 
-.orbit {
+<script src="script.js"></script>
 
-    position: absolute;
-
-    border:
-        1px solid rgba(126, 116, 255, 0.16);
-
-    border-radius: 50%;
-}
-
-.orbit-a {
-    width: 650px;
-    height: 650px;
-}
-
-.orbit-b {
-    width: 520px;
-    height: 520px;
-}
-
-.orbit-c {
-    width: 390px;
-    height: 390px;
-}
-
-
-/* =========================================================
-   GENERAL SECTIONS
-   ========================================================= */
-
-.section {
-
-    padding:
-        140px 11%;
-
-    position: relative;
-}
-
-.section-heading {
-    margin-bottom: 65px;
-}
-
-.section-heading > span {
-
-    color: #756dff;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.35em;
-}
-
-.section-heading h2 {
-
-    max-width: 700px;
-
-    margin-top: 18px;
-
-    font-size: clamp(45px, 5vw, 75px);
-
-    line-height: 1;
-
-    letter-spacing: -0.06em;
-}
-
-.section-heading em {
-
-    color: #8c81ff;
-
-    font-style: normal;
-}
-
-
-/* =========================================================
-   ABOUT
-   ========================================================= */
-
-.about-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        1.4fr 0.6fr;
-
-    gap: 50px;
-
-    align-items: stretch;
-}
-
-.about-main {
-
-    padding: 45px;
-
-    border-radius: 24px;
-
-    background:
-        rgba(255,255,255,0.025);
-
-    border:
-        1px solid rgba(255,255,255,0.07);
-}
-
-.about-main p {
-
-    color: #8990ad;
-
-    font-size: 17px;
-
-    line-height: 1.9;
-
-    margin-bottom: 20px;
-}
-
-.about-highlight {
-
-    padding: 45px;
-
-    border-radius: 24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(113, 96, 255, 0.18),
-            rgba(255,255,255,0.025)
-        );
-
-    border:
-        1px solid rgba(125,115,255,0.18);
-}
-
-.about-highlight span {
-
-    color: #777fa1;
-
-    font-size: 9px;
-
-    letter-spacing: 0.25em;
-}
-
-.about-highlight h3 {
-
-    margin-top: 30px;
-
-    font-size: 40px;
-
-    line-height: 1.2;
-
-    letter-spacing: -0.04em;
-}
-
-
-/* =========================================================
-   EXPERIENCE
-   ========================================================= */
-
-.experience-card {
-
-    display: grid;
-
-    grid-template-columns: 100px 1fr;
-
-    gap: 30px;
-
-    padding: 45px;
-
-    border-radius: 26px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(25, 30, 62, 0.85),
-            rgba(10, 13, 29, 0.85)
-        );
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,0.2);
-}
-
-.experience-number {
-
-    font-size: 25px;
-
-    color: #7770ed;
-
-    font-weight: 800;
-}
-
-.experience-header {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 30px;
-}
-
-.experience-label {
-
-    color: #777fa1;
-
-    font-size: 9px;
-
-    letter-spacing: 0.25em;
-}
-
-.experience-header h3 {
-
-    margin-top: 12px;
-
-    font-size: 32px;
-}
-
-.experience-header p {
-
-    margin-top: 8px;
-
-    color: #858ca8;
-}
-
-.experience-date {
-
-    color: #7d74ff;
-
-    font-size: 10px;
-
-    letter-spacing: 0.15em;
-}
-
-.experience-description {
-
-    margin-top: 40px;
-
-    padding-top: 30px;
-
-    border-top:
-        1px solid rgba(255,255,255,0.06);
-}
-
-.experience-description p {
-
-    max-width: 850px;
-
-    color: #858ca8;
-
-    line-height: 1.9;
-}
-
-
-/* =========================================================
-   SKILLS
-   ========================================================= */
-
-.skills-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 18px;
-}
-
-.skill-card {
-
-    min-height: 230px;
-
-    padding: 32px;
-
-    border-radius: 22px;
-
-    background:
-        rgba(255,255,255,0.025);
-
-    border:
-        1px solid rgba(255,255,255,0.07);
-
-    transition:
-        transform 0.35s ease,
-        border 0.35s ease,
-        background 0.35s ease;
-}
-
-.skill-card:hover {
-
-    transform: translateY(-8px);
-
-    border-color:
-        rgba(133, 120, 255, 0.35);
-
-    background:
-        rgba(104, 91, 255, 0.07);
-}
-
-.skill-card > span {
-
-    color: #746aff;
-
-    font-size: 11px;
-
-    font-weight: 700;
-}
-
-.skill-card h3 {
-
-    margin-top: 55px;
-
-    font-size: 21px;
-}
-
-.skill-card p {
-
-    margin-top: 12px;
-
-    color: #777f9d;
-
-    line-height: 1.7;
-
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   EDUCATION
-   ========================================================= */
-
-.education-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 18px;
-}
-
-.education-card {
-
-    padding: 35px;
-
-    min-height: 220px;
-
-    border-radius: 22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(29, 34, 69, 0.8),
-            rgba(10, 13, 29, 0.8)
-        );
-
-    border:
-        1px solid rgba(255,255,255,0.07);
-}
-
-.education-card span {
-
-    color: #7770ff;
-
-    font-size: 9px;
-
-    letter-spacing: 0.22em;
-}
-
-.education-card h3 {
-
-    margin-top: 35px;
-
-    font-size: 22px;
-
-    line-height: 1.3;
-}
-
-.education-card p {
-
-    margin-top: 12px;
-
-    color: #777f9d;
-}
-
-
-/* =========================================================
-   CONTACT
-   ========================================================= */
-
-.contact-section {
-
-    padding-top: 100px;
-    padding-bottom: 120px;
-}
-
-.contact-box {
-
-    padding: 70px;
-
-    border-radius: 30px;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(105, 91, 255, 0.2),
-            transparent 55%
-        ),
-        rgba(255,255,255,0.025);
-
-    border:
-        1px solid rgba(133, 121, 255, 0.18);
-}
-
-.contact-box > span {
-
-    color: #7770ff;
-
-    font-size: 10px;
-
-    letter-spacing: 0.3em;
-}
-
-.contact-box h2 {
-
-    margin-top: 20px;
-
-    font-size: clamp(45px, 6vw, 80px);
-
-    line-height: 1;
-
-    letter-spacing: -0.06em;
-}
-
-.contact-box h2 em {
-
-    color: #8a80ff;
-
-    font-style: normal;
-}
-
-.contact-box p {
-
-    max-width: 600px;
-
-    margin: 25px auto 35px;
-
-    color: #858ca8;
-
-    line-height: 1.8;
-}
-
-.contact-buttons {
-
-    display: flex;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 12px;
-}
-
-.contact-btn {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 7px;
-
-    padding: 17px 25px;
-
-    border-radius: 13px;
-
-    background:
-        rgba(255,255,255,0.035);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    transition: 0.3s ease;
-}
-
-.contact-btn:hover {
-
-    border-color:
-        rgba(135,123,255,0.4);
-
-    transform: translateY(-3px);
-}
-
-.contact-btn span {
-
-    color: #7770ff;
-
-    font-size: 8px;
-
-    letter-spacing: 0.2em;
-}
-
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-footer {
-
-    padding:
-        30px 7%;
-
-    border-top:
-        1px solid rgba(255,255,255,0.06);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    color: #646c89;
-
-    font-size: 11px;
-}
-
-footer span {
-    color: #7770ff;
-    margin: 0 8px;
-}
-
-.footer-logo {
-
-    width: 34px;
-    height: 34px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 10px;
-
-    color: white;
-
-    font-weight: 800;
-
-    background:
-        linear-gradient(
-            145deg,
-            #8b80ff,
-            #6255ed
-        );
-}
-
-footer a {
-
-    color: #7770ff;
-
-    font-size: 9px;
-
-    letter-spacing: 0.15em;
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 1000px) {
-
-    .hero {
-
-        grid-template-columns: 1fr;
-
-        padding:
-            140px 7% 80px;
-    }
-
-    .profile-area {
-
-        height: 520px;
-    }
-
-    .about-grid {
-
-        grid-template-columns: 1fr;
-    }
-
-    .skills-grid,
-    .education-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    nav {
-        gap: 15px;
-    }
-}
-
-
-@media (max-width: 700px) {
-
-    .navbar {
-
-        height: 75px;
-
-        padding: 0 20px;
-    }
-
-    .brand-text {
-        display: none;
-    }
-
-    nav {
-
-        gap: 12px;
-    }
-
-    nav a {
-
-        font-size: 10px;
-    }
-
-    nav a:nth-child(2),
-    nav a:nth-child(3) {
-
-        display: none;
-    }
-
-    nav a.active::after {
-        bottom: -10px;
-    }
-
-
-    .hero {
-
-        padding:
-            120px 22px 70px;
-    }
-
-
-    .hero h1 {
-
-        font-size:
-            clamp(70px, 20vw, 110px);
-    }
-
-
-    .hero-tagline {
-
-        display: block;
-
-        font-size: 27px;
-
-        min-height: 2.3em;
-    }
-
-
-    .typing-wrapper {
-
-        display: block;
-
-        width: 100%;
-
-        height: 1.2em;
-
-        margin-top: 4px;
-    }
-
-
-    #typing-text {
-
-        font-size: 27px;
-    }
-
-
-    .hero-description {
-
-        font-size: 14px;
-
-        line-height: 1.8;
-    }
-
-
-    .hero-buttons {
-
-        flex-direction: column;
-    }
-
-
-    .btn {
-
-        width: 100%;
-    }
-
-
-    .hero-stats {
-
-        gap: 25px;
-
-        justify-content: space-between;
-    }
-
-
-    .hero-stats strong {
-
-        font-size: 20px;
-    }
-
-
-    .profile-area {
-
-        height: 450px;
-    }
-
-
-    .profile-card {
-
-        padding: 25px;
-
-        width: 100%;
-    }
-
-
-    .orbit-a {
-
-        width: 450px;
-        height: 450px;
-    }
-
-    .orbit-b {
-
-        width: 360px;
-        height: 360px;
-    }
-
-    .orbit-c {
-
-        width: 280px;
-        height: 280px;
-    }
-
-
-    .section {
-
-        padding:
-            90px 22px;
-    }
-
-
-    .section-heading h2 {
-
-        font-size: 48px;
-    }
-
-
-    .skills-grid,
-    .education-grid {
-
-        grid-template-columns: 1fr;
-    }
-
-
-    .experience-card {
-
-        grid-template-columns: 1fr;
-
-        padding: 30px;
-    }
-
-
-    .experience-header {
-
-        flex-direction: column;
-    }
-
-
-    .contact-box {
-
-        padding: 45px 25px;
-    }
-
-
-    footer {
-
-        flex-direction: column;
-
-        gap: 18px;
-
-        text-align: center;
-    }
-}
-
-
-/* =========================================================
-   SCROLLBAR
-   ========================================================= */
-
-::-webkit-scrollbar {
-    width: 7px;
-}
-
-::-webkit-scrollbar-track {
-    background: #050713;
-}
-
-::-webkit-scrollbar-thumb {
-
-    background:
-        linear-gradient(
-            #776cff,
-            #5146d8
-        );
-
-    border-radius: 10px;
-}
-
-
-/* =========================================================
-   SELECTION
-   ========================================================= */
-
-::selection {
-
-    background: #766cff;
-
-    color: white;
-}
+</body>
+</html>
