@@ -1970,3 +1970,59 @@ footer p {
         max-width: 100%;
     }
 }
+/* =====================================================
+   FINAL TYPEWRITER FIX
+   Stable position - no jumping - no clipping
+   ===================================================== */
+
+/* Keep the complete tagline on one line */
+.hero-subtitle,
+.hero-tagline,
+.tagline {
+    white-space: nowrap !important;
+    min-height: 1.4em;
+}
+
+/* Reserve enough space for the changing phrase */
+#typingText {
+    display: inline-block;
+    width: 520px;
+    min-width: 520px;
+    white-space: nowrap;
+    overflow: visible;
+    vertical-align: baseline;
+}
+
+/* Make sure the typing text itself never causes movement */
+#typingText {
+    position: relative;
+    transform: none !important;
+    animation: none !important;
+}
+
+/* Remove unwanted movement from the tagline */
+.hero-subtitle,
+.hero-tagline,
+.tagline {
+    transform: none !important;
+    animation: none !important;
+}
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    .hero-subtitle,
+    .hero-tagline,
+    .tagline {
+        white-space: normal !important;
+    }
+
+    #typingText {
+        width: auto;
+        min-width: 0;
+        white-space: nowrap;
+    }
+}
