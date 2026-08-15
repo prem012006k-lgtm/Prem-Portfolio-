@@ -1,716 +1,969 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Prem Kumar - Quality Analyst portfolio. Professional experience, skills, education and career journey.">
+          content="Prem Kumar - Quality Analyst portfolio showcasing professional experience, skills, education and career journey.">
+
+    <meta name="theme-color"
+          content="#070a18">
 
     <title>Prem Kumar | Quality Analyst</title>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
           rel="stylesheet">
 
+    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
-<!-- =========================
-     BACKGROUND
-========================= -->
+    <!-- =====================================================
+         PAGE LOADER
+         ===================================================== -->
 
-<div class="background">
-    <div class="glow glow-one"></div>
-    <div class="glow glow-two"></div>
-    <div class="grid"></div>
+    <div class="page-loader" id="pageLoader">
 
-    <span class="particle p1"></span>
-    <span class="particle p2"></span>
-    <span class="particle p3"></span>
-    <span class="particle p4"></span>
-    <span class="particle p5"></span>
-</div>
-
-
-<!-- =========================
-     NAVIGATION
-========================= -->
-
-<header class="navbar">
-
-    <a href="#home" class="brand">
-
-        <div class="brand-logo">
-            <span>PK</span>
+        <div class="loader-logo">
+            PK
         </div>
 
-        <div class="brand-text">
-            <strong>PREM KUMAR</strong>
-            <small>QUALITY ANALYST</small>
-        </div>
-
-    </a>
-
-    <nav class="nav-links">
-
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-
-    </nav>
-
-    <button class="menu-btn" id="menuBtn">
-        ☰
-    </button>
-
-</header>
-
-
-<!-- =========================
-     MOBILE MENU
-========================= -->
-
-<div class="mobile-menu" id="mobileMenu">
-
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
-
-</div>
-
-
-<main>
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="hero section" id="home">
-
-    <div class="hero-content">
-
-        <div class="status-pill">
-            <span class="status-dot"></span>
-            Currently working as a Quality Analyst
-        </div>
-
-        <div class="hero-label">
-            QUALITY ANALYST
-            <span>•</span>
-            LEARNER
-            <span>•</span>
-            PROBLEM SOLVER
-        </div>
-
-        <h1 class="hero-name">
-            <span>Prem</span>
-            <span class="gradient-name">Kumar.</span>
-        </h1>
-
-        <!-- FIXED HEIGHT TYPEWRITER -->
-        <div class="hero-tagline">
-            Building better results through
-            <span id="typingText"></span>
-            <span class="cursor">|</span>
-        </div>
-
-        <p class="hero-description">
-            I'm a Quality Analyst with 2+ years of professional experience,
-            focused on maintaining quality, identifying opportunities for
-            improvement, and delivering consistent results. I'm an adaptable
-            and curious learner who enjoys taking on new challenges,
-            developing new skills, and continuously growing both professionally
-            and personally.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#experience" class="btn btn-primary">
-                Explore My Journey
-                <span>↗</span>
-            </a>
-
-            <a href="#contact" class="btn btn-secondary">
-                Let's Connect
-            </a>
-
-        </div>
-
-        <div class="quick-stats">
-
-            <div class="stat">
-                <strong>2+</strong>
-                <span>YEARS EXPERIENCE</span>
-            </div>
-
-            <div class="stat">
-                <strong>BBA</strong>
-                <span>CURRENTLY STUDYING</span>
-            </div>
-
-            <div class="stat">
-                <strong>2024</strong>
-                <span>CAREER JOURNEY</span>
-            </div>
-
-        </div>
+        <div class="loader-line"></div>
 
     </div>
 
 
-    <!-- =========================
-         PROFILE CARD
-    ========================= -->
+    <!-- =====================================================
+         BACKGROUND
+         ===================================================== -->
 
-    <div class="hero-visual">
+    <div class="background">
 
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-        <div class="orbit orbit-three"></div>
+        <div class="ambient ambient-one"></div>
+        <div class="ambient ambient-two"></div>
+        <div class="ambient ambient-three"></div>
 
-        <span class="orbit-dot dot-one"></span>
-        <span class="orbit-dot dot-two"></span>
-        <span class="orbit-dot dot-three"></span>
+        <div class="grid"></div>
 
-        <div class="profile-card">
+        <canvas id="particles"></canvas>
 
-            <div class="card-top">
+    </div>
 
-                <div class="card-logo">
+
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
+
+    <header class="navbar" id="navbar">
+
+        <div class="nav-container">
+
+            <a href="#home" class="brand">
+
+                <div class="brand-logo">
+                    PK
+                </div>
+
+                <div class="brand-text">
+
+                    <strong>PREM KUMAR</strong>
+
+                    <span>QUALITY ANALYST</span>
+
+                </div>
+
+            </a>
+
+
+            <nav class="nav-links">
+
+                <a href="#home" class="active">Home</a>
+
+                <a href="#about">About</a>
+
+                <a href="#experience">Experience</a>
+
+                <a href="#skills">Skills</a>
+
+                <a href="#education">Education</a>
+
+                <a href="#contact">Contact</a>
+
+            </nav>
+
+
+            <button class="menu-button"
+                    id="menuBtn"
+                    aria-label="Open navigation">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+
+        <!-- Mobile Navigation -->
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section class="hero section" id="home">
+
+            <div class="hero-container">
+
+
+                <!-- LEFT SIDE -->
+
+                <div class="hero-content reveal">
+
+                    <div class="eyebrow">
+
+                        <span></span>
+
+                        QUALITY ANALYST
+                        <b>•</b>
+                        LEARNER
+                        <b>•</b>
+                        PROBLEM SOLVER
+
+                    </div>
+
+
+                    <h1>
+
+                        <span>Prem</span>
+
+                        <span class="name-gradient">
+                            Kumar.
+                        </span>
+
+                    </h1>
+
+
+                    <!-- FIXED TYPEWRITER AREA -->
+
+                    <div class="hero-tagline">
+
+                        <div class="tagline-static">
+                            Building better results through
+                        </div>
+
+                        <div class="tagline-changing">
+
+                            <span id="typingText">
+                                continuous improvement.
+                            </span>
+
+                            <span class="cursor">|</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="hero-description">
+
+                        I'm a Quality Analyst with 2+ years of
+                        professional experience, focused on maintaining
+                        quality, identifying opportunities for improvement,
+                        and delivering consistent results. I’m an adaptable
+                        and curious learner who enjoys taking on new
+                        challenges, developing new skills, and continuously
+                        growing both professionally and personally.
+
+                    </p>
+
+
+                    <!-- BUTTONS -->
+
+                    <div class="hero-buttons">
+
+                        <a href="#experience"
+                           class="primary-button">
+
+                            Explore My Journey
+
+                            <span>↗</span>
+
+                        </a>
+
+
+                        <a href="#contact"
+                           class="secondary-button">
+
+                            Let's Connect
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- STATS -->
+
+                    <div class="hero-stats">
+
+                        <div class="stat">
+
+                            <strong>2+</strong>
+
+                            <span>
+                                YEARS EXPERIENCE
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <strong>BBA</strong>
+
+                            <span>
+                                CURRENTLY STUDYING
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <strong>2024</strong>
+
+                            <span>
+                                CAREER JOURNEY
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RIGHT SIDE -->
+
+                <div class="hero-visual reveal">
+
+                    <div class="orbit orbit-one"></div>
+                    <div class="orbit orbit-two"></div>
+                    <div class="orbit orbit-three"></div>
+
+
+                    <div class="profile-card">
+
+                        <div class="card-top">
+
+                            <div class="card-logo">
+                                PK
+                            </div>
+
+                            <div>
+
+                                <span class="small-label">
+                                    PROFESSIONAL PROFILE
+                                </span>
+
+                                <h3>
+                                    PREM KUMAR
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="card-divider"></div>
+
+
+                        <span class="small-label">
+                            CURRENT ROLE
+                        </span>
+
+                        <h2>
+                            Quality Analyst
+                        </h2>
+
+
+                        <div class="company-box">
+
+                            <strong>
+                                I PLANET BPO PVT LTD
+                            </strong>
+
+                            <span>
+                                SINCE AUGUST 2024
+                            </span>
+
+                        </div>
+
+
+                        <div class="card-tags">
+
+                            <span>QUALITY</span>
+                            <span>GROWTH</span>
+                            <span>ADAPTABILITY</span>
+                            <span>LEARNING</span>
+
+                        </div>
+
+
+                        <div class="card-footer">
+
+                            <i></i>
+
+                            Always learning
+                            <b>•</b>
+                            Always improving
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ABOUT
+             ================================================= -->
+
+        <section class="section content-section"
+                 id="about">
+
+            <div class="section-container">
+
+                <div class="section-heading reveal">
+
+                    <span class="section-number">
+                        01
+                    </span>
+
+                    <span class="section-label">
+                        GET TO KNOW ME
+                    </span>
+
+                    <h2>
+                        About <span>Me.</span>
+                    </h2>
+
+                    <p>
+                        Focused on quality.
+                        Driven by growth.
+                    </p>
+
+                </div>
+
+
+                <div class="about-grid">
+
+
+                    <div class="glass-card about-main reveal">
+
+                        <span class="card-index">
+                            MY APPROACH
+                        </span>
+
+                        <h3>
+                            Improving today while
+                            preparing for tomorrow.
+                        </h3>
+
+                        <p>
+                            I believe professional growth comes from
+                            staying curious, accepting challenges and
+                            continuously improving the way work is done.
+                            My approach combines attention to detail,
+                            adaptability and a strong willingness to learn.
+                        </p>
+
+                        <p>
+                            As a Quality Analyst, I focus on maintaining
+                            standards, identifying areas for improvement
+                            and contributing toward better and more
+                            consistent outcomes.
+                        </p>
+
+                    </div>
+
+
+                    <div class="about-side">
+
+                        <div class="mini-card reveal">
+
+                            <span>
+                                MINDSET
+                            </span>
+
+                            <strong>
+                                Learn.
+                                Adapt.
+                                Improve.
+                            </strong>
+
+                        </div>
+
+
+                        <div class="mini-card reveal">
+
+                            <span>
+                                PROFESSIONAL FOCUS
+                            </span>
+
+                            <strong>
+                                Quality & Continuous
+                                Improvement
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             EXPERIENCE
+             ================================================= -->
+
+        <section class="section content-section"
+                 id="experience">
+
+            <div class="section-container">
+
+                <div class="section-heading reveal">
+
+                    <span class="section-number">
+                        02
+                    </span>
+
+                    <span class="section-label">
+                        PROFESSIONAL JOURNEY
+                    </span>
+
+                    <h2>
+                        Experience<span>.</span>
+                    </h2>
+
+                    <p>
+                        Building experience through
+                        responsibility and continuous learning.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline">
+
+
+                    <div class="timeline-line"></div>
+
+
+                    <article class="timeline-item reveal">
+
+                        <div class="timeline-dot"></div>
+
+
+                        <div class="timeline-date">
+                            AUGUST 2024 — PRESENT
+                        </div>
+
+
+                        <div class="experience-card">
+
+                            <div class="experience-header">
+
+                                <div>
+
+                                    <span class="experience-type">
+                                        CURRENT ROLE
+                                    </span>
+
+                                    <h3>
+                                        Quality Analyst
+                                    </h3>
+
+                                    <p>
+                                        I Planet BPO Pvt Ltd
+                                    </p>
+
+                                </div>
+
+                                <div class="experience-number">
+                                    01
+                                </div>
+
+                            </div>
+
+
+                            <div class="experience-divider"></div>
+
+
+                            <p class="experience-description">
+
+                                Working as a Quality Analyst with a focus
+                                on maintaining quality standards,
+                                identifying improvement opportunities,
+                                supporting consistent performance and
+                                continuously developing professional skills.
+
+                            </p>
+
+
+                            <div class="experience-tags">
+
+                                <span>Quality Monitoring</span>
+                                <span>Process Improvement</span>
+                                <span>Adaptability</span>
+                                <span>Continuous Learning</span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SKILLS
+             ================================================= -->
+
+        <section class="section content-section"
+                 id="skills">
+
+            <div class="section-container">
+
+                <div class="section-heading reveal">
+
+                    <span class="section-number">
+                        03
+                    </span>
+
+                    <span class="section-label">
+                        WHAT I BRING
+                    </span>
+
+                    <h2>
+                        Skills<span>.</span>
+                    </h2>
+
+                    <p>
+                        A combination of professional strengths,
+                        adaptability and a learning mindset.
+                    </p>
+
+                </div>
+
+
+                <div class="skills-grid">
+
+
+                    <div class="skill-card reveal">
+
+                        <div class="skill-icon">
+                            Q
+                        </div>
+
+                        <h3>
+                            Quality Focus
+                        </h3>
+
+                        <p>
+                            Maintaining standards and paying close
+                            attention to details that affect outcomes.
+                        </p>
+
+                        <div class="skill-bar">
+                            <span style="width: 90%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill-card reveal">
+
+                        <div class="skill-icon">
+                            A
+                        </div>
+
+                        <h3>
+                            Adaptability
+                        </h3>
+
+                        <p>
+                            Comfortable adjusting to new processes,
+                            responsibilities and changing situations.
+                        </p>
+
+                        <div class="skill-bar">
+                            <span style="width: 92%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill-card reveal">
+
+                        <div class="skill-icon">
+                            P
+                        </div>
+
+                        <h3>
+                            Problem Solving
+                        </h3>
+
+                        <p>
+                            Looking at challenges logically and
+                            identifying practical ways to improve.
+                        </p>
+
+                        <div class="skill-bar">
+                            <span style="width: 86%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill-card reveal">
+
+                        <div class="skill-icon">
+                            L
+                        </div>
+
+                        <h3>
+                            Learning Mindset
+                        </h3>
+
+                        <p>
+                            Continuously developing knowledge and
+                            taking on opportunities to learn.
+                        </p>
+
+                        <div class="skill-bar">
+                            <span style="width: 94%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill-card reveal">
+
+                        <div class="skill-icon">
+                            C
+                        </div>
+
+                        <h3>
+                            Communication
+                        </h3>
+
+                        <p>
+                            Communicating information clearly while
+                            working with different people and situations.
+                        </p>
+
+                        <div class="skill-bar">
+                            <span style="width: 85%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill-card reveal">
+
+                        <div class="skill-icon">
+                            G
+                        </div>
+
+                        <h3>
+                            Growth Mindset
+                        </h3>
+
+                        <p>
+                            Always looking for ways to improve,
+                            develop and become more effective.
+                        </p>
+
+                        <div class="skill-bar">
+                            <span style="width: 91%"></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             EDUCATION
+             ================================================= -->
+
+        <section class="section content-section"
+                 id="education">
+
+            <div class="section-container">
+
+                <div class="section-heading reveal">
+
+                    <span class="section-number">
+                        04
+                    </span>
+
+                    <span class="section-label">
+                        ACADEMIC JOURNEY
+                    </span>
+
+                    <h2>
+                        Education<span>.</span>
+                    </h2>
+
+                    <p>
+                        Building a foundation for continued
+                        professional development.
+                    </p>
+
+                </div>
+
+
+                <div class="education-grid">
+
+
+                    <div class="education-card reveal">
+
+                        <div class="education-year">
+                            CURRENT
+                        </div>
+
+                        <span class="education-type">
+                            UNDERGRADUATE
+                        </span>
+
+                        <h3>
+                            Bachelor of Business
+                            Administration
+                        </h3>
+
+                        <p>
+                            Currently pursuing BBA and developing
+                            knowledge across business, management and
+                            professional disciplines.
+                        </p>
+
+                        <div class="education-line"></div>
+
+                    </div>
+
+
+                    <div class="education-card reveal">
+
+                        <div class="education-year">
+                            COMPLETED
+                        </div>
+
+                        <span class="education-type">
+                            HIGHER SECONDARY
+                        </span>
+
+                        <h3>
+                            HSC
+                        </h3>
+
+                        <p>
+                            Successfully completed Higher Secondary
+                            education.
+                        </p>
+
+                        <div class="education-line"></div>
+
+                    </div>
+
+
+                    <div class="education-card reveal">
+
+                        <div class="education-year">
+                            COMPLETED
+                        </div>
+
+                        <span class="education-type">
+                            SECONDARY
+                        </span>
+
+                        <h3>
+                            SSC
+                        </h3>
+
+                        <p>
+                            Successfully completed Secondary
+                            education.
+                        </p>
+
+                        <div class="education-line"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTACT
+             ================================================= -->
+
+        <section class="section contact-section"
+                 id="contact">
+
+            <div class="section-container">
+
+                <div class="contact-card reveal">
+
+                    <div class="contact-content">
+
+                        <span class="section-label">
+                            LET'S CONNECT
+                        </span>
+
+                        <h2>
+                            Let's build something
+                            <span>better.</span>
+                        </h2>
+
+                        <p>
+                            I'm always open to learning,
+                            professional opportunities and
+                            meaningful conversations.
+                        </p>
+
+                    </div>
+
+
+                    <div class="contact-actions">
+
+                        <a href="#home"
+                           class="primary-button">
+
+                            Back to Top
+
+                            <span>↑</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <div class="footer-logo">
                     PK
                 </div>
 
                 <div>
-                    <small>PROFESSIONAL PROFILE</small>
-                    <h3>PREM KUMAR</h3>
-                </div>
 
-            </div>
+                    <strong>
+                        PREM KUMAR
+                    </strong>
 
-            <div class="card-line"></div>
-
-            <div class="card-role">
-
-                <span>CURRENT ROLE</span>
-
-                <h2>Quality Analyst</h2>
-
-            </div>
-
-            <div class="company-box">
-
-                <strong>I PLANET BPO PVT LTD</strong>
-
-                <span>SINCE AUGUST 2024</span>
-
-            </div>
-
-            <div class="card-tags">
-
-                <span>QUALITY</span>
-                <span>GROWTH</span>
-                <span>ADAPTABILITY</span>
-                <span>LEARNING</span>
-
-            </div>
-
-            <div class="card-bottom">
-
-                <span class="mini-dot"></span>
-
-                Always learning
-                <span>•</span>
-                Always improving
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section class="section content-section" id="about">
-
-    <div class="section-heading">
-
-        <span class="section-number">01</span>
-
-        <div>
-            <p>GET TO KNOW ME</p>
-            <h2>About <span>Me</span></h2>
-        </div>
-
-    </div>
-
-
-    <div class="about-grid">
-
-        <div class="about-main glass-card">
-
-            <span class="eyebrow">MY APPROACH</span>
-
-            <h3>
-                Focused on quality.
-                <span>Driven by growth.</span>
-            </h3>
-
-            <p>
-                I believe professional growth comes from staying curious,
-                accepting challenges, and continuously improving.
-            </p>
-
-            <p>
-                As a Quality Analyst, I focus on maintaining standards,
-                identifying areas for improvement, and contributing to
-                consistent performance. I enjoy learning new things and
-                adapting to changing environments.
-            </p>
-
-        </div>
-
-
-        <div class="about-side">
-
-            <div class="small-card glass-card">
-
-                <span class="card-icon">01</span>
-
-                <h4>Quality Mindset</h4>
-
-                <p>
-                    Attention to detail and commitment to maintaining
-                    consistent standards.
-                </p>
-
-            </div>
-
-            <div class="small-card glass-card">
-
-                <span class="card-icon">02</span>
-
-                <h4>Continuous Learning</h4>
-
-                <p>
-                    Always looking for opportunities to develop new
-                    knowledge and skills.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     EXPERIENCE
-========================= -->
-
-<section class="section content-section" id="experience">
-
-    <div class="section-heading">
-
-        <span class="section-number">02</span>
-
-        <div>
-            <p>PROFESSIONAL JOURNEY</p>
-            <h2>Work <span>Experience</span></h2>
-        </div>
-
-    </div>
-
-
-    <div class="timeline">
-
-        <div class="timeline-line"></div>
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-date">
-                AUGUST 2024 — PRESENT
-            </div>
-
-            <div class="experience-card glass-card">
-
-                <div class="experience-header">
-
-                    <div>
-
-                        <span class="experience-label">
-                            CURRENT POSITION
-                        </span>
-
-                        <h3>Quality Analyst</h3>
-
-                        <h4>I Planet BPO PVT LTD</h4>
-
-                    </div>
-
-                    <span class="experience-badge">
-                        CURRENT
+                    <span>
+                        QUALITY ANALYST
                     </span>
 
                 </div>
 
-                <p>
-                    Working in a quality-focused role involving performance
-                    monitoring, quality evaluation, identifying improvement
-                    opportunities, and supporting consistent service standards.
-                </p>
-
-                <div class="skill-row">
-
-                    <span>Quality Assurance</span>
-                    <span>Monitoring</span>
-                    <span>Analysis</span>
-                    <span>Process Improvement</span>
-
-                </div>
-
             </div>
 
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     SKILLS
-========================= -->
-
-<section class="section content-section" id="skills">
-
-    <div class="section-heading">
-
-        <span class="section-number">03</span>
-
-        <div>
-            <p>WHAT I BRING</p>
-            <h2>My <span>Skills</span></h2>
-        </div>
-
-    </div>
-
-
-    <div class="skills-grid">
-
-        <div class="skill-card glass-card">
-
-            <div class="skill-number">01</div>
-
-            <h3>Quality Assurance</h3>
 
             <p>
-                Maintaining quality standards and identifying areas
-                that require improvement.
-            </p>
-
-            <div class="skill-bar">
-                <span style="width: 90%"></span>
-            </div>
-
-        </div>
-
-
-        <div class="skill-card glass-card">
-
-            <div class="skill-number">02</div>
-
-            <h3>Attention to Detail</h3>
-
-            <p>
-                Carefully reviewing information and identifying
-                inconsistencies or opportunities for improvement.
-            </p>
-
-            <div class="skill-bar">
-                <span style="width: 88%"></span>
-            </div>
-
-        </div>
-
-
-        <div class="skill-card glass-card">
-
-            <div class="skill-number">03</div>
-
-            <h3>Adaptability</h3>
-
-            <p>
-                Comfortable adapting to new environments, processes,
-                responsibilities, and challenges.
-            </p>
-
-            <div class="skill-bar">
-                <span style="width: 92%"></span>
-            </div>
-
-        </div>
-
-
-        <div class="skill-card glass-card">
-
-            <div class="skill-number">04</div>
-
-            <h3>Communication</h3>
-
-            <p>
-                Communicating observations, feedback, and information
-                clearly and professionally.
-            </p>
-
-            <div class="skill-bar">
-                <span style="width: 85%"></span>
-            </div>
-
-        </div>
-
-
-        <div class="skill-card glass-card">
-
-            <div class="skill-number">05</div>
-
-            <h3>Problem Solving</h3>
-
-            <p>
-                Approaching challenges logically and looking for
-                practical solutions.
-            </p>
-
-            <div class="skill-bar">
-                <span style="width: 86%"></span>
-            </div>
-
-        </div>
-
-
-        <div class="skill-card glass-card">
-
-            <div class="skill-number">06</div>
-
-            <h3>Continuous Learning</h3>
-
-            <p>
-                Curious about new ideas and committed to developing
-                new professional skills.
-            </p>
-
-            <div class="skill-bar">
-                <span style="width: 94%"></span>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     EDUCATION
-========================= -->
-
-<section class="section content-section" id="education">
-
-    <div class="section-heading">
-
-        <span class="section-number">04</span>
-
-        <div>
-            <p>ACADEMIC BACKGROUND</p>
-            <h2>My <span>Education</span></h2>
-        </div>
-
-    </div>
-
-
-    <div class="education-grid">
-
-        <div class="education-card glass-card">
-
-            <div class="education-icon">
-                BBA
-            </div>
-
-            <div>
-
-                <span class="education-status">
-                    CURRENTLY STUDYING
-                </span>
-
-                <h3>Bachelor of Business Administration</h3>
-
-                <p>
-                    Currently pursuing BBA and developing knowledge
-                    across business, management, and professional areas.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="education-card glass-card">
-
-            <div class="education-icon">
-                HSC
-            </div>
-
-            <div>
-
-                <span class="education-status">
-                    COMPLETED
-                </span>
-
-                <h3>Higher Secondary Certificate</h3>
-
-                <p>
-                    Successfully completed HSC education.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="education-card glass-card">
-
-            <div class="education-icon">
-                SSC
-            </div>
-
-            <div>
-
-                <span class="education-status">
-                    COMPLETED
-                </span>
-
-                <h3>Secondary School Certificate</h3>
-
-                <p>
-                    Successfully completed SSC education.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section class="section content-section contact-section" id="contact">
-
-    <div class="contact-box glass-card">
-
-        <div>
-
-            <span class="eyebrow">
-                LET'S CONNECT
-            </span>
-
-            <h2>
-                Have an opportunity
-                <span>worth discussing?</span>
-            </h2>
-
-            <p>
-                I'm always open to learning, professional opportunities,
-                collaborations, and meaningful conversations.
+                © <span id="year"></span>
+                Prem Kumar. Crafted with purpose.
             </p>
 
         </div>
 
-
-        <div class="contact-details">
-
-            <a href="mailto:prem012006k@gmail.com" class="contact-item">
-
-                <span class="contact-symbol">@</span>
-
-                <div>
-                    <small>EMAIL</small>
-                    <strong>prem012006k@gmail.com</strong>
-                </div>
-
-            </a>
+    </footer>
 
 
-            <a href="tel:+918928996632" class="contact-item">
 
-                <span class="contact-symbol">☎</span>
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
 
-                <div>
-                    <small>PHONE</small>
-                    <strong>+91 89289 96632</strong>
-                </div>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-    <div class="footer-brand">
-
-        <div class="brand-logo small">
-            <span>PK</span>
-        </div>
-
-        <div>
-            <strong>PREM KUMAR</strong>
-            <small>QUALITY ANALYST</small>
-        </div>
-
-    </div>
-
-    <p>
-        © <span id="year"></span> Prem Kumar. Built with curiosity and continuous improvement.
-    </p>
-
-</footer>
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
