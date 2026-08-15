@@ -1,711 +1,268 @@
-/* =====================================================
-   PREM KUMAR — PORTFOLIO INTERACTIONS
-===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
 
+    /* =========================================
+       SMOOTH SCROLLING
+    ========================================= */
 
-/* =====================================================
-   1. TYPING ANIMATION
-===================================================== */
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener("click", function (e) {
+            const targetId = this.getAttribute("href");
 
-const typingElement = document.getElementById("typing");
+            if (targetId && targetId !== "#") {
+                const target = document.querySelector(targetId);
 
-const words = [
-    "quality.",
-    "continuous improvement.",
-    "problem solving.",
-    "professional growth.",
-    "new possibilities."
-];
+                if (target) {
+                    e.preventDefault();
 
-let wordIndex = 0;
-let characterIndex = 0;
-let deleting = false;
-
-
-function typeEffect() {
-
-    if (!typingElement) return;
-
-    const currentWord = words[wordIndex];
-
-
-    if (!deleting) {
-
-        typingElement.textContent =
-            currentWord.substring(
-                0,
-                characterIndex + 1
-            );
-
-        characterIndex++;
-
-
-        if (
-            characterIndex ===
-            currentWord.length
-        ) {
-
-            deleting = true;
-
-            setTimeout(
-                typeEffect,
-                1700
-            );
-
-            return;
-        }
-
-    } else {
-
-        typingElement.textContent =
-            currentWord.substring(
-                0,
-                characterIndex - 1
-            );
-
-        characterIndex--;
-
-
-        if (characterIndex === 0) {
-
-            deleting = false;
-
-            wordIndex =
-                (wordIndex + 1) %
-                words.length;
-
-        }
-
-    }
-
-
-    const speed =
-        deleting ? 45 : 85;
-
-    setTimeout(
-        typeEffect,
-        speed
-    );
-}
-
-
-typeEffect();
-
-
-
-/* =====================================================
-   2. MOBILE NAVIGATION
-===================================================== */
-
-const menuButton =
-    document.getElementById("menuButton");
-
-const navigation =
-    document.getElementById("navigation");
-
-
-if (menuButton && navigation) {
-
-    menuButton.addEventListener(
-        "click",
-        () => {
-
-            navigation.classList.toggle(
-                "mobile-open"
-            );
-
-        }
-    );
-
-
-    const navigationLinks =
-        navigation.querySelectorAll("a");
-
-
-    navigationLinks.forEach(
-        link => {
-
-            link.addEventListener(
-                "click",
-                () => {
-
-                    navigation.classList.remove(
-                        "mobile-open"
-                    );
-
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
                 }
-            );
+            }
+        });
+    });
 
-        }
+
+    /* =========================================
+       SCROLL REVEAL ANIMATION
+    ========================================= */
+
+    const revealElements = document.querySelectorAll(
+        "section, .skill-card, .experience-card, .education-card, .about-card"
     );
 
-}
-
-
-
-/* =====================================================
-   3. SCROLL REVEAL
-===================================================== */
-
-const revealElements =
-    document.querySelectorAll(".reveal");
-
-
-const revealObserver =
-    new IntersectionObserver(
+    const revealObserver = new IntersectionObserver(
         entries => {
-
-            entries.forEach(
-                entry => {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-
-                    }
-
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("revealed");
+                    revealObserver.unobserve(entry.target);
                 }
-            );
-
+            });
         },
         {
             threshold: 0.12
         }
     );
 
-
-revealElements.forEach(
-    element => {
-
-        revealObserver.observe(
-            element
-        );
-
-    }
-);
+    revealElements.forEach(element => {
+        element.classList.add("scroll-hidden");
+        revealObserver.observe(element);
+    });
 
 
+    /* =========================================
+       ACTIVE NAVIGATION
+    ========================================= */
 
-/* =====================================================
-   4. ACTIVE NAVIGATION
-===================================================== */
-
-const sections =
-    document.querySelectorAll(
-        "section[id]"
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(
+        'nav a[href^="#"], header a[href^="#"]'
     );
 
+    const sectionObserver = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
 
-const navLinks =
-    document.querySelectorAll(
-        "nav a"
-    );
+                if (entry.isIntersecting) {
 
+                    navLinks.forEach(link => {
+                        link.classList.remove("active");
+                    });
 
-window.addEventListener(
-    "scroll",
-    () => {
+                    const activeLink = document.querySelector(
+                        `a[href="#${entry.target.id}"]`
+                    );
 
-        let currentSection = "";
-
-
-        sections.forEach(
-            section => {
-
-                const sectionTop =
-                    section.offsetTop - 180;
-
-
-                if (
-                    window.scrollY >=
-                    sectionTop
-                ) {
-
-                    currentSection =
-                        section.getAttribute(
-                            "id"
-                        );
-
+                    if (activeLink) {
+                        activeLink.classList.add("active");
+                    }
                 }
-
-            }
-        );
-
-
-        navLinks.forEach(
-            link => {
-
-                link.style.color =
-                    "#929ab2";
-
-
-                if (
-                    link.getAttribute("href") ===
-                    `#${currentSection}`
-                ) {
-
-                    link.style.color =
-                        "#ffffff";
-
-                }
-
-            }
-        );
-
-    }
-);
-
-
-
-/* =====================================================
-   5. MOUSE LIGHT EFFECT
-===================================================== */
-
-const background =
-    document.querySelector(
-        ".background"
-    );
-
-
-document.addEventListener(
-    "mousemove",
-    event => {
-
-        const x =
-            event.clientX /
-            window.innerWidth *
-            100;
-
-
-        const y =
-            event.clientY /
-            window.innerHeight *
-            100;
-
-
-        if (background) {
-
-            background.style.background = `
-                radial-gradient(
-                    circle at ${x}% ${y}%,
-                    rgba(70, 94, 190, 0.16),
-                    transparent 34%
-                ),
-                #02040b
-            `;
-
-        }
-
-    }
-);
-
-
-
-/* =====================================================
-   6. PREMIUM CARD TILT
-===================================================== */
-
-const tiltCards =
-    document.querySelectorAll(
-        ".skill-card, .identity-card"
-    );
-
-
-tiltCards.forEach(
-    card => {
-
-        card.addEventListener(
-            "mousemove",
-            event => {
-
-                if (
-                    window.innerWidth < 700
-                ) return;
-
-
-                const rect =
-                    card.getBoundingClientRect();
-
-
-                const x =
-                    event.clientX -
-                    rect.left;
-
-
-                const y =
-                    event.clientY -
-                    rect.top;
-
-
-                const centerX =
-                    rect.width / 2;
-
-
-                const centerY =
-                    rect.height / 2;
-
-
-                const rotateX =
-                    ((y - centerY) /
-                    centerY) *
-                    -4;
-
-
-                const rotateY =
-                    ((x - centerX) /
-                    centerX) *
-                    4;
-
-
-                card.style.transform = `
-                    perspective(800px)
-                    rotateX(${rotateX}deg)
-                    rotateY(${rotateY}deg)
-                    translateY(-5px)
-                `;
-
-            }
-        );
-
-
-        card.addEventListener(
-            "mouseleave",
-            () => {
-
-                card.style.transform = "";
-
-            }
-        );
-
-    }
-);
-
-
-
-/* =====================================================
-   7. SMOOTH BUTTON FEEDBACK
-===================================================== */
-
-const buttons =
-    document.querySelectorAll(
-        ".button"
-    );
-
-
-buttons.forEach(
-    button => {
-
-        button.addEventListener(
-            "mouseenter",
-            () => {
-
-                button.style.transition =
-                    "all 0.3s ease";
-
-            }
-        );
-
-    }
-);
-
-
-
-/* =====================================================
-   8. CURSOR GLOW
-===================================================== */
-
-const cursorGlow =
-    document.createElement(
-        "div"
-    );
-
-
-cursorGlow.style.position =
-    "fixed";
-
-cursorGlow.style.width =
-    "180px";
-
-cursorGlow.style.height =
-    "180px";
-
-cursorGlow.style.borderRadius =
-    "50%";
-
-cursorGlow.style.pointerEvents =
-    "none";
-
-cursorGlow.style.zIndex =
-    "-1";
-
-cursorGlow.style.background =
-    "radial-gradient(circle, rgba(91,118,255,0.08), transparent 70%)";
-
-cursorGlow.style.transform =
-    "translate(-50%, -50%)";
-
-cursorGlow.style.transition =
-    "left 0.12s ease, top 0.12s ease";
-
-
-document.body.appendChild(
-    cursorGlow
-);
-
-
-document.addEventListener(
-    "mousemove",
-    event => {
-
-        cursorGlow.style.left =
-            `${event.clientX}px`;
-
-        cursorGlow.style.top =
-            `${event.clientY}px`;
-
-    }
-);
-
-
-
-/* =====================================================
-   9. PARALLAX VOID EFFECT
-===================================================== */
-
-const voidCircles =
-    document.querySelectorAll(
-        ".void-circle"
-    );
-
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        const scroll =
-            window.scrollY;
-
-
-        voidCircles.forEach(
-            (circle, index) => {
-
-                const movement =
-                    scroll *
-                    (0.02 + index * 0.01);
-
-
-                circle.style.marginTop =
-                    `${movement}px`;
-
-            }
-        );
-
-    }
-);
-
-
-
-/* =====================================================
-   10. DYNAMIC PARTICLES
-===================================================== */
-
-const particleContainer =
-    document.querySelector(
-        ".particles"
-    );
-
-
-function createParticle() {
-
-    if (!particleContainer) return;
-
-
-    const particle =
-        document.createElement(
-            "span"
-        );
-
-
-    particle.style.position =
-        "absolute";
-
-
-    particle.style.width =
-        `${Math.random() * 2 + 1}px`;
-
-
-    particle.style.height =
-        particle.style.width;
-
-
-    particle.style.borderRadius =
-        "50%";
-
-
-    particle.style.background =
-        "rgba(140,160,255,0.55)";
-
-
-    particle.style.left =
-        `${Math.random() * 100}%`;
-
-
-    particle.style.top =
-        `${Math.random() * 100}%`;
-
-
-    particle.style.boxShadow =
-        "0 0 8px rgba(120,150,255,0.6)";
-
-
-    particle.style.opacity =
-        `${Math.random() * 0.5 + 0.2}`;
-
-
-    const duration =
-        Math.random() * 8 + 8;
-
-
-    particle.style.animation =
-        `particleFloat ${duration}s linear infinite`;
-
-
-    particleContainer.appendChild(
-        particle
-    );
-
-
-    setTimeout(
-        () => {
-
-            particle.remove();
-
+            });
         },
-        duration * 1000
+        {
+            rootMargin: "-30% 0px -60% 0px"
+        }
     );
 
-}
+    sections.forEach(section => {
+        if (section.id) {
+            sectionObserver.observe(section);
+        }
+    });
 
 
-for (
-    let i = 0;
-    i < 35;
-    i++
-) {
+    /* =========================================
+       MOUSE GLOW EFFECT
+    ========================================= */
 
-    createParticle();
+    const glow = document.createElement("div");
 
-}
+    glow.className = "mouse-glow";
+
+    document.body.appendChild(glow);
+
+    document.addEventListener("mousemove", e => {
+        glow.style.left = `${e.clientX}px`;
+        glow.style.top = `${e.clientY}px`;
+    });
 
 
+    /* =========================================
+       3D CARD TILT EFFECT
+    ========================================= */
 
-/* =====================================================
-   11. PARTICLE ANIMATION
-===================================================== */
-
-const particleStyle =
-    document.createElement(
-        "style"
+    const cards = document.querySelectorAll(
+        ".skill-card, .experience-card, .education-card"
     );
 
+    cards.forEach(card => {
 
-particleStyle.textContent = `
+        card.addEventListener("mousemove", e => {
 
-    @keyframes particleFloat {
+            const rect = card.getBoundingClientRect();
 
-        0% {
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-            transform:
-                translateY(0)
-                translateX(0);
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
 
-            opacity: 0;
+            const rotateX =
+                ((y - centerY) / centerY) * -3;
 
-        }
+            const rotateY =
+                ((x - centerX) / centerX) * 3;
 
-        15% {
+            card.style.transform =
+                `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+        });
 
-            opacity: 0.6;
+        card.addEventListener("mouseleave", () => {
 
-        }
-
-        50% {
-
-            transform:
-                translateY(-80px)
-                translateX(25px);
-
-        }
-
-        85% {
-
-            opacity: 0.25;
-
-        }
-
-        100% {
-
-            transform:
-                translateY(-160px)
-                translateX(-20px);
-
-            opacity: 0;
-
-        }
-
-    }
-
-`;
+            card.style.transform =
+                "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)";
+        });
+    });
 
 
-document.head.appendChild(
-    particleStyle
-);
+    /* =========================================
+       ANIMATED NUMBER COUNTERS
+    ========================================= */
 
-
-
-/* =====================================================
-   12. YEAR AUTO UPDATE
-===================================================== */
-
-const footer =
-    document.querySelector(
-        "footer > p"
+    const counters = document.querySelectorAll(
+        "[data-count]"
     );
 
+    const counterObserver = new IntersectionObserver(
+        entries => {
 
-if (footer) {
+            entries.forEach(entry => {
 
-    const year =
-        new Date().getFullYear();
+                if (!entry.isIntersecting) return;
+
+                const counter = entry.target;
+
+                const target =
+                    parseInt(counter.dataset.count);
+
+                let current = 0;
+
+                const duration = 1200;
+
+                const increment =
+                    target / (duration / 16);
+
+                const updateCounter = () => {
+
+                    current += increment;
+
+                    if (current < target) {
+
+                        counter.textContent =
+                            Math.floor(current);
+
+                        requestAnimationFrame(updateCounter);
+
+                    } else {
+
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCounter();
+
+                counterObserver.unobserve(counter);
+            });
+        },
+        {
+            threshold: 0.7
+        }
+    );
+
+    counters.forEach(counter => {
+        counterObserver.observe(counter);
+    });
 
 
-    footer.innerHTML =
-        `© ${year} Prem Kumar • Built with curiosity & purpose.`;
+    /* =========================================
+       NAVBAR SCROLL EFFECT
+    ========================================= */
 
-}
+    const header =
+        document.querySelector("header");
+
+    window.addEventListener("scroll", () => {
+
+        if (!header) return;
+
+        if (window.scrollY > 40) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    });
 
 
+    /* =========================================
+       BUTTON RIPPLE EFFECT
+    ========================================= */
 
-/* =====================================================
-   13. PAGE READY
-===================================================== */
+    const buttons =
+        document.querySelectorAll("a, button");
 
-window.addEventListener(
-    "load",
-    () => {
+    buttons.forEach(button => {
 
-        document.body.classList.add(
-            "page-loaded"
-        );
+        button.addEventListener("click", function(e) {
 
-    }
-);
+            const ripple =
+                document.createElement("span");
+
+            ripple.className = "ripple";
+
+            const rect =
+                this.getBoundingClientRect();
+
+            ripple.style.left =
+                `${e.clientX - rect.left}px`;
+
+            ripple.style.top =
+                `${e.clientY - rect.top}px`;
+
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+
+
+    /* =========================================
+       PAGE LOADED
+    ========================================= */
+
+    document.body.classList.add("page-loaded");
+
+});
