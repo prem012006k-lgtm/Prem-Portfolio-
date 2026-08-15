@@ -2026,3 +2026,88 @@ footer p {
         white-space: nowrap;
     }
 }
+/* =====================================================
+   TYPEWRITER — FIXED HERO LAYOUT
+===================================================== */
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    min-width: 0;
+}
+
+.hero-copy {
+    min-width: 0;
+    max-width: 760px;
+}
+
+/* The heading/text containing the typewriter */
+.hero-copy .hero-tagline {
+    max-width: 760px;
+    overflow: hidden;
+    line-height: 1.2;
+}
+
+/* Keep the animated words inside their area */
+#typingText {
+    display: inline-block;
+    max-width: 100%;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: bottom;
+    color: #9b8cff;
+}
+
+/* Prevent the right profile card from being covered */
+.hero-visual {
+    position: relative;
+    z-index: 10;
+}
+
+/* =====================================================
+   DESKTOP
+===================================================== */
+
+@media (min-width: 1000px) {
+
+    .hero-copy .hero-tagline {
+        width: 100%;
+        max-width: 760px;
+    }
+
+    #typingText {
+        max-width: 430px;
+    }
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 999px) {
+
+    .hero-copy .hero-tagline {
+        max-width: 650px;
+    }
+
+    #typingText {
+        max-width: 100%;
+    }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .hero-copy .hero-tagline {
+        max-width: 100%;
+        font-size: clamp(1.5rem, 7vw, 2.2rem);
+    }
+
+    #typingText {
+        max-width: 100%;
+    }
+}
