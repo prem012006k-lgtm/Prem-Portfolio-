@@ -1,2597 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Prem Kumar — Quality Analyst portfolio. Professional experience, skills, education and career journey."
-    >
-
-    <meta
-        name="theme-color"
-        content="#050713"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Prem Kumar | Quality Analyst</title>
 
-    <style>
+    <meta name="description"
+        content="Professional portfolio of Prem Kumar, Quality Analyst focused on quality, continuous improvement, adaptability and professional growth.">
 
-        /* =========================================================
-           ROOT
-        ========================================================= */
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        :root {
-            --bg: #050713;
-            --bg-soft: #080b1a;
-            --surface: rgba(15, 19, 39, 0.72);
-            --surface-strong: rgba(19, 24, 48, 0.92);
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
 
-            --text: #f6f7ff;
-            --text-soft: #aab1ca;
-            --text-muted: #727b9b;
-
-            --primary: #8b7cff;
-            --primary-light: #b5adff;
-            --secondary: #5e7cff;
-
-            --border: rgba(150, 145, 255, 0.16);
-            --border-bright: rgba(150, 145, 255, 0.34);
-
-            --shadow:
-                0 30px 100px rgba(0, 0, 0, 0.48);
-
-            --glow:
-                0 0 70px rgba(116, 103, 255, 0.18);
-
-            --radius: 24px;
-
-            --max-width: 1180px;
-
-            --ease:
-                cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-
-        /* =========================================================
-           RESET
-        ========================================================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            min-height: 100vh;
-
-            font-family:
-                Inter,
-                ui-sans-serif,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
-
-            color: var(--text);
-
-            background:
-                radial-gradient(
-                    circle at 10% 10%,
-                    rgba(73, 85, 210, 0.18),
-                    transparent 32%
-                ),
-                radial-gradient(
-                    circle at 90% 20%,
-                    rgba(126, 68, 255, 0.14),
-                    transparent 28%
-                ),
-                linear-gradient(
-                    135deg,
-                    #050713,
-                    #070a18 45%,
-                    #05040d
-                );
-
-            overflow-x: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button {
-            font: inherit;
-        }
-
-
-        /* =========================================================
-           CUSTOM SCROLLBAR
-        ========================================================= */
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #050713;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background:
-                linear-gradient(
-                    #776cff,
-                    #4f5fff
-                );
-
-            border-radius: 20px;
-        }
-
-
-        /* =========================================================
-           VIDEO / CINEMATIC BACKGROUND
-        ========================================================= */
-
-        .video-background {
-            position: fixed;
-
-            inset: 0;
-
-            z-index: -20;
-
-            overflow: hidden;
-
-            pointer-events: none;
-
-            opacity: 0.22;
-        }
-
-        .video-background video {
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            filter:
-                saturate(0.65)
-                contrast(1.12)
-                brightness(0.42);
-
-            transform: scale(1.06);
-        }
-
-        .video-overlay {
-            position: absolute;
-
-            inset: 0;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(5, 7, 19, 0.98) 0%,
-                    rgba(5, 7, 19, 0.82) 42%,
-                    rgba(5, 7, 19, 0.88) 100%
-                );
-
-            z-index: 2;
-        }
-
-
-        /* =========================================================
-           CANVAS
-        ========================================================= */
-
-        #particleCanvas {
-            position: fixed;
-
-            inset: 0;
-
-            width: 100%;
-            height: 100%;
-
-            z-index: -10;
-
-            pointer-events: none;
-
-            opacity: 0.65;
-        }
-
-
-        /* =========================================================
-           AMBIENT LIGHT
-        ========================================================= */
-
-        .ambient-light {
-            position: fixed;
-
-            width: 500px;
-            height: 500px;
-
-            border-radius: 50%;
-
-            pointer-events: none;
-
-            z-index: -8;
-
-            filter: blur(100px);
-
-            opacity: 0.12;
-
-            background:
-                radial-gradient(
-                    circle,
-                    #8176ff,
-                    transparent 68%
-                );
-
-            transform:
-                translate(-50%, -50%);
-        }
-
-
-        /* =========================================================
-           GRID
-        ========================================================= */
-
-        .grid-background {
-            position: fixed;
-
-            inset: 0;
-
-            z-index: -7;
-
-            pointer-events: none;
-
-            opacity: 0.18;
-
-            background-image:
-                linear-gradient(
-                    rgba(150, 155, 255, 0.045) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(150, 155, 255, 0.045) 1px,
-                    transparent 1px
-                );
-
-            background-size: 70px 70px;
-
-            mask-image:
-                linear-gradient(
-                    to bottom,
-                    black,
-                    transparent 85%
-                );
-        }
-
-
-        /* =========================================================
-           HEADER
-        ========================================================= */
-
-        header {
-            position: fixed;
-
-            top: 0;
-            left: 0;
-            right: 0;
-
-            z-index: 100;
-
-            height: 82px;
-
-            border-bottom:
-                1px solid
-                rgba(255, 255, 255, 0.06);
-
-            background:
-                rgba(5, 7, 19, 0.52);
-
-            backdrop-filter:
-                blur(22px);
-
-            -webkit-backdrop-filter:
-                blur(22px);
-
-            transition:
-                0.4s var(--ease);
-        }
-
-        header.scrolled {
-            background:
-                rgba(5, 7, 19, 0.88);
-
-            border-color:
-                rgba(140, 130, 255, 0.12);
-
-            box-shadow:
-                0 15px 50px rgba(0, 0, 0, 0.25);
-        }
-
-        .nav {
-            max-width: var(--max-width);
-
-            height: 100%;
-
-            margin: auto;
-
-            padding:
-                0 24px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-        }
-
-
-        /* =========================================================
-           LOGO
-        ========================================================= */
-
-        .brand {
-            display: flex;
-
-            align-items: center;
-
-            gap: 13px;
-        }
-
-        .brand-logo {
-            position: relative;
-
-            width: 48px;
-            height: 48px;
-
-            border-radius: 14px;
-
-            display: grid;
-
-            place-items: center;
-
-            font-size: 17px;
-
-            font-weight: 900;
-
-            color: white;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #9a8fff,
-                    #5d5cff
-                );
-
-            box-shadow:
-                0 10px 35px
-                rgba(103, 91, 255, 0.35);
-
-            overflow: hidden;
-        }
-
-        .brand-logo::before {
-            content: "";
-
-            position: absolute;
-
-            inset: 1px;
-
-            border-radius: 13px;
-
-            border:
-                1px solid
-                rgba(255, 255, 255, 0.35);
-        }
-
-        .brand-logo::after {
-            content: "";
-
-            position: absolute;
-
-            width: 80px;
-            height: 18px;
-
-            background:
-                rgba(255,255,255,0.3);
-
-            transform:
-                rotate(-45deg)
-                translateY(-25px);
-
-            animation:
-                logoShine 4s infinite;
-        }
-
-        @keyframes logoShine {
-
-            0% {
-                transform:
-                    rotate(-45deg)
-                    translateY(-35px);
-            }
-
-            30%,
-            100% {
-                transform:
-                    rotate(-45deg)
-                    translateY(60px);
-            }
-        }
-
-        .brand-text strong {
-            display: block;
-
-            font-size: 15px;
-
-            letter-spacing: 0.13em;
-        }
-
-        .brand-text span {
-            display: block;
-
-            margin-top: 3px;
-
-            font-size: 8px;
-
-            letter-spacing: 0.32em;
-
-            color:
-                var(--text-muted);
-        }
-
-
-        /* =========================================================
-           NAVIGATION
-        ========================================================= */
-
-        .nav-links {
-            display: flex;
-
-            align-items: center;
-
-            gap: 30px;
-        }
-
-        .nav-links a {
-            position: relative;
-
-            color:
-                var(--text-soft);
-
-            font-size: 13px;
-
-            font-weight: 600;
-
-            transition:
-                0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: white;
-        }
-
-        .nav-links a::after {
-            content: "";
-
-            position: absolute;
-
-            left: 50%;
-            bottom: -10px;
-
-            width: 0;
-            height: 2px;
-
-            border-radius: 10px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    var(--primary),
-                    var(--secondary)
-                );
-
-            transform:
-                translateX(-50%);
-
-            transition:
-                0.3s var(--ease);
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 18px;
-        }
-
-
-        /* =========================================================
-           MOBILE MENU
-        ========================================================= */
-
-        .menu-button {
-            display: none;
-
-            width: 44px;
-            height: 44px;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 12px;
-
-            color: white;
-
-            background:
-                rgba(255,255,255,0.04);
-
-            cursor: pointer;
-        }
-
-
-        /* =========================================================
-           GENERAL
-        ========================================================= */
-
-        main {
-            position: relative;
-        }
-
-        section {
-            position: relative;
-
-            max-width: var(--max-width);
-
-            margin: auto;
-
-            padding:
-                120px 24px;
-        }
-
-        .section-label {
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 9px;
-
-            margin-bottom: 15px;
-
-            color:
-                var(--primary-light);
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            letter-spacing: 0.28em;
-
-            text-transform: uppercase;
-        }
-
-        .section-label::before {
-            content: "";
-
-            width: 25px;
-            height: 1px;
-
-            background:
-                var(--primary);
-        }
-
-        .section-title {
-            max-width: 760px;
-
-            font-size:
-                clamp(36px, 5vw, 64px);
-
-            line-height: 1.03;
-
-            letter-spacing: -0.045em;
-        }
-
-        .section-title span {
-            color:
-                var(--primary-light);
-        }
-
-        .section-description {
-            max-width: 650px;
-
-            margin-top: 20px;
-
-            color:
-                var(--text-soft);
-
-            line-height: 1.8;
-
-            font-size: 15px;
-        }
-
-
-        /* =========================================================
-           HERO
-        ========================================================= */
-
-        .hero {
-            min-height: 100vh;
-
-            display: grid;
-
-            grid-template-columns:
-                1.08fr
-                0.92fr;
-
-            align-items: center;
-
-            gap: 70px;
-
-            padding-top: 150px;
-        }
-
-        .hero-content {
-            position: relative;
-
-            z-index: 4;
-        }
-
-        .status {
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 10px;
-
-            padding:
-                9px 15px;
-
-            border:
-                1px solid
-                rgba(133, 124, 255, 0.26);
-
-            border-radius: 100px;
-
-            color:
-                #bfc5e0;
-
-            background:
-                rgba(104, 94, 255, 0.07);
-
-            font-size: 12px;
-
-            margin-bottom: 27px;
-
-            backdrop-filter:
-                blur(12px);
-        }
-
-        .status-dot {
-            width: 7px;
-            height: 7px;
-
-            border-radius: 50%;
-
-            background:
-                #8f85ff;
-
-            box-shadow:
-                0 0 14px
-                #8f85ff;
-
-            animation:
-                pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-
-                opacity: 0.7;
-            }
-
-            50% {
-                transform: scale(1.35);
-
-                opacity: 1;
-            }
-        }
-
-        .eyebrow {
-            margin-bottom: 17px;
-
-            color:
-                #8f99c4;
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: 0.42em;
-
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            max-width: 760px;
-
-            font-size:
-                clamp(72px, 9vw, 142px);
-
-            line-height: 0.84;
-
-            letter-spacing: -0.075em;
-
-            font-weight: 850;
-        }
-
-        .hero h1 .gradient-text {
-            display: block;
-
-            background:
-                linear-gradient(
-                    110deg,
-                    #ffffff 10%,
-                    #dcd9ff 42%,
-                    #8179ff 78%
-                );
-
-            -webkit-background-clip: text;
-
-            background-clip: text;
-
-            color: transparent;
-        }
-
-        .hero-title {
-            margin-top: 31px;
-
-            max-width: 650px;
-
-            font-size:
-                clamp(22px, 3vw, 34px);
-
-            line-height: 1.3;
-
-            color:
-                #c0c5d9;
-
-            font-weight: 500;
-        }
-
-        .hero-title span {
-            color:
-                #978fff;
-        }
-
-        .hero-intro {
-            max-width: 700px;
-
-            margin-top: 24px;
-
-            color:
-                #8e97b5;
-
-            line-height: 1.85;
-
-            font-size: 15px;
-        }
-
-        .hero-buttons {
-            display: flex;
-
-            gap: 13px;
-
-            flex-wrap: wrap;
-
-            margin-top: 34px;
-        }
-
-        .button {
-            position: relative;
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 10px;
-
-            min-height: 50px;
-
-            padding:
-                0 22px;
-
-            border-radius: 13px;
-
-            border:
-                1px solid
-                var(--border);
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-            overflow: hidden;
-
-            transition:
-                0.35s var(--ease);
-        }
-
-        .button-primary {
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #877cff,
-                    #5f62e9
-                );
-
-            box-shadow:
-                0 15px 40px
-                rgba(100, 90, 255, 0.22);
-        }
-
-        .button-primary:hover {
-            transform:
-                translateY(-4px);
-
-            box-shadow:
-                0 20px 55px
-                rgba(100, 90, 255, 0.38);
-        }
-
-        .button-secondary {
-            background:
-                rgba(255,255,255,0.035);
-
-            color:
-                #dce0f1;
-        }
-
-        .button-secondary:hover {
-            transform:
-                translateY(-4px);
-
-            border-color:
-                var(--border-bright);
-
-            background:
-                rgba(255,255,255,0.065);
-        }
-
-        .button::before {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            left: -120%;
-
-            width: 80%;
-            height: 100%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255,255,255,0.2),
-                    transparent
-                );
-
-            transform:
-                skewX(-20deg);
-
-            transition:
-                0.8s;
-        }
-
-        .button:hover::before {
-            left: 140%;
-        }
-
-
-        /* =========================================================
-           HERO METRICS
-        ========================================================= */
-
-        .hero-metrics {
-            display: flex;
-
-            gap: 45px;
-
-            margin-top: 45px;
-        }
-
-        .metric strong {
-            display: block;
-
-            font-size: 26px;
-
-            letter-spacing: -0.03em;
-        }
-
-        .metric span {
-            display: block;
-
-            margin-top: 5px;
-
-            color:
-                #69728f;
-
-            font-size: 9px;
-
-            font-weight: 700;
-
-            letter-spacing: 0.18em;
-
-            text-transform: uppercase;
-        }
-
-
-        /* =========================================================
-           HERO CARD
-        ========================================================= */
-
-        .hero-visual {
-            position: relative;
-
-            min-height: 570px;
-
-            display: grid;
-
-            place-items: center;
-        }
-
-        .orbit {
-            position: absolute;
-
-            width: 480px;
-            height: 480px;
-
-            border-radius: 50%;
-
-            border:
-                1px solid
-                rgba(130, 123, 255, 0.13);
-
-            animation:
-                rotate 22s linear infinite;
-        }
-
-        .orbit::before {
-            content: "";
-
-            position: absolute;
-
-            top: 14%;
-
-            right: -5px;
-
-            width: 7px;
-            height: 7px;
-
-            border-radius: 50%;
-
-            background:
-                #9e96ff;
-
-            box-shadow:
-                0 0 20px
-                #9e96ff;
-        }
-
-        .orbit.two {
-            width: 370px;
-            height: 370px;
-
-            border-color:
-                rgba(116, 128, 255, 0.15);
-
-            animation-duration:
-                17s;
-
-            animation-direction:
-                reverse;
-        }
-
-        .orbit.three {
-            width: 570px;
-            height: 570px;
-
-            border-color:
-                rgba(135, 105, 255, 0.08);
-
-            animation-duration:
-                28s;
-        }
-
-        @keyframes rotate {
-
-            to {
-                transform:
-                    rotate(360deg);
-            }
-        }
-
-        .profile-card {
-            position: relative;
-
-            z-index: 5;
-
-            width: min(100%, 390px);
-
-            padding: 29px;
-
-            border:
-                1px solid
-                rgba(155, 149, 255, 0.2);
-
-            border-radius: 27px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(27, 32, 63, 0.92),
-                    rgba(10, 13, 29, 0.92)
-                );
-
-            box-shadow:
-                var(--shadow),
-                0 0 100px
-                rgba(91, 82, 255, 0.13);
-
-            backdrop-filter:
-                blur(24px);
-
-            transform:
-                perspective(1200px)
-                rotateY(-5deg);
-
-            transition:
-                0.5s var(--ease);
-
-            overflow: hidden;
-        }
-
-        .profile-card:hover {
-            transform:
-                perspective(1200px)
-                rotateY(0deg)
-                translateY(-8px);
-        }
-
-        .profile-card::before {
-            content: "";
-
-            position: absolute;
-
-            top: -100px;
-            right: -80px;
-
-            width: 220px;
-            height: 220px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(130, 119, 255, 0.22),
-                    transparent 68%
-                );
-
-            filter:
-                blur(10px);
-        }
-
-        .card-top {
-            position: relative;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 15px;
-
-            padding-bottom: 25px;
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.07);
-        }
-
-        .card-logo {
-            width: 58px;
-            height: 58px;
-
-            display: grid;
-
-            place-items: center;
-
-            border-radius: 17px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #978cff,
-                    #5c5ce9
-                );
-
-            font-size: 19px;
-
-            font-weight: 900;
-
-            box-shadow:
-                0 15px 35px
-                rgba(104, 93, 255, 0.3);
-        }
-
-        .card-label {
-            color:
-                #667091;
-
-            font-size: 8px;
-
-            letter-spacing: 0.3em;
-
-            text-transform: uppercase;
-
-            font-weight: 800;
-        }
-
-        .card-name {
-            margin-top: 5px;
-
-            font-size: 18px;
-
-            font-weight: 800;
-        }
-
-        .card-role {
-            margin-top: 28px;
-
-            color:
-                #7c85a5;
-
-            font-size: 9px;
-
-            letter-spacing: 0.2em;
-
-            text-transform: uppercase;
-        }
-
-        .card-role strong {
-            display: block;
-
-            margin-top: 7px;
-
-            color:
-                white;
-
-            font-size: 22px;
-
-            letter-spacing: -0.03em;
-
-            text-transform: none;
-        }
-
-        .company-box {
-            margin-top: 24px;
-
-            padding: 17px;
-
-            border-radius: 15px;
-
-            background:
-                rgba(108, 99, 255, 0.07);
-
-            border:
-                1px solid
-                rgba(125, 115, 255, 0.13);
-        }
-
-        .company-box strong {
-            display: block;
-
-            font-size: 11px;
-
-            letter-spacing: 0.1em;
-        }
-
-        .company-box span {
-            display: block;
-
-            margin-top: 6px;
-
-            color:
-                #697391;
-
-            font-size: 9px;
-
-            letter-spacing: 0.14em;
-
-            text-transform: uppercase;
-        }
-
-        .card-tags {
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 7px;
-
-            margin-top: 24px;
-        }
-
-        .tag {
-            padding:
-                7px 10px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.08);
-
-            border-radius: 100px;
-
-            color:
-                #929ab8;
-
-            background:
-                rgba(255,255,255,0.025);
-
-            font-size: 8px;
-
-            font-weight: 800;
-
-            letter-spacing: 0.12em;
-
-            text-transform: uppercase;
-        }
-
-        .card-footer {
-            display: flex;
-
-            align-items: center;
-
-            gap: 9px;
-
-            margin-top: 25px;
-
-            color:
-                #727b98;
-
-            font-size: 10px;
-        }
-
-        .card-footer i {
-            width: 7px;
-            height: 7px;
-
-            border-radius: 50%;
-
-            background:
-                #8d83ff;
-
-            box-shadow:
-                0 0 12px
-                #8d83ff;
-        }
-
-
-        /* =========================================================
-           ABOUT
-        ========================================================= */
-
-        .about-grid {
-            display: grid;
-
-            grid-template-columns:
-                0.85fr
-                1.15fr;
-
-            gap: 65px;
-
-            align-items: center;
-
-            margin-top: 65px;
-        }
-
-        .about-quote {
-            position: relative;
-
-            padding:
-                35px;
-
-            border-left:
-                2px solid
-                var(--primary);
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(118, 106, 255, 0.08),
-                    transparent
-                );
-        }
-
-        .about-quote p {
-            font-size:
-                clamp(25px, 3vw, 39px);
-
-            line-height: 1.15;
-
-            letter-spacing: -0.035em;
-
-            color:
-                #e6e8f5;
-        }
-
-        .about-quote span {
-            display: block;
-
-            margin-top: 20px;
-
-            color:
-                #727b99;
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: 0.22em;
-
-            text-transform: uppercase;
-        }
-
-        .about-copy {
-            color:
-                var(--text-soft);
-
-            line-height: 1.9;
-
-            font-size: 15px;
-        }
-
-        .about-copy + .about-copy {
-            margin-top: 20px;
-        }
-
-
-        /* =========================================================
-           EXPERIENCE
-        ========================================================= */
-
-        .experience-card {
-            position: relative;
-
-            margin-top: 60px;
-
-            padding:
-                42px;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius:
-                var(--radius);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(19, 23, 46, 0.76),
-                    rgba(8, 11, 25, 0.72)
-                );
-
-            box-shadow:
-                var(--shadow);
-
-            overflow: hidden;
-
-            transition:
-                0.4s var(--ease);
-        }
-
-        .experience-card:hover {
-            border-color:
-                var(--border-bright);
-
-            transform:
-                translateY(-5px);
-
-            box-shadow:
-                var(--shadow),
-                var(--glow);
-        }
-
-        .experience-card::after {
-            content: "";
-
-            position: absolute;
-
-            width: 280px;
-            height: 280px;
-
-            right: -130px;
-            top: -140px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(120, 107, 255, 0.18),
-                    transparent 70%
-                );
-        }
-
-        .experience-header {
-            position: relative;
-
-            z-index: 2;
-
-            display: flex;
-
-            align-items: flex-start;
-
-            justify-content: space-between;
-
-            gap: 30px;
-        }
-
-        .experience-company {
-            font-size: 27px;
-
-            font-weight: 800;
-
-            letter-spacing: -0.035em;
-        }
-
-        .experience-role {
-            margin-top: 7px;
-
-            color:
-                var(--primary-light);
-
-            font-size: 13px;
-
-            font-weight: 700;
-        }
-
-        .experience-date {
-            white-space: nowrap;
-
-            padding:
-                9px 13px;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 100px;
-
-            color:
-                #8e97b6;
-
-            background:
-                rgba(255,255,255,0.025);
-
-            font-size: 10px;
-
-            font-weight: 700;
-
-            letter-spacing: 0.12em;
-        }
-
-        .experience-body {
-            position: relative;
-
-            z-index: 2;
-
-            max-width: 850px;
-
-            margin-top: 28px;
-
-            color:
-                var(--text-soft);
-
-            line-height: 1.85;
-
-            font-size: 14px;
-        }
-
-        .experience-points {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 12px;
-
-            margin-top: 30px;
-        }
-
-        .experience-point {
-            padding:
-                18px;
-
-            border-radius: 15px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.06);
-
-            background:
-                rgba(255,255,255,0.025);
-
-            color:
-                #8f97b3;
-
-            font-size: 11px;
-
-            line-height: 1.6;
-        }
-
-        .experience-point strong {
-            display: block;
-
-            margin-bottom: 7px;
-
-            color:
-                #dfe2f2;
-
-            font-size: 12px;
-        }
-
-
-        /* =========================================================
-           SKILLS
-        ========================================================= */
-
-        .skills-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 14px;
-
-            margin-top: 60px;
-        }
-
-        .skill-card {
-            position: relative;
-
-            min-height: 170px;
-
-            padding:
-                24px;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius:
-                var(--radius);
-
-            background:
-                rgba(14, 18, 38, 0.65);
-
-            overflow: hidden;
-
-            transition:
-                0.4s var(--ease);
-        }
-
-        .skill-card:hover {
-            transform:
-                translateY(-7px);
-
-            border-color:
-                var(--border-bright);
-
-            background:
-                rgba(24, 29, 56, 0.78);
-
-            box-shadow:
-                var(--glow);
-        }
-
-        .skill-number {
-            color:
-                #5d6584;
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: 0.2em;
-        }
-
-        .skill-card h3 {
-            margin-top: 30px;
-
-            font-size: 18px;
-
-            letter-spacing: -0.02em;
-        }
-
-        .skill-card p {
-            margin-top: 9px;
-
-            color:
-                #727b98;
-
-            font-size: 11px;
-
-            line-height: 1.6;
-        }
-
-        .skill-icon {
-            position: absolute;
-
-            right: 20px;
-            top: 20px;
-
-            width: 8px;
-            height: 8px;
-
-            border-radius: 50%;
-
-            background:
-                #8279ff;
-
-            box-shadow:
-                0 0 17px
-                #8279ff;
-        }
-
-
-        /* =========================================================
-           EDUCATION
-        ========================================================= */
-
-        .education-layout {
-            margin-top: 60px;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 15px;
-        }
-
-        .education-card {
-            padding:
-                30px;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius:
-                var(--radius);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(17, 21, 43, 0.76),
-                    rgba(8, 10, 23, 0.74)
-                );
-
-            transition:
-                0.4s var(--ease);
-        }
-
-        .education-card:hover {
-            transform:
-                translateY(-6px);
-
-            border-color:
-                var(--border-bright);
-        }
-
-        .education-year {
-            color:
-                var(--primary-light);
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: 0.18em;
-        }
-
-        .education-card h3 {
-            margin-top: 23px;
-
-            font-size: 20px;
-        }
-
-        .education-card p {
-            margin-top: 9px;
-
-            color:
-                #737c99;
-
-            font-size: 12px;
-
-            line-height: 1.6;
-        }
-
-
-        /* =========================================================
-           CONTACT
-        ========================================================= */
-
-        .contact-box {
-            position: relative;
-
-            margin-top: 60px;
-
-            padding:
-                clamp(30px, 6vw, 65px);
-
-            border:
-                1px solid
-                rgba(145, 137, 255, 0.22);
-
-            border-radius:
-                30px;
-
-            background:
-                radial-gradient(
-                    circle at 85% 20%,
-                    rgba(116, 104, 255, 0.18),
-                    transparent 28%
-                ),
-                linear-gradient(
-                    135deg,
-                    rgba(21, 26, 53, 0.88),
-                    rgba(8, 10, 23, 0.9)
-                );
-
-            box-shadow:
-                var(--shadow);
-
-            overflow: hidden;
-        }
-
-        .contact-box::before {
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            background:
-                linear-gradient(
-                    120deg,
-                    transparent 20%,
-                    rgba(255,255,255,0.025),
-                    transparent 70%
-                );
-
-            pointer-events: none;
-        }
-
-        .contact-content {
-            position: relative;
-
-            z-index: 2;
-
-            max-width: 720px;
-        }
-
-        .contact-content h2 {
-            font-size:
-                clamp(38px, 6vw, 70px);
-
-            line-height: 0.98;
-
-            letter-spacing: -0.055em;
-        }
-
-        .contact-content h2 span {
-            color:
-                var(--primary-light);
-        }
-
-        .contact-content p {
-            margin-top: 20px;
-
-            color:
-                #858eac;
-
-            line-height: 1.8;
-
-            font-size: 14px;
-        }
-
-        .contact-links {
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 10px;
-
-            margin-top: 30px;
-        }
-
-        .contact-link {
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 9px;
-
-            padding:
-                12px 15px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.08);
-
-            border-radius: 12px;
-
-            color:
-                #c9cee0;
-
-            background:
-                rgba(255,255,255,0.025);
-
-            font-size: 11px;
-
-            transition:
-                0.3s ease;
-        }
-
-        .contact-link:hover {
-            transform:
-                translateY(-3px);
-
-            border-color:
-                var(--border-bright);
-
-            color: white;
-
-            background:
-                rgba(117, 105, 255, 0.08);
-        }
-
-
-        /* =========================================================
-           FOOTER
-        ========================================================= */
-
-        footer {
-            max-width:
-                var(--max-width);
-
-            margin: auto;
-
-            padding:
-                30px 24px 40px;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            gap: 20px;
-
-            color:
-                #59617c;
-
-            font-size: 10px;
-
-            letter-spacing: 0.08em;
-
-            border-top:
-                1px solid
-                rgba(255,255,255,0.05);
-        }
-
-
-        /* =========================================================
-           BACK TO TOP
-        ========================================================= */
-
-        #backToTop {
-            position: fixed;
-
-            right: 25px;
-            bottom: 25px;
-
-            width: 45px;
-            height: 45px;
-
-            display: grid;
-
-            place-items: center;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 14px;
-
-            color: white;
-
-            background:
-                rgba(14,18,38,0.8);
-
-            backdrop-filter:
-                blur(15px);
-
-            cursor: pointer;
-
-            opacity: 0;
-
-            pointer-events: none;
-
-            transform:
-                translateY(15px);
-
-            transition:
-                0.35s var(--ease);
-
-            z-index: 90;
-        }
-
-        #backToTop.show {
-            opacity: 1;
-
-            pointer-events: auto;
-
-            transform:
-                translateY(0);
-        }
-
-        #backToTop:hover {
-            transform:
-                translateY(-4px);
-
-            border-color:
-                var(--border-bright);
-        }
-
-
-        /* =========================================================
-           SCROLL REVEAL
-        ========================================================= */
-
-        .reveal {
-            opacity: 0;
-
-            transform:
-                translateY(35px);
-
-            transition:
-                opacity 0.9s var(--ease),
-                transform 0.9s var(--ease);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-
-            transform:
-                translateY(0);
-        }
-
-
-        /* =========================================================
-           RESPONSIVE
-        ========================================================= */
-
-        @media (max-width: 1000px) {
-
-            .hero {
-                grid-template-columns: 1fr;
-
-                gap: 40px;
-            }
-
-            .hero-visual {
-                min-height: 470px;
-            }
-
-            .hero h1 {
-                font-size:
-                    clamp(68px, 12vw, 110px);
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .education-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-
-
-        @media (max-width: 760px) {
-
-            header {
-                height: 72px;
-            }
-
-            .nav-links {
-                position: fixed;
-
-                top: 72px;
-                left: 15px;
-                right: 15px;
-
-                padding: 18px;
-
-                display: flex;
-
-                flex-direction: column;
-
-                align-items: stretch;
-
-                gap: 0;
-
-                border:
-                    1px solid
-                    var(--border);
-
-                border-radius: 18px;
-
-                background:
-                    rgba(8, 11, 25, 0.97);
-
-                backdrop-filter:
-                    blur(20px);
-
-                opacity: 0;
-
-                pointer-events: none;
-
-                transform:
-                    translateY(-12px);
-
-                transition:
-                    0.3s var(--ease);
-            }
-
-            .nav-links.open {
-                opacity: 1;
-
-                pointer-events: auto;
-
-                transform:
-                    translateY(0);
-            }
-
-            .nav-links a {
-                padding:
-                    14px 10px;
-            }
-
-            .nav-links a::after {
-                display: none;
-            }
-
-            .menu-button {
-                display: grid;
-
-                place-items: center;
-            }
-
-            section {
-                padding:
-                    90px 20px;
-            }
-
-            .hero {
-                min-height: auto;
-
-                padding-top: 135px;
-            }
-
-            .hero h1 {
-                font-size:
-                    clamp(65px, 18vw, 105px);
-            }
-
-            .hero-title {
-                font-size: 22px;
-            }
-
-            .hero-metrics {
-                gap: 25px;
-            }
-
-            .hero-visual {
-                min-height: 430px;
-            }
-
-            .orbit {
-                width: 340px;
-                height: 340px;
-            }
-
-            .orbit.two {
-                width: 270px;
-                height: 270px;
-            }
-
-            .orbit.three {
-                width: 400px;
-                height: 400px;
-            }
-
-            .experience-header {
-                flex-direction: column;
-            }
-
-            .experience-points {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            footer {
-                flex-direction: column;
-            }
-        }
-
-
-        @media (max-width: 460px) {
-
-            .brand-text span {
-                display: none;
-            }
-
-            .brand-text strong {
-                font-size: 12px;
-            }
-
-            .brand-logo {
-                width: 43px;
-                height: 43px;
-            }
-
-            .hero-intro {
-                font-size: 14px;
-            }
-
-            .profile-card {
-                padding: 22px;
-            }
-
-            .hero-metrics {
-                justify-content: space-between;
-            }
-
-            .metric strong {
-                font-size: 22px;
-            }
-
-            .experience-card {
-                padding: 25px;
-            }
-        }
-
-
-        /* =========================================================
-           ACCESSIBILITY
-        ========================================================= */
-
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-
-                animation-iteration-count: 1 !important;
-
-                scroll-behavior: auto !important;
-
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
-    
-<video class="hero-video" autoplay muted loop playsinline>
-    <source src="background.mp4" type="video/mp4">
-</video>
-    <!-- =========================================================
-         OPTIONAL CINEMATIC VIDEO BACKGROUND
 
-         If you later put a video at:
-         assets/bg.mp4
+    <!-- =========================================
+         BACKGROUND
+    ========================================== -->
 
-         it will automatically play here.
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
 
-         If the video doesn't exist, the animated canvas
-         and gradients below still create the background.
-    ========================================================= -->
+    <div id="particles"></div>
 
-    <div class="video-background">
+    <div class="noise"></div>
 
-        <video
-            id="bgVideo"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-        >
-            <source
-                src="assets/bg.mp4"
-                type="video/mp4"
-            >
-        </video>
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
 
-        <div class="video-overlay"></div>
+    <header class="navbar">
 
-    </div>
+        <a href="#home" class="brand">
 
-
-    <!-- Animated particles -->
-
-    <canvas id="particleCanvas"></canvas>
-
-    <!-- Mouse-following light -->
-
-    <div
-        class="ambient-light"
-        id="ambientLight"
-    ></div>
-
-    <!-- Subtle grid -->
-
-    <div class="grid-background"></div>
-
-
-    <!-- =========================================================
-         HEADER
-    ========================================================= -->
-
-    <header id="header">
-
-        <nav class="nav">
-
-            <a
-                href="#home"
-                class="brand"
-            >
-
-                <div class="brand-logo">
-                    PK
-                </div>
-
-                <div class="brand-text">
-
-                    <strong>
-                        PREM KUMAR
-                    </strong>
-
-                    <span>
-                        QUALITY ANALYST
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <div
-                class="nav-links"
-                id="navLinks"
-            >
-
-                <a
-                    href="#home"
-                    class="active"
-                >
-                    Home
-                </a>
-
-                <a href="#about">
-                    About
-                </a>
-
-                <a href="#experience">
-                    Experience
-                </a>
-
-                <a href="#skills">
-                    Skills
-                </a>
-
-                <a href="#education">
-                    Education
-                </a>
-
-                <a href="#contact">
-                    Contact
-                </a>
-
+            <div class="brand-logo">
+                <span>P</span>
+                <small>K</small>
             </div>
 
+            <div class="brand-text">
+                <strong>PREM KUMAR</strong>
+                <span>QUALITY ANALYST</span>
+            </div>
 
-            <button
-                class="menu-button"
-                id="menuButton"
-                aria-label="Open navigation"
-            >
-                ☰
-            </button>
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
 
         </nav>
+
+        <button class="menu-button" id="menuButton">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
     </header>
 
 
+    <!-- =========================================
+         MAIN
+    ========================================== -->
 
     <main>
 
-
-        <!-- =====================================================
+        <!-- =====================================
              HERO
-        ====================================================== -->
+        ====================================== -->
 
-        <section
-            class="hero"
-            id="home"
-        >
+        <section class="hero" id="home">
 
-            <div class="hero-content reveal">
+            <div class="hero-container">
 
-                <div class="status">
+                <!-- LEFT -->
 
-                    <span class="status-dot"></span>
+                <div class="hero-content">
 
-                    Currently working as a Quality Analyst
+                    <div class="status-pill">
 
-                </div>
+                        <span class="status-dot"></span>
 
+                        <span>Currently working as a Quality Analyst</span>
 
-                <div class="eyebrow">
-
-                    QUALITY ANALYST
-                    •
-                    LEARNER
-                    •
-                    PROBLEM SOLVER
-
-                </div>
+                    </div>
 
 
-                <h1>
+                    <div class="hero-kicker">
+                        QUALITY ANALYST
+                        <span>•</span>
+                        LEARNER
+                        <span>•</span>
+                        PROBLEM SOLVER
+                    </div>
 
-                    <span>
+
+                    <h1>
                         Prem
-                    </span>
-
-                    <span class="gradient-text">
-                        Kumar.
-                    </span>
-
-                </h1>
+                        <span>Kumar.</span>
+                    </h1>
 
 
-                <div class="hero-title">
+                    <div class="hero-title">
 
-                    Building better results through
-                    <span>
-                        continuous improvement.
-                    </span>
+                        Building better results through
 
-                </div>
-
-
-                <p class="hero-intro">
-
-                    I'm a Quality Analyst with 2+ years of professional
-                    experience, focused on maintaining quality,
-                    identifying opportunities for improvement, and
-                    delivering consistent results. I enjoy learning
-                    new skills, adapting to new challenges, and
-                    continuously developing myself both professionally
-                    and personally.
-
-                </p>
-
-
-                <div class="hero-buttons">
-
-                    <a
-                        href="#experience"
-                        class="button button-primary"
-                    >
-
-                        Explore My Journey
-
-                        <span>↗</span>
-
-                    </a>
-
-
-                    <a
-                        href="#contact"
-                        class="button button-secondary"
-                    >
-
-                        Let's Connect
-
-                    </a>
-
-                </div>
-
-
-                <div class="hero-metrics">
-
-                    <div class="metric">
-
-                        <strong data-counter="2">
-                            0+
-                        </strong>
-
-                        <span>
-                            Years Experience
+                        <span id="typingText">
+                            continuous improvement.
                         </span>
 
                     </div>
 
 
-                    <div class="metric">
+                    <p class="hero-description">
 
-                        <strong>
-                            BBA
-                        </strong>
+                        I'm a Quality Analyst with 2+ years of professional
+                        experience, focused on maintaining quality, identifying
+                        opportunities for improvement, and delivering consistent
+                        results. I'm an adaptable and curious learner who enjoys
+                        taking on new challenges, developing new skills, and
+                        continuously improving both professionally and personally.
 
-                        <span>
-                            Currently Studying
-                        </span>
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <a href="#experience" class="primary-button">
+
+                            Explore My Journey
+
+                            <span>↗</span>
+
+                        </a>
+
+                        <a href="#contact" class="secondary-button">
+
+                            Let's Connect
+
+                        </a>
 
                     </div>
 
 
-                    <div class="metric">
+                    <!-- STATS -->
 
-                        <strong>
-                            2024
-                        </strong>
+                    <div class="hero-stats">
 
-                        <span>
-                            Career Journey
-                        </span>
+                        <div class="stat">
 
-                    </div>
+                            <strong data-count="2">0+</strong>
 
-                </div>
+                            <span>YEARS EXPERIENCE</span>
 
-            </div>
-
-
-
-            <!-- =================================================
-                 PREMIUM PROFILE CARD
-            ================================================== -->
-
-            <div class="hero-visual reveal">
-
-                <div class="orbit"></div>
-
-                <div class="orbit two"></div>
-
-                <div class="orbit three"></div>
-
-
-                <div
-                    class="profile-card"
-                    id="profileCard"
-                >
-
-                    <div class="card-top">
-
-                        <div class="card-logo">
-                            PK
                         </div>
 
-                        <div>
 
-                            <div class="card-label">
-                                Professional Profile
-                            </div>
+                        <div class="stat">
 
-                            <div class="card-name">
-                                PREM KUMAR
-                            </div>
+                            <strong>BBA</strong>
+
+                            <span>CURRENTLY STUDYING</span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <strong>2024</strong>
+
+                            <span>CAREER JOURNEY</span>
 
                         </div>
 
                     </div>
 
-
-                    <div class="card-role">
-
-                        Current Role
-
-                        <strong>
-                            Quality Analyst
-                        </strong>
-
-                    </div>
+                </div>
 
 
-                    <div class="company-box">
+                <!-- RIGHT PROFILE CARD -->
 
-                        <strong>
-                            I PLANET BPO PVT LTD
-                        </strong>
+                <div class="hero-visual">
 
-                        <span>
-                            Since August 2024
-                        </span>
+                    <div class="orbit orbit-one"></div>
+                    <div class="orbit orbit-two"></div>
+                    <div class="orbit orbit-three"></div>
 
-                    </div>
-
-
-                    <div class="card-tags">
-
-                        <span class="tag">
-                            Quality
-                        </span>
-
-                        <span class="tag">
-                            Growth
-                        </span>
-
-                        <span class="tag">
-                            Adaptability
-                        </span>
-
-                        <span class="tag">
-                            Learning
-                        </span>
-
-                    </div>
+                    <div class="orbit-dot dot-one"></div>
+                    <div class="orbit-dot dot-two"></div>
+                    <div class="orbit-dot dot-three"></div>
 
 
-                    <div class="card-footer">
+                    <div class="profile-card" id="profileCard">
 
-                        <i></i>
+                        <div class="card-glow"></div>
 
-                        Always learning • Always improving
+                        <div class="card-top">
+
+                            <div class="card-avatar">
+                                PK
+                            </div>
+
+                            <div>
+
+                                <span class="card-label">
+                                    PROFESSIONAL PROFILE
+                                </span>
+
+                                <h3>
+                                    PREM KUMAR
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="card-line"></div>
+
+
+                        <div class="card-role">
+
+                            <span>CURRENT ROLE</span>
+
+                            <h2>
+                                Quality Analyst
+                            </h2>
+
+                        </div>
+
+
+                        <div class="company-box">
+
+                            <strong>
+                                I PLANET BPO PVT LTD
+                            </strong>
+
+                            <span>
+                                SINCE AUGUST 2024
+                            </span>
+
+                        </div>
+
+
+                        <div class="card-tags">
+
+                            <span>QUALITY</span>
+                            <span>GROWTH</span>
+                            <span>ADAPTABILITY</span>
+                            <span>LEARNING</span>
+
+                        </div>
+
+
+                        <div class="card-footer">
+
+                            <span class="footer-dot"></span>
+
+                            <span>
+                                Always learning • Always improving
+                            </span>
+
+                        </div>
 
                     </div>
 
@@ -2602,85 +286,102 @@
         </section>
 
 
-
-        <!-- =====================================================
+        <!-- =====================================
              ABOUT
-        ====================================================== -->
+        ====================================== -->
 
-        <section id="about">
+        <section class="section" id="about">
 
-            <div class="reveal">
+            <div class="section-heading">
 
-                <div class="section-label">
-                    About Me
+                <span class="section-number">
+                    01
+                </span>
+
+                <div>
+                    <p>GET TO KNOW ME</p>
+                    <h2>About Me</h2>
                 </div>
-
-                <h2 class="section-title">
-                    Curious by nature.
-                    <span>
-                        Driven by improvement.
-                    </span>
-                </h2>
-
-                <p class="section-description">
-
-                    A little about how I approach work,
-                    learning and professional growth.
-
-                </p>
 
             </div>
 
 
             <div class="about-grid">
 
-                <div class="about-quote reveal">
+                <div class="about-main">
+
+                    <span class="eyebrow">
+                        QUALITY • GROWTH • CURIOSITY
+                    </span>
+
+                    <h3>
+                        A professional mindset built around
+                        <span>continuous learning.</span>
+                    </h3>
 
                     <p>
-                        "I believe every challenge
-                        is an opportunity to learn,
-                        improve and become better."
+                        I believe good work is not just about completing a task.
+                        It's about understanding the process, identifying what
+                        can be improved, and consistently working toward better
+                        results.
                     </p>
 
-                    <span>
-                        Prem Kumar
-                    </span>
+                    <p>
+                        My experience as a Quality Analyst has helped me develop
+                        strong attention to detail, communication, adaptability
+                        and problem-solving skills. At the same time, I'm
+                        continuing my BBA studies and actively looking for
+                        opportunities to learn and grow.
+                    </p>
 
                 </div>
 
 
-                <div class="reveal">
+                <div class="about-side">
 
-                    <p class="about-copy">
+                    <div class="mini-card">
 
-                        As a Quality Analyst, I have developed
-                        a strong interest in accuracy, consistency
-                        and continuous improvement. My experience
-                        has taught me to pay attention to details
-                        while also looking at the bigger picture.
+                        <span class="mini-icon">01</span>
 
-                    </p>
+                        <div>
+                            <strong>Quality Focus</strong>
+                            <p>
+                                Maintaining standards and identifying
+                                opportunities for improvement.
+                            </p>
+                        </div>
 
-
-                    <p class="about-copy">
-
-                        I'm someone who enjoys learning new things
-                        and adapting to changing situations.
-                        Alongside my professional journey, I am
-                        currently pursuing my BBA, expanding my
-                        understanding of business and management.
-
-                    </p>
+                    </div>
 
 
-                    <p class="about-copy">
+                    <div class="mini-card">
 
-                        My goal is simple: keep developing my
-                        skills, take on meaningful challenges and
-                        build a career based on reliability,
-                        learning and continuous growth.
+                        <span class="mini-icon">02</span>
 
-                    </p>
+                        <div>
+                            <strong>Adaptable Mindset</strong>
+                            <p>
+                                Comfortable learning new processes,
+                                skills and responsibilities.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mini-card">
+
+                        <span class="mini-icon">03</span>
+
+                        <div>
+                            <strong>Always Learning</strong>
+                            <p>
+                                Curious about new ideas, technology and
+                                professional development.
+                            </p>
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -2689,305 +390,229 @@
         </section>
 
 
-
-        <!-- =====================================================
+        <!-- =====================================
              EXPERIENCE
-        ====================================================== -->
+        ====================================== -->
 
-        <section id="experience">
+        <section class="section experience-section" id="experience">
 
-            <div class="reveal">
+            <div class="section-heading">
 
-                <div class="section-label">
-                    Experience
+                <span class="section-number">
+                    02
+                </span>
+
+                <div>
+                    <p>PROFESSIONAL JOURNEY</p>
+                    <h2>Experience</h2>
                 </div>
-
-                <h2 class="section-title">
-                    Experience that
-                    <span>
-                        builds perspective.
-                    </span>
-                </h2>
-
-                <p class="section-description">
-
-                    My professional journey and the experience
-                    shaping the way I work today.
-
-                </p>
 
             </div>
 
 
-            <div class="experience-card reveal">
+            <div class="timeline">
 
-                <div class="experience-header">
+                <div class="timeline-line"></div>
 
-                    <div>
 
-                        <div class="experience-company">
-                            I Planet BPO PVT LTD
-                        </div>
+                <article class="experience-card">
 
-                        <div class="experience-role">
-                            Quality Analyst
-                        </div>
-
-                    </div>
-
+                    <div class="timeline-point"></div>
 
                     <div class="experience-date">
-                        AUG 2024 — PRESENT
+                        AUGUST 2024 — PRESENT
                     </div>
 
-                </div>
+                    <div class="experience-content">
+
+                        <span class="experience-type">
+                            PROFESSIONAL EXPERIENCE
+                        </span>
+
+                        <h3>
+                            Quality Analyst
+                        </h3>
+
+                        <h4>
+                            I Planet BPO PVT LTD
+                        </h4>
+
+                        <p>
+                            Working in a quality-focused role with responsibility
+                            for maintaining standards, reviewing performance,
+                            identifying improvement opportunities and supporting
+                            consistent results.
+                        </p>
 
 
-                <p class="experience-body">
+                        <div class="experience-tags">
 
-                    Working as a Quality Analyst with a focus on
-                    maintaining service quality, reviewing
-                    performance, identifying improvement areas,
-                    and supporting consistent standards. This
-                    experience has strengthened my attention to
-                    detail, communication, adaptability and
-                    problem-solving approach.
+                            <span>Quality Monitoring</span>
+                            <span>Process Improvement</span>
+                            <span>Attention to Detail</span>
+                            <span>Communication</span>
 
-                </p>
-
-
-                <div class="experience-points">
-
-                    <div class="experience-point">
-
-                        <strong>
-                            Quality Focus
-                        </strong>
-
-                        Maintaining accuracy and consistency
-                        while reviewing performance.
-
-                    </div>
-
-
-                    <div class="experience-point">
-
-                        <strong>
-                            Continuous Improvement
-                        </strong>
-
-                        Identifying opportunities to improve
-                        processes and outcomes.
+                        </div>
 
                     </div>
 
-
-                    <div class="experience-point">
-
-                        <strong>
-                            Adaptability
-                        </strong>
-
-                        Learning and adjusting to new
-                        situations and requirements.
-
-                    </div>
-
-                </div>
+                </article>
 
             </div>
 
         </section>
 
 
-
-        <!-- =====================================================
+        <!-- =====================================
              SKILLS
-        ====================================================== -->
+        ====================================== -->
 
-        <section id="skills">
+        <section class="section" id="skills">
 
-            <div class="reveal">
+            <div class="section-heading">
 
-                <div class="section-label">
-                    Skills
+                <span class="section-number">
+                    03
+                </span>
+
+                <div>
+                    <p>WHAT I BRING</p>
+                    <h2>Skills</h2>
                 </div>
-
-                <h2 class="section-title">
-                    Skills I bring to
-                    <span>
-                        the table.
-                    </span>
-                </h2>
-
-                <p class="section-description">
-
-                    A combination of professional strengths,
-                    working habits and a mindset focused on growth.
-
-                </p>
 
             </div>
 
 
             <div class="skills-grid">
 
-                <div class="skill-card reveal">
+                <div class="skill-card featured">
 
-                    <span class="skill-number">
+                    <div class="skill-number">
                         01
-                    </span>
-
-                    <span class="skill-icon"></span>
+                    </div>
 
                     <h3>
                         Quality Analysis
                     </h3>
 
                     <p>
-                        Maintaining standards, identifying
-                        gaps and improving consistency.
+                        Maintaining quality standards, identifying gaps and
+                        focusing on consistent performance.
                     </p>
+
+                    <div class="skill-bar">
+                        <span style="width: 90%;"></span>
+                    </div>
 
                 </div>
 
 
-                <div class="skill-card reveal">
+                <div class="skill-card">
 
-                    <span class="skill-number">
+                    <div class="skill-number">
                         02
-                    </span>
-
-                    <span class="skill-icon"></span>
-
-                    <h3>
-                        Attention to Detail
-                    </h3>
-
-                    <p>
-                        Carefully reviewing information
-                        and identifying important details.
-                    </p>
-
-                </div>
-
-
-                <div class="skill-card reveal">
-
-                    <span class="skill-number">
-                        03
-                    </span>
-
-                    <span class="skill-icon"></span>
+                    </div>
 
                     <h3>
                         Adaptability
                     </h3>
 
                     <p>
-                        Comfortable learning and adjusting
-                        to changing situations.
+                        Quickly adjusting to new processes, responsibilities
+                        and working environments.
                     </p>
+
+                    <div class="skill-bar">
+                        <span style="width: 92%;"></span>
+                    </div>
 
                 </div>
 
 
-                <div class="skill-card reveal">
+                <div class="skill-card">
 
-                    <span class="skill-number">
-                        04
-                    </span>
-
-                    <span class="skill-icon"></span>
+                    <div class="skill-number">
+                        03
+                    </div>
 
                     <h3>
                         Communication
                     </h3>
 
                     <p>
-                        Clear, professional and
-                        constructive communication.
+                        Clear, professional communication with a focus on
+                        understanding and delivering information effectively.
                     </p>
+
+                    <div class="skill-bar">
+                        <span style="width: 86%;"></span>
+                    </div>
 
                 </div>
 
 
-                <div class="skill-card reveal">
+                <div class="skill-card">
 
-                    <span class="skill-number">
-                        05
-                    </span>
-
-                    <span class="skill-icon"></span>
+                    <div class="skill-number">
+                        04
+                    </div>
 
                     <h3>
                         Problem Solving
                     </h3>
 
                     <p>
-                        Understanding problems and
-                        looking for practical solutions.
+                        Looking beyond the immediate issue to understand
+                        causes and identify practical solutions.
                     </p>
+
+                    <div class="skill-bar">
+                        <span style="width: 84%;"></span>
+                    </div>
 
                 </div>
 
 
-                <div class="skill-card reveal">
+                <div class="skill-card">
 
-                    <span class="skill-number">
-                        06
-                    </span>
-
-                    <span class="skill-icon"></span>
+                    <div class="skill-number">
+                        05
+                    </div>
 
                     <h3>
-                        Teamwork
+                        Attention to Detail
                     </h3>
 
                     <p>
-                        Working collaboratively toward
-                        shared goals and better results.
+                        Careful observation and focus on accuracy when
+                        reviewing processes and outcomes.
                     </p>
+
+                    <div class="skill-bar">
+                        <span style="width: 91%;"></span>
+                    </div>
 
                 </div>
 
 
-                <div class="skill-card reveal">
+                <div class="skill-card">
 
-                    <span class="skill-number">
-                        07
-                    </span>
-
-                    <span class="skill-icon"></span>
+                    <div class="skill-number">
+                        06
+                    </div>
 
                     <h3>
                         Continuous Learning
                     </h3>
 
                     <p>
-                        Curious about new knowledge,
-                        tools and professional skills.
+                        A strong interest in developing new skills and
+                        improving professionally over time.
                     </p>
 
-                </div>
-
-
-                <div class="skill-card reveal">
-
-                    <span class="skill-number">
-                        08
-                    </span>
-
-                    <span class="skill-icon"></span>
-
-                    <h3>
-                        Time Management
-                    </h3>
-
-                    <p>
-                        Organising priorities and
-                        maintaining consistent delivery.
-                    </p>
+                    <div class="skill-bar">
+                        <span style="width: 94%;"></span>
+                    </div>
 
                 </div>
 
@@ -2996,84 +621,87 @@
         </section>
 
 
-
-        <!-- =====================================================
+        <!-- =====================================
              EDUCATION
-        ====================================================== -->
+        ====================================== -->
 
-        <section id="education">
+        <section class="section education-section" id="education">
 
-            <div class="reveal">
+            <div class="section-heading">
 
-                <div class="section-label">
-                    Education
+                <span class="section-number">
+                    04
+                </span>
+
+                <div>
+                    <p>ACADEMIC JOURNEY</p>
+                    <h2>Education</h2>
                 </div>
-
-                <h2 class="section-title">
-                    Learning beyond
-                    <span>
-                        the workplace.
-                    </span>
-                </h2>
-
-                <p class="section-description">
-
-                    Building a stronger foundation in business,
-                    management and professional development.
-
-                </p>
 
             </div>
 
 
-            <div class="education-layout">
+            <div class="education-grid">
 
-                <div class="education-card reveal">
+                <div class="education-card">
 
-                    <div class="education-year">
-                        COMPLETED
-                    </div>
+                    <span class="education-year">
+                        CURRENT
+                    </span>
 
-                    <h3>
-                        SSC
-                    </h3>
-
-                    <p>
-                        Secondary School Certificate
-                    </p>
-
-                </div>
-
-
-                <div class="education-card reveal">
-
-                    <div class="education-year">
-                        COMPLETED
-                    </div>
-
-                    <h3>
-                        HSC
-                    </h3>
-
-                    <p>
-                        Higher Secondary Certificate
-                    </p>
-
-                </div>
-
-
-                <div class="education-card reveal">
-
-                    <div class="education-year">
-                        CURRENTLY STUDYING
-                    </div>
-
-                    <h3>
+                    <div class="education-icon">
                         BBA
+                    </div>
+
+                    <h3>
+                        Bachelor of Business Administration
                     </h3>
 
                     <p>
-                        Bachelor of Business Administration
+                        Currently pursuing BBA with an interest in developing
+                        business, management and professional skills.
+                    </p>
+
+                </div>
+
+
+                <div class="education-card">
+
+                    <span class="education-year">
+                        COMPLETED
+                    </span>
+
+                    <div class="education-icon">
+                        HSC
+                    </div>
+
+                    <h3>
+                        Higher Secondary Certificate
+                    </h3>
+
+                    <p>
+                        Successfully completed HSC education.
+                    </p>
+
+                </div>
+
+
+                <div class="education-card">
+
+                    <span class="education-year">
+                        COMPLETED
+                    </span>
+
+                    <div class="education-icon">
+                        SSC
+                    </div>
+
+                    <h3>
+                        Secondary School Certificate
+                    </h3>
+
+                    <p>
+                        Successfully completed SSC education.
                     </p>
 
                 </div>
@@ -3083,76 +711,50 @@
         </section>
 
 
-
-        <!-- =====================================================
+        <!-- =====================================
              CONTACT
-        ====================================================== -->
+        ====================================== -->
 
-        <section id="contact">
+        <section class="section contact-section" id="contact">
 
-            <div class="contact-box reveal">
+            <div class="contact-box">
 
                 <div class="contact-content">
 
-                    <div class="section-label">
-                        Contact
-                    </div>
+                    <span class="eyebrow">
+                        LET'S CONNECT
+                    </span>
 
                     <h2>
-                        Let's start a
-                        <span>
-                            conversation.
-                        </span>
+                        Let's build something
+                        <span>better.</span>
                     </h2>
 
                     <p>
-
-                        Whether it's a professional opportunity,
-                        collaboration or simply connecting,
-                        I'd be happy to hear from you.
-
+                        Whether it's a professional opportunity, a new
+                        challenge or simply a conversation, I'm always open
+                        to connecting and learning something new.
                     </p>
 
+                    <a href="mailto:prem012006k@gmail.com"
+                        class="primary-button contact-button">
 
-                    <div class="contact-links">
+                        Send Me an Email
 
-                        <a
-                            class="contact-link"
-                            href="mailto:prem012006k@gmail.com"
-                        >
+                        <span>↗</span>
 
-                            ✉
+                    </a>
 
-                            prem012006k@gmail.com
-
-                        </a>
+                </div>
 
 
-                        <a
-                            class="contact-link"
-                            href="tel:+918928996632"
-                        >
+                <div class="contact-decoration">
 
-                            ☎
+                    <div class="contact-circle circle-one"></div>
+                    <div class="contact-circle circle-two"></div>
+                    <div class="contact-circle circle-three"></div>
 
-                            +91 89289 96632
-
-                        </a>
-
-
-                        <button
-                            class="contact-link"
-                            id="copyEmail"
-                            type="button"
-                        >
-
-                            ⧉
-
-                            Copy Email
-
-                        </button>
-
-                    </div>
+                    <span>PK</span>
 
                 </div>
 
@@ -3163,822 +765,46 @@
     </main>
 
 
-
-    <!-- =========================================================
+    <!-- =========================================
          FOOTER
-    ========================================================= -->
+    ========================================== -->
 
     <footer>
 
-        <span>
-            © 2026 Prem Kumar
-        </span>
+        <div class="footer-brand">
 
-        <span>
-            QUALITY • GROWTH • ADAPTABILITY
+            <div class="brand-logo small">
+                <span>P</span>
+                <small>K</small>
+            </div>
+
+            <div>
+                <strong>PREM KUMAR</strong>
+                <span>QUALITY ANALYST</span>
+            </div>
+
+        </div>
+
+
+        <p>
+            Designed with purpose. Built for growth.
+        </p>
+
+
+        <span class="copyright">
+            © 2026 Prem Kumar
         </span>
 
     </footer>
 
 
+    <!-- SCROLL PROGRESS -->
 
-    <!-- =========================================================
-         BACK TO TOP
-    ========================================================= -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-    <button
-        id="backToTop"
-        aria-label="Back to top"
-    >
-        ↑
-    </button>
 
-
-
-    <!-- =========================================================
-         JAVASCRIPT
-    ========================================================= -->
-
-    <script>
-
-        /* =====================================================
-           MOBILE NAVIGATION
-        ====================================================== */
-
-        const menuButton =
-            document.getElementById("menuButton");
-
-        const navLinks =
-            document.getElementById("navLinks");
-
-        menuButton.addEventListener(
-            "click",
-            () => {
-
-                navLinks.classList.toggle("open");
-
-            }
-        );
-
-
-        document
-            .querySelectorAll(".nav-links a")
-            .forEach(link => {
-
-                link.addEventListener(
-                    "click",
-                    () => {
-
-                        navLinks.classList.remove("open");
-
-                    }
-                );
-
-            });
-
-
-
-        /* =====================================================
-           HEADER SCROLL
-        ====================================================== */
-
-        const header =
-            document.getElementById("header");
-
-        const backToTop =
-            document.getElementById("backToTop");
-
-        window.addEventListener(
-            "scroll",
-            () => {
-
-                if (window.scrollY > 50) {
-
-                    header.classList.add("scrolled");
-
-                    backToTop.classList.add("show");
-
-                } else {
-
-                    header.classList.remove("scrolled");
-
-                    backToTop.classList.remove("show");
-
-                }
-
-            },
-            { passive: true }
-        );
-
-
-        backToTop.addEventListener(
-            "click",
-            () => {
-
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
-
-            }
-        );
-
-
-
-        /* =====================================================
-           SCROLL REVEAL
-        ====================================================== */
-
-        const revealElements =
-            document.querySelectorAll(".reveal");
-
-        const revealObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(
-                        entry => {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                entry.target
-                                    .classList
-                                    .add("visible");
-
-                                revealObserver
-                                    .unobserve(
-                                        entry.target
-                                    );
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: 0.12
-                }
-            );
-
-
-        revealElements.forEach(
-            element => {
-
-                revealObserver.observe(element);
-
-            }
-        );
-
-
-
-        /* =====================================================
-           ACTIVE NAVIGATION
-        ====================================================== */
-
-        const sections =
-            document.querySelectorAll(
-                "main section"
-            );
-
-        const navigation =
-            document.querySelectorAll(
-                ".nav-links a"
-            );
-
-        const sectionObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(
-                        entry => {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                navigation
-                                    .forEach(
-                                        link => {
-
-                                            link.classList
-                                                .remove(
-                                                    "active"
-                                                );
-
-                                        }
-                                    );
-
-                                const active =
-                                    document.querySelector(
-                                        `.nav-links a[href="#${entry.target.id}"]`
-                                    );
-
-                                if (active) {
-
-                                    active.classList
-                                        .add("active");
-
-                                }
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    rootMargin:
-                        "-35% 0px -55% 0px"
-                }
-            );
-
-
-        sections.forEach(
-            section => {
-
-                sectionObserver.observe(
-                    section
-                );
-
-            }
-        );
-
-
-
-        /* =====================================================
-           MOUSE AMBIENT LIGHT
-        ====================================================== */
-
-        const ambientLight =
-            document.getElementById(
-                "ambientLight"
-            );
-
-        let mouseX = window.innerWidth / 2;
-
-        let mouseY = window.innerHeight / 2;
-
-        let currentX = mouseX;
-
-        let currentY = mouseY;
-
-
-        document.addEventListener(
-            "mousemove",
-            event => {
-
-                mouseX = event.clientX;
-
-                mouseY = event.clientY;
-
-            },
-            { passive: true }
-        );
-
-
-        function animateLight() {
-
-            currentX +=
-                (mouseX - currentX) * 0.08;
-
-            currentY +=
-                (mouseY - currentY) * 0.08;
-
-            ambientLight.style.left =
-                currentX + "px";
-
-            ambientLight.style.top =
-                currentY + "px";
-
-            requestAnimationFrame(
-                animateLight
-            );
-
-        }
-
-        animateLight();
-
-
-
-        /* =====================================================
-           PROFILE CARD 3D MOVEMENT
-        ====================================================== */
-
-        const profileCard =
-            document.getElementById(
-                "profileCard"
-            );
-
-
-        profileCard.addEventListener(
-            "mousemove",
-            event => {
-
-                if (
-                    window.innerWidth < 900
-                ) return;
-
-                const rect =
-                    profileCard
-                        .getBoundingClientRect();
-
-                const x =
-                    event.clientX - rect.left;
-
-                const y =
-                    event.clientY - rect.top;
-
-                const rotateY =
-                    ((x / rect.width) - 0.5)
-                    * 7;
-
-                const rotateX =
-                    ((y / rect.height) - 0.5)
-                    * -7;
-
-                profileCard.style.transform =
-                    `
-                    perspective(1200px)
-                    rotateX(${rotateX}deg)
-                    rotateY(${rotateY}deg)
-                    translateY(-6px)
-                    `;
-
-            }
-        );
-
-
-        profileCard.addEventListener(
-            "mouseleave",
-            () => {
-
-                profileCard.style.transform =
-                    `
-                    perspective(1200px)
-                    rotateY(-5deg)
-                    `;
-
-            }
-        );
-
-
-
-        /* =====================================================
-           CARD TILT
-        ====================================================== */
-
-        document
-            .querySelectorAll(
-                ".skill-card, .education-card"
-            )
-            .forEach(card => {
-
-                card.addEventListener(
-                    "mousemove",
-                    event => {
-
-                        if (
-                            window.innerWidth < 900
-                        ) return;
-
-                        const rect =
-                            card.getBoundingClientRect();
-
-                        const x =
-                            event.clientX -
-                            rect.left;
-
-                        const y =
-                            event.clientY -
-                            rect.top;
-
-                        const rotateX =
-                            ((y / rect.height) - 0.5)
-                            * -4;
-
-                        const rotateY =
-                            ((x / rect.width) - 0.5)
-                            * 4;
-
-                        card.style.transform =
-                            `
-                            perspective(800px)
-                            rotateX(${rotateX}deg)
-                            rotateY(${rotateY}deg)
-                            translateY(-7px)
-                            `;
-
-                    }
-                );
-
-
-                card.addEventListener(
-                    "mouseleave",
-                    () => {
-
-                        card.style.transform =
-                            "";
-
-                    }
-                );
-
-            });
-
-
-
-        /* =====================================================
-           COUNTER
-        ====================================================== */
-
-        const counters =
-            document.querySelectorAll(
-                "[data-counter]"
-            );
-
-        const counterObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(
-                        entry => {
-
-                            if (
-                                !entry.isIntersecting
-                            ) return;
-
-                            const element =
-                                entry.target;
-
-                            const target =
-                                Number(
-                                    element
-                                        .dataset
-                                        .counter
-                                );
-
-                            let current = 0;
-
-                            const duration = 900;
-
-                            const step =
-                                target /
-                                (duration / 16);
-
-
-                            function update() {
-
-                                current += step;
-
-                                if (
-                                    current <
-                                    target
-                                ) {
-
-                                    element.textContent =
-                                        Math.floor(
-                                            current
-                                        ) + "+";
-
-                                    requestAnimationFrame(
-                                        update
-                                    );
-
-                                } else {
-
-                                    element.textContent =
-                                        target + "+";
-
-                                }
-
-                            }
-
-                            update();
-
-                            counterObserver
-                                .unobserve(
-                                    element
-                                );
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: 0.8
-                }
-            );
-
-
-        counters.forEach(
-            counter => {
-
-                counterObserver.observe(
-                    counter
-                );
-
-            }
-        );
-
-
-
-        /* =====================================================
-           COPY EMAIL
-        ====================================================== */
-
-        const copyEmail =
-            document.getElementById(
-                "copyEmail"
-            );
-
-
-        copyEmail.addEventListener(
-            "click",
-            async () => {
-
-                const email =
-                    "prem012006k@gmail.com";
-
-                try {
-
-                    await navigator
-                        .clipboard
-                        .writeText(email);
-
-                    copyEmail.textContent =
-                        "✓ Email Copied";
-
-                    setTimeout(
-                        () => {
-
-                            copyEmail.textContent =
-                                "⧉ Copy Email";
-
-                        },
-                        1800
-                    );
-
-                } catch {
-
-                    window.location.href =
-                        "mailto:" + email;
-
-                }
-
-            }
-        );
-
-
-
-        /* =====================================================
-           CANVAS PARTICLES
-        ====================================================== */
-
-        const canvas =
-            document.getElementById(
-                "particleCanvas"
-            );
-
-        const ctx =
-            canvas.getContext("2d");
-
-        let particles = [];
-
-        let width =
-            window.innerWidth;
-
-        let height =
-            window.innerHeight;
-
-
-        function resizeCanvas() {
-
-            width =
-                window.innerWidth;
-
-            height =
-                window.innerHeight;
-
-            const dpr =
-                Math.min(
-                    window.devicePixelRatio || 1,
-                    2
-                );
-
-            canvas.width =
-                width * dpr;
-
-            canvas.height =
-                height * dpr;
-
-            canvas.style.width =
-                width + "px";
-
-            canvas.style.height =
-                height + "px";
-
-            ctx.setTransform(
-                dpr,
-                0,
-                0,
-                dpr,
-                0,
-                0
-            );
-
-        }
-
-
-        resizeCanvas();
-
-        window.addEventListener(
-            "resize",
-            resizeCanvas
-        );
-
-
-        function createParticles() {
-
-            particles = [];
-
-            const amount =
-                width < 700
-                    ? 35
-                    : 70;
-
-
-            for (
-                let i = 0;
-                i < amount;
-                i++
-            ) {
-
-                particles.push({
-
-                    x:
-                        Math.random()
-                        * width,
-
-                    y:
-                        Math.random()
-                        * height,
-
-                    size:
-                        Math.random()
-                        * 1.6
-                        + 0.4,
-
-                    speed:
-                        Math.random()
-                        * 0.18
-                        + 0.04,
-
-                    drift:
-                        (Math.random() - 0.5)
-                        * 0.12,
-
-                    opacity:
-                        Math.random()
-                        * 0.45
-                        + 0.08
-
-                });
-
-            }
-
-        }
-
-
-        createParticles();
-
-
-        function drawParticles() {
-
-            ctx.clearRect(
-                0,
-                0,
-                width,
-                height
-            );
-
-
-            particles.forEach(
-                particle => {
-
-                    particle.y -=
-                        particle.speed;
-
-                    particle.x +=
-                        particle.drift;
-
-
-                    if (
-                        particle.y < -10
-                    ) {
-
-                        particle.y =
-                            height + 10;
-
-                        particle.x =
-                            Math.random()
-                            * width;
-
-                    }
-
-
-                    if (
-                        particle.x < -10
-                    ) {
-
-                        particle.x =
-                            width + 10;
-
-                    }
-
-
-                    if (
-                        particle.x >
-                        width + 10
-                    ) {
-
-                        particle.x = -10;
-
-                    }
-
-
-                    ctx.beginPath();
-
-                    ctx.arc(
-                        particle.x,
-                        particle.y,
-                        particle.size,
-                        0,
-                        Math.PI * 2
-                    );
-
-                    ctx.fillStyle =
-                        `rgba(
-                            146,
-                            139,
-                            255,
-                            ${particle.opacity}
-                        )`;
-
-                    ctx.fill();
-
-                }
-            );
-
-
-            requestAnimationFrame(
-                drawParticles
-            );
-
-        }
-
-
-        drawParticles();
-
-
-
-        /* =====================================================
-           VIDEO FALLBACK
-        ====================================================== */
-
-        const bgVideo =
-            document.getElementById(
-                "bgVideo"
-            );
-
-
-        bgVideo.addEventListener(
-            "error",
-            () => {
-
-                bgVideo.style.display =
-                    "none";
-
-            }
-        );
-
-
-        /* =====================================================
-           PREVENT VIDEO ON DATA-SAVER / MOBILE
-        ====================================================== */
-
-        if (
-            window.innerWidth < 700
-        ) {
-
-            bgVideo.pause();
-
-            bgVideo.style.display =
-                "none";
-
-        }
-
-    </script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
