@@ -2172,3 +2172,489 @@ footer p {
     }
 
 }
+/* =========================================================
+   PREMIUM MOVING BACKGROUND
+   ========================================================= */
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+
+/* Main animated light */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 650px;
+    height: 650px;
+
+    top: -220px;
+    left: -180px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(111, 92, 255, 0.18) 0%,
+            rgba(111, 92, 255, 0.08) 35%,
+            transparent 70%
+        );
+
+    filter: blur(35px);
+
+    pointer-events: none;
+
+    z-index: -2;
+
+    animation:
+        premiumOrbOne 18s ease-in-out infinite alternate;
+}
+
+
+/* Second moving light */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 700px;
+    height: 700px;
+
+    right: -250px;
+    bottom: -250px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(151, 111, 255, 0.16) 0%,
+            rgba(92, 70, 220, 0.07) 35%,
+            transparent 70%
+        );
+
+    filter: blur(40px);
+
+    pointer-events: none;
+
+    z-index: -2;
+
+    animation:
+        premiumOrbTwo 22s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   MOVING GRID
+   ========================================================= */
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+main::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    background-image:
+
+        linear-gradient(
+            rgba(130, 110, 255, 0.035) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(130, 110, 255, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 80px 80px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+
+    animation: gridMove 20s linear infinite;
+}
+
+
+/* =========================================================
+   FLOATING LIGHT PARTICLES
+   ========================================================= */
+
+.premium-particle {
+
+    position: fixed;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: rgba(147, 128, 255, 0.75);
+
+    box-shadow:
+        0 0 10px rgba(130, 110, 255, 0.8),
+        0 0 25px rgba(130, 110, 255, 0.35);
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    animation:
+        particleFloat 12s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CONTACT SECTION
+   ========================================================= */
+
+.contact-section {
+    position: relative;
+    padding: 120px 0 140px;
+}
+
+
+.contact-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+
+    margin-top: 55px;
+}
+
+
+.contact-card {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    padding: 30px;
+
+    border-radius: 24px;
+
+    text-decoration: none;
+
+    color: inherit;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30, 34, 70, 0.88),
+            rgba(10, 13, 30, 0.88)
+        );
+
+    border: 1px solid
+        rgba(145, 128, 255, 0.18);
+
+    backdrop-filter: blur(18px);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+/* Animated shine */
+
+.contact-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.07),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.8s ease;
+}
+
+
+.contact-card:hover::before {
+    left: 140%;
+}
+
+
+.contact-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(145, 128, 255, 0.5);
+
+    box-shadow:
+        0 20px 60px
+        rgba(88, 67, 220, 0.22);
+}
+
+
+/* Contact icon */
+
+.contact-icon {
+
+    min-width: 58px;
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+
+    font-size: 23px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7668ff,
+            #9b7cff
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(112, 92, 255, 0.3);
+}
+
+
+/* Contact text */
+
+.contact-content {
+    min-width: 0;
+}
+
+
+.contact-label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    color: #8589a8;
+}
+
+
+.contact-content h3 {
+
+    margin: 0;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    color: #f3f3ff;
+
+    overflow-wrap: anywhere;
+}
+
+
+.contact-content p {
+
+    margin: 7px 0 0;
+
+    font-size: 13px;
+
+    color: #7f849f;
+}
+
+
+.contact-arrow {
+
+    margin-left: auto;
+
+    font-size: 22px;
+
+    color: #8f7cff;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.contact-card:hover .contact-arrow {
+
+    transform:
+        translate(4px, -4px);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes premiumOrbOne {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(180px, 130px, 0)
+            scale(1.15);
+    }
+
+    100% {
+        transform:
+            translate3d(80px, 280px, 0)
+            scale(0.9);
+    }
+}
+
+
+@keyframes premiumOrbTwo {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(-170px, -140px, 0)
+            scale(1.12);
+    }
+
+    100% {
+        transform:
+            translate3d(-60px, -280px, 0)
+            scale(0.92);
+    }
+}
+
+
+@keyframes gridMove {
+
+    from {
+        background-position:
+            0 0,
+            0 0;
+    }
+
+    to {
+        background-position:
+            80px 80px,
+            80px 80px;
+    }
+}
+
+
+@keyframes particleFloat {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0);
+        opacity: 0.25;
+    }
+
+    50% {
+        transform:
+            translate3d(35px, -90px, 0);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform:
+            translate3d(-25px, -180px, 0);
+        opacity: 0.15;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .contact-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .contact-card {
+
+        padding: 24px;
+
+    }
+
+    .contact-content h3 {
+
+        font-size: 15px;
+
+    }
+
+}
+
+
+/* Reduce animation for users who prefer less motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+    body::before,
+    body::after,
+    main::before,
+    .premium-particle {
+
+        animation: none !important;
+
+    }
+
+}
