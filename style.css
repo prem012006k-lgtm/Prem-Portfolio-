@@ -2658,3 +2658,463 @@ main::before {
     }
 
 }
+/* =========================================================
+   EXTRA PREMIUM ANIMATIONS
+   ========================================================= */
+
+/* ---------- Floating background glow ---------- */
+
+body {
+    background-attachment: fixed;
+}
+
+/* ---------- Animated gradient atmosphere ---------- */
+
+body::before {
+    animation:
+        atmosphereMove 18s ease-in-out infinite alternate;
+}
+
+@keyframes atmosphereMove {
+
+    0% {
+        transform: translate(-5%, -3%) scale(1);
+    }
+
+    35% {
+        transform: translate(8%, 5%) scale(1.08);
+    }
+
+    70% {
+        transform: translate(-3%, 10%) scale(0.96);
+    }
+
+    100% {
+        transform: translate(6%, -2%) scale(1.05);
+    }
+}
+
+
+/* =========================================================
+   CARD PREMIUM GLOW
+   ========================================================= */
+
+.glass-card {
+    transition:
+        transform 0.5s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.5s ease,
+        border-color 0.5s ease;
+}
+
+.glass-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        0 0 30px rgba(139,92,246,.12);
+}
+
+
+/* =========================================================
+   MOVING LIGHT THROUGH CARDS
+   ========================================================= */
+
+.glass-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: -100%;
+    left: -120%;
+
+    width: 60%;
+    height: 300%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.07),
+            transparent
+        );
+
+    transform: rotate(25deg);
+
+    transition:
+        left 1s ease;
+
+    pointer-events: none;
+}
+
+.glass-card:hover::after {
+    left: 150%;
+}
+
+
+/* =========================================================
+   SKILLS ANIMATION
+   ========================================================= */
+
+.skill,
+.skill-tag,
+.skills span {
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+}
+
+.skill:hover,
+.skill-tag:hover,
+.skills span:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+    box-shadow:
+        0 8px 25px
+        rgba(139,92,246,.2);
+}
+
+
+/* =========================================================
+   BUTTON SHIMMER
+   ========================================================= */
+
+button,
+.btn,
+a[class*="btn"] {
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+button::after,
+.btn::after,
+a[class*="btn"]::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.15),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition:
+        left .7s ease;
+}
+
+button:hover::after,
+.btn:hover::after,
+a[class*="btn"]:hover::after {
+
+    left: 140%;
+}
+
+button:hover,
+.btn:hover,
+a[class*="btn"]:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 35px
+        rgba(99,102,241,.25);
+}
+
+
+/* =========================================================
+   SECTION HEADING ANIMATION
+   ========================================================= */
+
+.section-heading h2 {
+
+    transition:
+        letter-spacing .5s ease,
+        text-shadow .5s ease;
+}
+
+.section-heading:hover h2 {
+
+    letter-spacing: .5px;
+
+    text-shadow:
+        0 0 25px
+        rgba(139,92,246,.35);
+}
+
+
+/* =========================================================
+   TIMELINE ANIMATION
+   ========================================================= */
+
+.timeline-item {
+
+    transition:
+        transform .45s ease;
+}
+
+.timeline-item:hover {
+
+    transform:
+        translateX(8px);
+}
+
+
+/* =========================================================
+   NAVIGATION LINK EFFECT
+   ========================================================= */
+
+.nav-links a {
+
+    position: relative;
+
+    transition:
+        color .3s ease;
+}
+
+.nav-links a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -8px;
+
+    width: 0;
+    height: 2px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7668ff,
+            #b39cff
+        );
+
+    box-shadow:
+        0 0 10px
+        rgba(139,92,246,.7);
+
+    transform:
+        translateX(-50%);
+
+    transition:
+        width .35s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+
+    width: 70%;
+}
+
+
+/* =========================================================
+   PROFILE IMAGE / INITIAL CARD GLOW
+   ========================================================= */
+
+.initial-card,
+.profile-card {
+
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        box-shadow .5s ease;
+}
+
+.initial-card:hover,
+.profile-card:hover {
+
+    transform:
+        translateY(-8px)
+        rotateX(2deg)
+        rotateY(-2deg);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.4),
+        0 0 35px
+        rgba(139,92,246,.12);
+}
+
+
+/* =========================================================
+   HERO TEXT GLOW
+   ========================================================= */
+
+.hero h1 {
+
+    animation:
+        titleBreath 5s ease-in-out infinite;
+}
+
+@keyframes titleBreath {
+
+    0%,100% {
+        text-shadow:
+            0 0 0 transparent;
+    }
+
+    50% {
+        text-shadow:
+            0 0 35px
+            rgba(139,92,246,.12);
+    }
+}
+
+
+/* =========================================================
+   TYPEWRITER WORD GLOW
+   ========================================================= */
+
+#typingText {
+
+    text-shadow:
+        0 0 18px
+        rgba(155,140,255,.18);
+
+    transition:
+        text-shadow .3s ease;
+}
+
+
+/* =========================================================
+   CONTACT CARDS
+   ========================================================= */
+
+.contact-card {
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        box-shadow .45s ease,
+        border-color .45s ease;
+}
+
+.contact-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 25px 60px
+        rgba(0,0,0,.35),
+        0 0 30px
+        rgba(139,92,246,.14);
+}
+
+
+/* =========================================================
+   CONTACT ICON PULSE
+   ========================================================= */
+
+.contact-icon {
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+.contact-card:hover .contact-icon {
+
+    transform:
+        scale(1.08)
+        rotate(-4deg);
+
+    box-shadow:
+        0 0 30px
+        rgba(139,92,246,.45);
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE SAFETY
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .glass-card:hover,
+    .initial-card:hover,
+    .profile-card:hover,
+    .contact-card:hover {
+
+        transform:
+            translateY(-4px);
+    }
+
+    .timeline-item:hover {
+
+        transform:
+            translateX(3px);
+    }
+
+}
+
+
+/* =========================================================
+   REDUCE MOTION WHEN REQUESTED BY DEVICE
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+    }
+}
