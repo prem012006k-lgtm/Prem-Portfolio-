@@ -2658,3 +2658,59 @@ main::before {
     }
 
 }
+/* =========================================================
+   BRIGHTER GLOWING BACKGROUND ORBS
+   ========================================================= */
+
+.premium-orb {
+    opacity: 1 !important;
+
+    filter: blur(3px);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(180, 160, 255, 0.45) 0%,
+            rgba(139, 92, 246, 0.32) 18%,
+            rgba(124, 58, 237, 0.20) 38%,
+            rgba(99, 102, 241, 0.08) 58%,
+            transparent 75%
+        ) !important;
+
+    box-shadow:
+        0 0 80px rgba(139, 92, 246, 0.25),
+        0 0 160px rgba(99, 102, 241, 0.15);
+}
+
+
+/* Extra brightness for the main orb */
+
+.premium-orb.one {
+    filter: blur(2px);
+
+    box-shadow:
+        0 0 90px rgba(139, 92, 246, 0.35),
+        0 0 180px rgba(99, 102, 241, 0.22);
+}
+
+
+/* Second orb */
+
+.premium-orb.two {
+    filter: blur(2px);
+
+    box-shadow:
+        0 0 100px rgba(167, 139, 250, 0.32),
+        0 0 200px rgba(124, 58, 237, 0.18);
+}
+
+
+/* Third orb */
+
+.premium-orb.three {
+    filter: blur(2px);
+
+    box-shadow:
+        0 0 100px rgba(139, 92, 246, 0.30),
+        0 0 200px rgba(99, 102, 241, 0.18);
+}
