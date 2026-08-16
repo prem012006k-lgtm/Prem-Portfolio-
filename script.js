@@ -533,3 +533,45 @@ window.addEventListener(
 
     }
 );
+/* =========================================================
+   PREMIUM FLOATING PARTICLES
+   ========================================================= */
+
+function createPremiumParticles() {
+
+    const particleCount = 22;
+
+    for (let i = 0; i < particleCount; i++) {
+
+        const particle =
+            document.createElement("span");
+
+        particle.className =
+            "premium-particle";
+
+        particle.style.left =
+            Math.random() * 100 + "vw";
+
+        particle.style.top =
+            Math.random() * 100 + "vh";
+
+        const size =
+            Math.random() * 3 + 2;
+
+        particle.style.width =
+            size + "px";
+
+        particle.style.height =
+            size + "px";
+
+        particle.style.animationDelay =
+            Math.random() * 10 + "s";
+
+        particle.style.animationDuration =
+            9 + Math.random() * 12 + "s";
+
+        document.body.appendChild(particle);
+    }
+}
+
+createPremiumParticles();
